@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --deep-cypress: #121715;
+  --warm-sand: #F0E9DC;
+  --ember: #E2694B;
+  --soft-gold: #D4A857;
+  --sage: #8FBBA0;
+  --muted-stone: #B0AB9E;
+}
+
+.font-fraunces {
+  font-family: 'Fraunces', serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Warm metallic gold-to-ember gradient text */
+.text-gradient-gold-ember {
+  background: linear-gradient(135deg, #F0E9DC 0%, #D4A857 45%, #E2694B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ECG pulse wave animation */
+@keyframes ecg-wave {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.9); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+
+.animate-ecg {
+  animation: ecg-wave 1.4s ease-in-out infinite;
+}
+
+/* Animated border glow for live showcase widget */
+@keyframes border-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(212, 168, 87, 0.2), 0 20px 50px rgba(0, 0, 0, 0.6);
+    border-color: rgba(212, 168, 87, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(226, 105, 75, 0.25), 0 20px 50px rgba(0, 0, 0, 0.6);
+    border-color: rgba(226, 105, 75, 0.45);
+  }
+}
+
+.animate-border-glow {
+  animation: border-glow 4s ease-in-out infinite;
+}
+
+/* Signature pulse animation for logo and status dot */
+@keyframes signature-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+.animate-signature-pulse {
+  animation: signature-pulse 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Header entrance animation */
+@keyframes header-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-header-entrance {
+  animation: header-slide-down 400ms ease-out forwards;
+}
+
+/* Hero elements fade-up animations */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-eyebrow {
+  animation: hero-fade-up 500ms ease-out 0ms forwards;
+}
+
+.animate-hero-headline {
+  animation: hero-fade-up 500ms ease-out 100ms forwards;
+}
+
+.animate-hero-subheading {
+  animation: hero-fade-up 500ms ease-out 200ms forwards;
+}
+
+.animate-hero-ctas {
+  animation: hero-fade-up 500ms ease-out 300ms forwards;
+}
+
+/* Rich Coral Primary CTA Button */
+.btn-ember-rich {
+  background: linear-gradient(135deg, #E2694B 0%, #E85A37 100%);
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(226, 105, 75, 0.32);
+  transition: all 250ms ease-out;
+}
+
+.btn-ember-rich:hover {
+  background: linear-gradient(135deg, #E85A37 0%, #D4A857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(226, 105, 75, 0.42);
+}
+
+/* Glassmorphism Card Depth */
+.glass-card-bright {
+  background-color: rgba(18, 23, 21, 0.78);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-bright:hover {
+  background-color: rgba(18, 23, 21, 0.92);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  transform: translateY(-4px);
+}
+
+/* Navigation link center-out underline animation */
+.nav-link-hover {
+  position: relative;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--soft-gold);
+  border-radius: 1px;
+  transition: width 200ms ease, left 200ms ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .animate-signature-pulse,
+  .animate-header-entrance,
+  .animate-hero-eyebrow,
+  .animate-hero-headline,
+  .animate-hero-subheading,
+  .animate-hero-ctas {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .btn-ember-rich,
+  .glass-card-bright,
+  .nav-link-hover::after {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Focus Visible Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--soft-gold) !important;
+  outline-offset: 2px !important;
+}
+
+/* High-contrast bright white input box styling specifically for Elder role */
+.elder-white-input,
+.elder-input {
+  background-color: #FFFFFF !important;
+  color: #121715 !important;
+  border: 2px solid #D4A857 !important;
+}
+
+.elder-white-input::placeholder,
+.elder-white-input::-webkit-input-placeholder,
+.elder-white-input::-moz-placeholder,
+.elder-white-input:-ms-input-placeholder,
+.elder-input::placeholder,
+.elder-input::-webkit-input-placeholder,
+.elder-input::-moz-placeholder,
+.elder-input:-ms-input-placeholder,
+.elder-page input::placeholder,
+.elder-page textarea::placeholder {
+  color: #64748B !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #64748B !important;
+}
+
+.elder-white-input:-webkit-autofill,
+.elder-white-input:-webkit-autofill:hover, 
+.elder-white-input:-webkit-autofill:focus,
+.elder-input:-webkit-autofill,
+.elder-input:-webkit-autofill:hover, 
+.elder-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #121715 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.elder-white-input::-webkit-calendar-picker-indicator,
+.elder-input::-webkit-calendar-picker-indicator,
+.elder-page input::-webkit-calendar-picker-indicator {
+  filter: none !important;
+}
+

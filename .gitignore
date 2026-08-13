@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+*.env.local
+
+# Logs
+*.log
+.elderguard-*.log
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+backend/.pytest_cache/
+
+# Build artifacts
+dist/
+frontend/dist/
+build/
+
+# Database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+backend/*.db
+
+# IDE & Editor files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
