@@ -317,7 +317,7 @@ scheduler.add_job(sweep_check_timeouts,    "interval", seconds=15)''')
 
     page_break()
     doc.add_heading('Project Link', 1)
-    P('Source code: https://github.com/Lokesh848-code/Elder_guard', align='l')
+    P('Source code: https://github.com/DINESH-7S/ELDER-GUARD-AI-', align='l')
     P('Run locally with the repository’s dev script: npm run dev (front end on port 5173, API on port 8000). Demo accounts are created by backend/seed_connected_demo.py.', align='l')
 
     page_break()

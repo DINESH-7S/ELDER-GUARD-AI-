@@ -57,8 +57,8 @@ The escalation runs as a background job on the server, so it does not depend on 
 ### 1. Get the code
 
 ```bash
-git clone https://github.com/Lokesh848-code/Elder_guard.git
-cd Elder_guard
+git clone https://github.com/DINESH-7S/ELDER-GUARD-AI-.git
+cd ELDER-GUARD-AI-
 ```
 
 ### 2. Backend
