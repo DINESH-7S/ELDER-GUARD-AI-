@@ -6,6 +6,7 @@ from fastapi import HTTPException, status
 from sqlalchemy import text
 
 from app.core.database import supabase, local_engine
+from app.core.config import SOS_DEMO_SECONDS
 from app.notifications.service import broadcast_notification
 from app.emergency.models import SOSStatus, SOSRecipientType, SOSLogAction
 from app.emergency.schemas import SOSEventResponse, SOSEventLogResponse, SOSEscalationTierResponse
@@ -109,13 +110,18 @@ def _get_tiers_for_elder(elder_id: str) -> List[Dict[str, Any]]:
     if custom_tiers:
         return custom_tiers
 
-    # System Default Tiers
-    return [
+    # System Default Tiers: caregiver now, second contact at 2 min, hospital at 5 min, emergency services at 10 min.
+    tiers = [
         {"id": f"default_tier_1_{elder_id}", "elder_id": elder_id, "tier_number": 1, "recipient_type": "caregiver", "recipient_id": None, "timeout_minutes": 0},
         {"id": f"default_tier_2_{elder_id}", "elder_id": elder_id, "tier_number": 2, "recipient_type": "secondary_caregiver", "recipient_id": None, "timeout_minutes": 2},
         {"id": f"default_tier_3_{elder_id}", "elder_id": elder_id, "tier_number": 3, "recipient_type": "hospital", "recipient_id": None, "timeout_minutes": 5},
         {"id": f"default_tier_4_{elder_id}", "elder_id": elder_id, "tier_number": 4, "recipient_type": "emergency_services", "recipient_id": None, "timeout_minutes": 10},
     ]
+    if SOS_DEMO_SECONDS > 0:
+        # The sweep job runs every 30 s, so values below that still fire on the next sweep.
+        for tier in tiers:
+            tier["delay_seconds"] = (tier["tier_number"] - 1) * SOS_DEMO_SECONDS
+    return tiers
 
 
 def _log_sos_action(event_id: str, action: SOSLogAction, tier_number: int, recipient_type: SOSRecipientType, recipient_id: str, details: str):

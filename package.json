@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "concurrently -k -p \"[{name}]\" -c \"cyan.bold,yellow.bold\" -n \"BACKEND,FRONTEND\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && .\\venv\\Scripts\\python -m uvicorn app.main:app --reload --port 8000",
+    "dev:demo": "concurrently -k -p \"[{name}]\" -c \"cyan.bold,yellow.bold\" -n \"BACKEND,FRONTEND\" \"cd backend && set SOS_DEMO_SECONDS=15&& .\\venv\\Scripts\\python -m uvicorn app.main:app --port 8000\" \"npm run dev:frontend\"",
     "dev:frontend": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build",
     "start": "npm run dev"

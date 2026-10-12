@@ -15,6 +15,24 @@ router = APIRouter(prefix="/profiles/doctor", tags=["Doctor Profiles"])
 _mock_doctor_profiles: List[Dict[str, Any]] = []
 
 
+def _normalize_profile(row: Dict[str, Any]) -> Dict[str, Any]:
+    """working_hours is saved as JSON text; give the API back the object the response model expects.
+
+    Older plain-text values are tolerated instead of breaking the whole profile endpoint.
+    """
+    hours = row.get("working_hours")
+    if isinstance(hours, str):
+        if not hours.strip():
+            row["working_hours"] = None
+        else:
+            try:
+                parsed = json.loads(hours)
+                row["working_hours"] = parsed if isinstance(parsed, dict) else {"hours": hours}
+            except ValueError:
+                row["working_hours"] = {"hours": hours}
+    return row
+
+
 class DoctorProfileCreate(BaseModel):
     name: Optional[str] = None
     professional_title: Optional[str] = None
@@ -125,7 +143,7 @@ def fetch_all_doctors_internal() -> List[Dict[str, Any]]:
         except Exception as e:
             logger.warning(f"Local PostgreSQL fetch all doctors error: {e}")
 
-    return list(docs_map.values())
+    return [_normalize_profile(d) for d in docs_map.values()]
 
 
 @router.get("/", response_model=List[DoctorProfileResponse])
@@ -230,7 +248,7 @@ def get_doctor_profile(id: str, current_user: dict = Depends(get_current_user)):
                 res = conn.execute(text("SELECT * FROM doctor_profiles WHERE user_id = :id LIMIT 1"), {"id": id})
                 row = res.fetchone()
                 if row:
-                    profile = dict(row._mapping)
+                    profile = _normalize_profile(dict(row._mapping))
         except Exception as e:
             logger.warning(f"Local PostgreSQL get doctor profile error: {e}")
 

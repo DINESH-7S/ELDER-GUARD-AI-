@@ -13,6 +13,8 @@ from app.emergency.service import (
     _get_elder_profile,
 )
 
+from app.core.config import SOS_DEMO_SECONDS
+
 logger = logging.getLogger("elderguard.emergency.scheduler")
 emergency_scheduler = AsyncIOScheduler()
 
@@ -179,7 +181,7 @@ def escalation_sweep():
 def start_emergency_scheduler():
     """Initializes and starts background SOS escalation sweep job using APScheduler."""
     if not emergency_scheduler.running:
-        emergency_scheduler.add_job(escalation_sweep, "interval", seconds=30, id="sos_escalation_sweep")
+        emergency_scheduler.add_job(escalation_sweep, "interval", seconds=(5 if SOS_DEMO_SECONDS > 0 else 30), id="sos_escalation_sweep")
         emergency_scheduler.start()
         logger.info("Emergency SOS Background Escalation Scheduler started.")
 

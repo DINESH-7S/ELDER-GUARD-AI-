@@ -38,6 +38,9 @@ def seed() -> None:
     initialize_connected_schema()
     upsert_user(ELDER_ID, "elder.demo@elderguard.ai", "elder", "+1555001")
     upsert_user(CAREGIVER_ID, "caregiver.demo@elderguard.ai", "caregiver", "+1555002")
+    upsert_user("demo-doctor-001", "doctor.demo@elderguard.ai", "doctor", "+1555003")
+    upsert_user("demo-hospital-001", "hospital.demo@elderguard.ai", "hospital", "+1555004")
+    upsert_user("demo-pharmacy-001", "pharmacy.demo@elderguard.ai", "pharmacy", "+1555005")
 
     timestamp = now_iso()
     if not fetch_one("SELECT user_id FROM elder_profiles WHERE user_id = :id", {"id": ELDER_ID}):
@@ -115,9 +118,15 @@ def seed() -> None:
             {"id": new_id(), "elder_id": ELDER_ID, "triggered_at": triggered, "location": dumps({"lat": 37.7749, "lng": -122.4194}), "caregiver_id": CAREGIVER_ID},
         )
 
+    from seed_demo_story import seed_story
+    seed_story()
+
     print("Seeded connected ElderGuard demo accounts:")
     print("  elder.demo@elderguard.ai / DemoPass123!")
     print("  caregiver.demo@elderguard.ai / DemoPass123!")
+    print("  doctor.demo@elderguard.ai / DemoPass123!")
+    print("  hospital.demo@elderguard.ai / DemoPass123!")
+    print("  pharmacy.demo@elderguard.ai / DemoPass123!")
 
 
 if __name__ == "__main__":

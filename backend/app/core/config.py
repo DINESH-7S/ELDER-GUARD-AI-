@@ -38,6 +38,11 @@ FIREBASE_CREDENTIALS_JSON: str = os.getenv("FIREBASE_CREDENTIALS_JSON", "")
 TELEGRAM_BOT_TOKEN: str = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_BOT_USERNAME: str = os.getenv("TELEGRAM_BOT_USERNAME", "ElderGuardAIBot")
 
+# SOS demo speed: when > 0, every escalation tier fires this many seconds after the previous one
+# (tier 2 at N s, tier 3 at 2N s, tier 4 at 3N s) instead of the real 2 / 5 / 10 minutes.
+# Leave at 0 for real behaviour.
+SOS_DEMO_SECONDS: int = int(os.getenv("SOS_DEMO_SECONDS", "0") or 0)
+
 # Vitals Escalation Toggle
 AUTO_ESCALATE_CRITICAL_VITALS: bool = os.getenv("AUTO_ESCALATE_CRITICAL_VITALS", "false").lower() in ("true", "1", "yes")
 
