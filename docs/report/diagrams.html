@@ -1,0 +1,117 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#10211F}
+.fig{width:1100px;padding:24px;background:#fff;position:relative}
+.box{border:2px solid #14625C;background:#E3EEEB;border-radius:10px;padding:10px 12px;font-size:15px;text-align:center;font-weight:600}
+.box small{display:block;font-weight:400;font-size:12.5px;color:#465956;margin-top:4px}
+.dark{background:#14625C;color:#fff}.dark small{color:#cfe5e1}
+.sos{background:#FBE4E1;border-color:#B42318}
+.abs{position:absolute}
+.lbl{font-size:12.5px;color:#465956;background:#fff;padding:0 4px;position:absolute}
+h4{background:#fff;padding:0 6px 0 0;z-index:2;position:absolute;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#465956}
+svg{position:absolute;left:0;top:0;overflow:visible}
+table.er{border-collapse:collapse;font-size:12.5px;background:#fff}
+table.er th{background:#14625C;color:#fff;padding:5px 10px;text-align:left}
+table.er td{border:1px solid #D6DFDC;padding:3px 10px}
+.pk{color:#B42318;font-weight:700}
+.ar{fill:none;stroke:#14625C;stroke-width:2;marker-end:url(#a)}
+.ar2{fill:none;stroke:#B42318;stroke-width:2;marker-end:url(#b)}
+</style></head><body>
+<svg width="0" height="0"><defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14625C"/></marker>
+<marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#B42318"/></marker>
+</defs></svg>
+
+<!-- 1 ARCHITECTURE -->
+<div class="fig" id="architecture" style="height:640px">
+<h4 style="left:24px;top:14px">Client layer: React 18 + Vite + Tailwind</h4>
+<div class="abs box" style="left:24px;top:40px;width:190px">Elder portal<small>large type, 1-tap SOS</small></div>
+<div class="abs box" style="left:230px;top:40px;width:190px">Caregiver portal<small>vitals, alerts, care team</small></div>
+<div class="abs box" style="left:436px;top:40px;width:190px">Doctor portal<small>patients, e-prescriptions</small></div>
+<div class="abs box" style="left:642px;top:40px;width:190px">Hospital portal<small>queue, SOS dispatch</small></div>
+<div class="abs box" style="left:848px;top:40px;width:228px">Pharmacy portal<small>prescription intake, stock</small></div>
+
+<h4 style="left:24px;top:170px">API layer: FastAPI (REST + WebSocket)</h4>
+<div class="abs box dark" style="left:24px;top:196px;width:1052px;padding:14px">Auth &amp; JWT &middot; Profiles &middot; Medicines &amp; Reminders &middot; Vitals &middot; Appointments &middot; Emergency (SOS) &middot; Doctor Records &middot; Hospital Ops &middot; AI Companion &middot; OCR &middot; Reports &middot; Notifications &middot; Connected (realtime)</div>
+
+<h4 style="left:24px;top:292px">Services &amp; background jobs</h4>
+<div class="abs box" style="left:24px;top:318px;width:250px">APScheduler<small>medicine reminders, SOS escalation sweep</small></div>
+<div class="abs box" style="left:290px;top:318px;width:250px">WebSocket hub<small>live updates: elder &harr; caregiver</small></div>
+<div class="abs box" style="left:556px;top:318px;width:250px">AI Companion<small>Groq-hosted LLM, vitals context</small></div>
+<div class="abs box" style="left:822px;top:318px;width:254px">OCR<small>prescription / report text reader</small></div>
+
+<h4 style="left:24px;top:430px">Data layer</h4>
+<div class="abs box" style="left:24px;top:456px;width:330px">SQLite (local, demo)<small>elderguard.db &mdash; zero-setup</small></div>
+<div class="abs box" style="left:372px;top:456px;width:330px">Supabase / PostgreSQL<small>hosted database for production</small></div>
+<div class="abs box sos" style="left:720px;top:456px;width:356px">Notification channels<small>in-app, FCM push, Telegram</small></div>
+<div class="abs" style="left:24px;top:560px;width:1052px;font-size:13px;color:#465956">Dual-database wiring: the same SQL runs on SQLite locally and on Supabase/PostgreSQL when credentials are present.</div>
+<svg width="1100" height="640">
+<path class="ar" d="M120 106V196"/><path class="ar" d="M326 106V196"/><path class="ar" d="M532 106V196"/><path class="ar" d="M738 106V196"/><path class="ar" d="M962 106V196"/>
+<path class="ar" d="M150 266V318"/><path class="ar" d="M415 266V318"/><path class="ar" d="M680 266V318"/><path class="ar" d="M950 266V318"/>
+<path class="ar" d="M189 386V456"/><path class="ar" d="M537 386V456"/><path class="ar2" d="M898 386V456"/>
+</svg></div>
+
+<!-- 2 USE CASE -->
+<div class="fig" id="usecase" style="height:450px"><div class="abs box dark" style="left:10px;top:20px;width:196px">Elder</div><div class="abs" style="left:108px;top:60px;width:2px;height:324px;background:#14625C"></div><div class="abs box" style="left:10px;top:84px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Log medicine dose</div><div class="abs box" style="left:10px;top:150px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Record vitals</div><div class="abs box" style="left:10px;top:216px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Trigger 1-tap SOS</div><div class="abs box" style="left:10px;top:282px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Chat with AI companion</div><div class="abs box" style="left:10px;top:348px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Book telemedicine visit</div><div class="abs box dark" style="left:224px;top:20px;width:196px">Caregiver</div><div class="abs" style="left:322px;top:60px;width:2px;height:324px;background:#14625C"></div><div class="abs box" style="left:224px;top:84px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Monitor vitals &amp; adherence</div><div class="abs box" style="left:224px;top:150px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Receive SOS alert</div><div class="abs box" style="left:224px;top:216px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Message care team</div><div class="abs box" style="left:224px;top:282px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Manage linked elders</div><div class="abs box" style="left:224px;top:348px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Export health report</div><div class="abs box dark" style="left:438px;top:20px;width:196px">Doctor</div><div class="abs" style="left:536px;top:60px;width:2px;height:324px;background:#14625C"></div><div class="abs box" style="left:438px;top:84px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">View patient workspace</div><div class="abs box" style="left:438px;top:150px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Review live vitals</div><div class="abs box" style="left:438px;top:216px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Write e-prescription</div><div class="abs box" style="left:438px;top:282px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Run consult queue</div><div class="abs box" style="left:438px;top:348px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Upload lab report</div><div class="abs box dark" style="left:652px;top:20px;width:196px">Hospital</div><div class="abs" style="left:750px;top:60px;width:2px;height:324px;background:#14625C"></div><div class="abs box" style="left:652px;top:84px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Receive SOS dispatch</div><div class="abs box" style="left:652px;top:150px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Manage appointment queue</div><div class="abs box" style="left:652px;top:216px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Manage doctors</div><div class="abs box" style="left:652px;top:282px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Departments &amp; resources</div><div class="abs box" style="left:652px;top:348px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Billing records</div><div class="abs box dark" style="left:866px;top:20px;width:196px">Pharmacy</div><div class="abs" style="left:964px;top:60px;width:2px;height:324px;background:#14625C"></div><div class="abs box" style="left:866px;top:84px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Receive prescriptions</div><div class="abs box" style="left:866px;top:150px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Verify &amp; approve intake</div><div class="abs box" style="left:866px;top:216px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Track inventory</div><div class="abs box" style="left:866px;top:282px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Manage deliveries</div><div class="abs box" style="left:866px;top:348px;width:196px;border-radius:30px;padding:9px 10px;font-size:13.5px">Patient subscriptions</div></div>
+
+<!-- 3 DFD -->
+<div class="fig" id="dfd" style="height:520px">
+<div class="abs box dark" style="left:24px;top:30px;width:150px">Elder</div>
+<div class="abs box dark" style="left:24px;top:210px;width:150px">Caregiver</div>
+<div class="abs box dark" style="left:24px;top:390px;width:150px">Doctor</div>
+<div class="abs box" style="left:270px;top:195px;width:210px;border-radius:50px;padding:22px 14px">1.0 Authenticate<small>JWT, role check</small></div>
+<div class="abs box" style="left:560px;top:20px;width:230px;border-radius:50px;padding:20px 14px">2.0 Health tracking<small>medicines, vitals, check-ins</small></div>
+<div class="abs box sos" style="left:560px;top:180px;width:230px;border-radius:50px;padding:20px 14px">3.0 SOS &amp; escalation<small>tiered, timer driven</small></div>
+<div class="abs box" style="left:560px;top:340px;width:230px;border-radius:50px;padding:20px 14px">4.0 Care &amp; clinical<small>appointments, prescriptions</small></div>
+<div class="abs box" style="left:900px;top:20px;width:176px">D1 Database<small>SQLite / Supabase</small></div>
+<div class="abs box" style="left:900px;top:180px;width:176px;border-radius:50px;padding:20px 10px">5.0 Notify<small>WebSocket, push, Telegram</small></div>
+<div class="abs box dark" style="left:900px;top:340px;width:176px">Hospital &amp; Pharmacy</div>
+<svg width="1100" height="520" style="stroke:#14625C;stroke-width:1.8;fill:none;marker-end:url(#a)">
+<path d="M174 60H222V225H270"/><path d="M174 240H270"/><path d="M174 420H222V255H270"/>
+<path d="M480 215H520V50H560"/><path d="M480 225H560"/><path d="M480 245H520V370H560"/>
+<path d="M790 50H900"/><path d="M790 80H845V190H900" stroke-dasharray="5 4"/>
+<path d="M790 215H900" stroke="#B42318" marker-end="url(#b)"/>
+<path d="M790 380H900"/><path d="M988 250V340" stroke-dasharray="5 4"/>
+</svg>
+<div class="lbl" style="left:190px;top:12px">credentials</div>
+<div class="lbl" style="left:500px;top:150px">authorised requests</div>
+<div class="lbl" style="left:800px;top:195px;font-size:11px;color:#B42318">SOS events</div>
+<div class="lbl" style="left:24px;top:480px;width:1050px">Live alerts reach caregiver and hospital over WebSocket; prescriptions reach the pharmacy through the shared database.</div>
+</div>
+
+<!-- 4 SOS FLOW -->
+<div class="fig" id="sosflow" style="height:330px">
+<div class="abs box sos" style="left:24px;top:30px;width:180px">Elder taps SOS<small>t = 0</small></div>
+<div class="abs box" style="left:244px;top:30px;width:200px">Caregiver alerted<small>tier 1 &middot; instantly</small></div>
+<div class="abs box" style="left:484px;top:30px;width:200px">Secondary contact<small>tier 2 &middot; 2 min</small></div>
+<div class="abs box" style="left:724px;top:30px;width:150px">Hospital<small>tier 3 &middot; 5 min</small></div>
+<div class="abs box" style="left:914px;top:30px;width:162px">Emergency services<small>tier 4 &middot; 10 min</small></div>
+<div class="abs box dark" style="left:244px;top:190px;width:380px">Scheduler sweep checks every 30 s<small>(5 s in SOS_DEMO_SECONDS demo mode)</small></div>
+<div class="abs box" style="left:664px;top:190px;width:412px">Someone acknowledges / resolves<small>pending tiers are cancelled and the event is closed</small></div>
+<svg width="1100" height="330" style="stroke:#14625C;stroke-width:2;fill:none;marker-end:url(#a)">
+<path d="M204 75H244"/><path d="M444 75H484"/><path d="M684 75H724"/><path d="M874 75H914"/>
+<path d="M344 120V190"/><path d="M624 230H664"/><path d="M790 190V120" stroke-dasharray="6 5"/>
+</svg></div>
+
+<!-- 5 PRESCRIPTION FLOW -->
+<div class="fig" id="rxflow" style="height:290px">
+<div class="abs box" style="left:24px;top:30px;width:230px">Doctor writes e-prescription<small>medicine, dose, duration, pharmacy</small></div>
+<div class="abs box" style="left:294px;top:30px;width:230px">Saved to doctor_prescriptions<small>status: Active (e-Signed)</small></div>
+<div class="abs box dark" style="left:564px;top:30px;width:230px">Pharmacy portal matches<small>pharmacy name = profile name</small></div>
+<div class="abs box" style="left:834px;top:30px;width:242px">Verify &amp; approve intake<small>then prepare / dispatch</small></div>
+<div class="abs box" style="left:294px;top:170px;width:230px">Elder&rsquo;s medicines list<small>reminder times from time slot</small></div>
+<div class="abs box" style="left:564px;top:170px;width:230px">Elder gets alarm<small>&ldquo;Time for your medicine&rdquo;</small></div>
+<svg width="1100" height="290" style="stroke:#14625C;stroke-width:2;fill:none;marker-end:url(#a)">
+<path d="M254 75H294"/><path d="M524 75H564"/><path d="M794 75H834"/><path d="M409 120V170"/><path d="M524 210H564"/>
+</svg></div>
+
+<!-- 6 ER -->
+<div class="fig" id="er" style="height:620px"><div class="abs" style="left:0px;top:0px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>users</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px"></td><td>email, phone_no, password_hash</td></tr><tr><td class="pk" style="width:30px"></td><td>role, is_verified</td></tr></table></div><div class="abs" style="left:380px;top:0px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>elder_profiles</th></tr><tr><td class="pk" style="width:30px">PK</td><td>user_id (FK users)</td></tr><tr><td class="pk" style="width:30px"></td><td>elder_id (EG-xxxx)</td></tr><tr><td class="pk" style="width:30px"></td><td>name, age, blood_group, caregiver_id</td></tr></table></div><div class="abs" style="left:760px;top:0px;width:316px"><table class="er" style="width:100%"><tr><th colspan=2>doctor / hospital / pharmacy / caregiver profiles</th></tr><tr><td class="pk" style="width:30px">PK</td><td>user_id (FK users)</td></tr><tr><td class="pk" style="width:30px"></td><td>name, licence, working hours</td></tr><tr><td class="pk" style="width:30px"></td><td>pharmacy_name, office_name</td></tr></table></div><div class="abs" style="left:0px;top:200px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>appointments</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px">FK</td><td>elder_id, doctor_id</td></tr><tr><td class="pk" style="width:30px"></td><td>scheduled_at, mode, token, status</td></tr></table></div><div class="abs" style="left:380px;top:200px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>connected_medicines</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px">FK</td><td>elder_id</td></tr><tr><td class="pk" style="width:30px"></td><td>name, dosage, time slots, stock</td></tr></table></div><div class="abs" style="left:760px;top:200px;width:316px"><table class="er" style="width:100%"><tr><th colspan=2>connected_vitals</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px">FK</td><td>elder_id</td></tr><tr><td class="pk" style="width:30px"></td><td>type, value, recorded_at</td></tr></table></div><div class="abs" style="left:0px;top:380px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>medicine_logs</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px">FK</td><td>medicine_id, elder_id</td></tr><tr><td class="pk" style="width:30px"></td><td>scheduled_at, status</td></tr></table></div><div class="abs" style="left:380px;top:380px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>connected_sos_events</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px">FK</td><td>elder_id</td></tr><tr><td class="pk" style="width:30px"></td><td>status, location, caregiver_notified_at</td></tr></table></div><div class="abs" style="left:760px;top:380px;width:316px"><table class="er" style="width:100%"><tr><th colspan=2>doctor_prescriptions</th></tr><tr><td class="pk" style="width:30px">PK</td><td>id</td></tr><tr><td class="pk" style="width:30px">FK</td><td>doctor_id, elder_id</td></tr><tr><td class="pk" style="width:30px"></td><td>medicine, sig, duration, pharmacy, status</td></tr></table></div><div class="abs" style="left:0px;top:545px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>elder_caregiver_links</th></tr><tr><td class="pk" style="width:30px">FK</td><td>elder_id, caregiver_id, status</td></tr></table></div><div class="abs" style="left:380px;top:545px;width:340px"><table class="er" style="width:100%"><tr><th colspan=2>hospital_* tables</th></tr><tr><td class="pk" style="width:30px"></td><td>queue entries, departments, billing</td></tr></table></div><div class="abs" style="left:760px;top:545px;width:316px"><table class="er" style="width:100%"><tr><th colspan=2>notifications / messages / audit</th></tr><tr><td class="pk" style="width:30px"></td><td>alerts, care-team chat, audit trail</td></tr></table></div><svg width="1100" height="620" style="stroke:#14625C;stroke-width:1.8;fill:none">
+<path d="M340 40H380" marker-end="url(#a)"/><path d="M720 40H760" marker-end="url(#a)"/>
+<path d="M550 100V150"/><path d="M170 150H920"/>
+<path d="M170 150V200" marker-end="url(#a)"/><path d="M550 150V200" marker-end="url(#a)"/><path d="M920 150V200" marker-end="url(#a)"/>
+<path d="M170 300V380" marker-end="url(#a)"/><path d="M550 300V380" marker-end="url(#a)"/><path d="M920 300V380" marker-end="url(#a)"/>
+</svg></div>
+
+<!-- 7 DEPLOYMENT/ TEST SUMMARY NOT NEEDED -->
+</body></html>

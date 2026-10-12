@@ -42,3 +42,10 @@ backend/*.db
 .idea/
 .DS_Store
 Thumbs.db
+
+frontend/playwright-report/
+frontend/test-results/
+
+# Local assistant/editor state
+.claude/
+docs/presentation/deck.html

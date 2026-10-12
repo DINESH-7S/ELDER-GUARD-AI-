@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ElderGuard AI - Mini Project Presentation</title>
+<style>
+  @page { size: 1440px 810px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: 'Times New Roman', Times, serif; color: #3F342E; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .slide { width: 1440px; height: 810px; position: relative; overflow: hidden; background: #FFFBFA; break-after: page; page-break-after: always; }
+  .slide.grey { background: #F2F2F2; }
+  .crest { position: absolute; left: 0; top: 0; width: 112px; height: 112px; }
+  .badges { position: absolute; right: 0; top: 0; width: 218px; height: 108px; }
+
+  .brown { color: #8B5E52; }
+  .title { position: absolute; left: 77px; top: 106px; width: 1140px; font-size: 42px; line-height: 1.22; font-weight: 400; }
+  .foot { position: absolute; left: 58px; right: 70px; bottom: 34px; font-size: 22px; line-height: 1.3; color: #3F342E; }
+  .foot.it { font-style: italic; color: #8B5E52; font-size: 20px; }
+
+  .card { background: #E9E2DE; border: 1px solid #D8CFCA; border-radius: 14px; }
+  .bcard { background: #8B5D52; color: #fff; border-radius: 14px; }
+  .ic { width: 62px; height: 62px; border-radius: 50%; background: #8B5D52; color: #fff; font-size: 30px; display: flex; align-items: center; justify-content: center; flex: none; }
+  .ic.sm { width: 56px; height: 56px; font-size: 27px; }
+  .card h3, .row h3 { font-weight: 400; font-size: 31px; line-height: 1.15; color: #3F342E; }
+  .card p, .row p { font-size: 22px; line-height: 1.32; color: #3F342E; }
+  .tag { font-size: 18px; font-weight: 700; color: #8B5E52; }
+
+  /* 1 title */
+  .t1-college { position: absolute; top: 80px; left: 0; right: 0; text-align: center; font-size: 46px; letter-spacing: 1px; }
+  .t1-course { position: absolute; top: 172px; left: 0; right: 0; text-align: center; font-size: 28px; }
+  .t1-box { position: absolute; left: 53px; top: 296px; width: 556px; height: 404px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 30px; }
+  .t1-box .big { font-size: 150px; line-height: 1; }
+  .t1-box .tx { font-size: 27px; line-height: 1.7; }
+  .t1-name { position: absolute; left: 648px; top: 296px; width: 740px; font-size: 40px; line-height: 1.25; letter-spacing: .5px; }
+  .t1-sub { position: absolute; left: 648px; top: 418px; font-size: 22px; font-style: italic; color: #8B5E52; }
+  .t1-by { position: absolute; left: 745px; top: 490px; font-size: 30px; }
+  .t1-team { position: absolute; left: 778px; top: 560px; font-size: 30px; line-height: 1.45; }
+
+  /* 2 problem */
+  .eyebrow { font-size: 17px; letter-spacing: 3px; font-weight: 700; color: #8B5E52; text-transform: uppercase; }
+  .p2-left { position: absolute; left: 75px; top: 160px; width: 660px; }
+  .p2-left h1 { font-size: 46px; font-weight: 400; line-height: 1.22; margin: 16px 0 38px; }
+  .p2-left p { font-size: 24px; line-height: 1.5; }
+  .p2-a { position: absolute; left: 798px; top: 176px; width: 596px; height: 232px; padding: 24px 28px; }
+  .p2-b { position: absolute; left: 798px; top: 476px; width: 596px; height: 262px; padding: 24px 28px; }
+  .p2-a .l, .p2-b .l { font-size: 17px; letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+  .p2-a .l { color: #8B5E52; }
+  .p2-a p { font-style: italic; font-size: 25px; line-height: 1.4; }
+  .p2-b p { font-size: 25px; line-height: 1.4; }
+  .p2-arrow { position: absolute; left: 1068px; top: 420px; width: 56px; height: 56px; border-radius: 50%; background: #8B5D52; color: #fff; font-size: 28px; display: flex; align-items: center; justify-content: center; border: 4px solid #FFFBFA; }
+
+  /* 3 empathy */
+  .e-col1 { position: absolute; left: 77px; top: 238px; width: 380px; font-size: 22px; line-height: 1.32; }
+  .e-col2 { position: absolute; left: 502px; top: 238px; width: 380px; font-size: 22px; line-height: 1.32; }
+  .e-col1 b, .e-col2 b { display: block; font-size: 22px; margin-bottom: 4px; }
+  .e-b1 { position: absolute; left: 77px; top: 534px; width: 390px; }
+  .e-b2 { position: absolute; left: 502px; top: 534px; width: 380px; }
+  ul.b { font-size: 21px; line-height: 1.32; padding-left: 26px; }
+  ul.b li { margin-bottom: 4px; }
+  .em { position: absolute; width: 227px; height: 232px; padding: 22px 22px; }
+  .em .l { font-size: 18px; letter-spacing: 1.5px; font-weight: 700; color: #8B5E52; margin-bottom: 12px; }
+  .em p { font-size: 22px; line-height: 1.32; }
+
+  /* 4 define */
+  .d-grid { position: absolute; left: 58px; top: 214px; width: 1324px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .d-card { padding: 26px 28px; display: flex; gap: 22px; align-items: flex-start; min-height: 168px; }
+  .d-card h3 { margin-bottom: 8px; }
+  .quote { position: absolute; left: 58px; right: 58px; bottom: 36px; padding: 22px 30px; background: #8B5D52; color: #fff; border-radius: 14px; font-size: 24px; line-height: 1.38; }
+
+  /* 5 ideate */
+  .i-grid { position: absolute; left: 58px; top: 214px; width: 1324px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .i-card { padding: 26px 28px; min-height: 270px; }
+  .i-card h3 { font-size: 28px; }
+  .i-card p { font-size: 21px; line-height: 1.32; }
+  .i-card .ic { margin-bottom: 18px; }
+  .i-card h3 { margin-bottom: 10px; }
+  .more { position: absolute; left: 58px; right: 58px; top: 548px; }
+  .more h4 { font-size: 28px; font-weight: 400; margin-bottom: 10px; color: #8B5E52; }
+  .more ul { columns: 2; column-gap: 40px; font-size: 22px; line-height: 1.4; padding-left: 26px; }
+
+  /* 6 solution */
+  .s-row { position: absolute; left: 58px; top: 214px; width: 1324px; display: flex; gap: 0; align-items: stretch; }
+  .s-step { width: 232px; height: 308px; padding: 22px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .s-step h3 { font-size: 30px; }
+  .s-step p { font-size: 19px; line-height: 1.3; }
+  .s-arrow { width: 42px; display: flex; align-items: center; justify-content: center; color: #8B5D52; font-size: 26px; }
+  .s-guard { position: absolute; left: 58px; right: 58px; top: 548px; height: 190px; padding: 26px 34px; }
+  .s-guard h3 { font-size: 30px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .s-guard li { font-size: 22px; line-height: 1.45; color: #fff; margin-left: 26px; }
+
+  /* 7 prototype */
+  .pr-dark { position: absolute; left: 58px; top: 214px; width: 610px; height: 520px; background: #2A2420; border-radius: 14px; padding: 22px; color: #F2E8E2; }
+  .pr-dark .hd { font-size: 20px; color: #E7D3CB; margin-bottom: 12px; font-weight: 700; }
+  .pr-main { width: 100%; height: 312px; object-fit: cover; object-position: top left; border-radius: 8px; border: 1px solid #4a3f38; display: block; }
+  .pr-thumbs { display: flex; gap: 14px; margin-top: 14px; }
+  .pr-thumbs figure { flex: 1; }
+  .pr-thumbs img { width: 100%; height: 100px; object-fit: cover; object-position: top left; border-radius: 6px; border: 1px solid #4a3f38; display: block; }
+  .pr-thumbs figcaption { font-size: 16px; margin-top: 6px; color: #E7D3CB; text-align: center; }
+  .pr-right { position: absolute; left: 712px; top: 214px; width: 670px; display: flex; flex-direction: column; gap: 22px; }
+  .pr-item { display: flex; gap: 22px; align-items: flex-start; }
+  .pr-item h3 { font-size: 33px; font-weight: 400; margin-bottom: 4px; }
+  .pr-item p { font-size: 21px; line-height: 1.32; }
+
+  /* 8 testing */
+  .t-left { position: absolute; left: 77px; top: 200px; width: 790px; }
+  .t-left h3 { font-size: 34px; font-weight: 400; margin-bottom: 12px; }
+  .t-left p { font-size: 22px; line-height: 1.4; margin-bottom: 30px; }
+  .t-left ul { list-style: none; font-size: 22px; line-height: 1.5; }
+  .t-left li b { font-weight: 700; }
+  .donut { position: absolute; width: 270px; height: 270px; border-radius: 50%; }
+  .donut .in { position: absolute; inset: 52px; background: #FFFBFA; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+  .dl { position: absolute; font-size: 22px; line-height: 1.25; width: 200px; }
+
+  /* 9 use case */
+  .u-line { position: absolute; left: 722px; top: 214px; width: 2px; height: 540px; background: #D8CFCA; }
+  .u-num { position: absolute; left: 692px; width: 62px; height: 62px; border-radius: 10px; background: #8B5D52; color: #fff; font-size: 30px; display: flex; align-items: center; justify-content: center; }
+  .u-l { position: absolute; left: 70px; width: 575px; text-align: right; }
+  .u-r { position: absolute; left: 786px; width: 590px; }
+  .u-l h3, .u-r h3 { font-size: 33px; font-weight: 400; margin-bottom: 6px; }
+  .u-l p, .u-r p { font-size: 21px; line-height: 1.32; }
+
+  /* 10 integration */
+  .g-grid { position: absolute; left: 58px; top: 214px; width: 880px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .g-card { padding: 22px 24px; min-height: 236px; }
+  .g-card .hd { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .g-card h3 { font-size: 30px; }
+  .g-card p { font-size: 20px; line-height: 1.3; }
+  .g-safe { position: absolute; left: 976px; top: 214px; width: 406px; height: 494px; padding: 30px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; }
+  .g-safe .big { font-size: 130px; line-height: 1; }
+  .g-safe h3 { color: #fff; font-size: 38px; font-weight: 400; }
+  .g-safe p { color: #fff; font-size: 23px; line-height: 1.35; }
+
+  /* 11 metrics */
+  .m-row { position: absolute; left: 58px; top: 214px; width: 1324px; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+  .m-row .n { font-size: 70px; color: #8B5E52; line-height: 1; margin-bottom: 16px; }
+  .m-row h3 { font-size: 32px; font-weight: 400; margin-bottom: 12px; }
+  .m-row p { font-size: 21px; line-height: 1.32; padding: 0 22px; }
+  .m-note { position: absolute; left: 58px; top: 478px; font-size: 20px; font-style: italic; color: #8B5E52; }
+  .m-q { position: absolute; left: 77px; top: 540px; right: 70px; }
+  .m-q h3 { font-size: 34px; font-weight: 400; margin-bottom: 14px; }
+  .m-q ul { columns: 2; column-gap: 60px; font-size: 22px; line-height: 1.5; padding-left: 26px; }
+
+  /* 12 future */
+  .f-grid { position: absolute; left: 58px; top: 214px; width: 1324px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .f-card { padding: 22px 24px; min-height: 232px; position: relative; }
+  .f-card .tag { position: absolute; right: 24px; top: 22px; }
+  .f-card h3 { margin: 16px 0 8px; font-size: 30px; }
+  .f-card p { font-size: 20px; line-height: 1.3; }
+
+  /* 13 next */
+  .n-list { position: absolute; left: 58px; top: 214px; width: 880px; display: flex; flex-direction: column; gap: 20px; }
+  .n-row { padding: 22px 28px; display: flex; gap: 24px; align-items: center; min-height: 152px; }
+  .n-row h3 { font-size: 34px; margin-bottom: 6px; }
+  .n-row p { font-size: 21px; line-height: 1.32; }
+  .n-sum { position: absolute; left: 976px; top: 214px; width: 406px; height: 494px; padding: 34px 32px; display: flex; flex-direction: column; justify-content: space-between; }
+  .n-sum h3 { color: #fff; font-size: 34px; font-weight: 400; margin-bottom: 20px; }
+  .n-sum .flow { font-size: 29px; line-height: 1.55; color: #fff; }
+  .n-sum .it { font-style: italic; font-size: 22px; line-height: 1.35; color: #F0DED7; }
+
+  /* 14 thanks */
+  .thanks { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 81px; color: #1D1D1D; }
+  .thanks-sub { position: absolute; left: 0; right: 0; top: 450px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 26px; color: #555; }
+</style>
+</head>
+<body>
+
+<!-- 1. TITLE -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <div class="t1-college">SNS COLLEGE OF TECHNOLOGY</div>
+  <div class="t1-course">23ITP202 MINI PROJECT- I</div>
+  <div class="t1-box bcard">
+    <div class="big">{{i:Heartbeat}}</div>
+    <div class="tx">Care that reaches them,<br>wherever you are</div>
+  </div>
+  <div class="t1-name">ELDERGUARD AI: CONNECTED ELDER CARE PLATFORM</div>
+  <div class="t1-sub">Problem Statement: Elder Safety, Health Monitoring and Connected Care</div>
+  <div class="t1-by">Presented By:</div>
+  <div class="t1-team">713525AD015 - DEEPIKA S<br>713525AD036 - HANA SHAJIMON<br>713525AD041 - HARINI M<br>713525AD052 - JANANI D</div>
+</section>
+
+<!-- 2. PROBLEM STATEMENT -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <div class="p2-left">
+    <div class="eyebrow">Problem Statement &middot; Elder Safety</div>
+    <h1>Keeping Elders Safe:<br>A Connected-Care Approach</h1>
+    <p>Many older adults live apart from their families. Missed medicines, unnoticed changes in health and slow emergency response put them at risk, while family, doctors, pharmacies and hospitals each work from separate information. We built one connected platform where everyone in an elder's care circle sees the same live record and can act in time.</p>
+  </div>
+  <div class="p2-a card"><div class="l">What happens today</div><p>The 8:00 AM dose is missed. Blood pressure is not logged for days. A fall at night and no one knows.</p></div>
+  <div class="p2-arrow">{{i:ArrowDown}}</div>
+  <div class="p2-b bcard"><div class="l">What ElderGuard does</div><p>A reminder rings until it is answered, and the caregiver sees the dose logged live. One tap on SOS alerts family first, then a second contact, the hospital desk and emergency services if nobody responds.</p></div>
+</section>
+
+<!-- 3. EMPATHY -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Understanding the Empathy</span> Phase: Connecting with Elders and Caregivers</h1>
+  <div class="e-col1"><b>Deep Elder &amp; Caregiver Research</b>Start with genuine curiosity about the lives of older adults and the family members who worry about them. Understand daily routines, fears of being alone and how comfortable they are with technology.</div>
+  <div class="e-col2"><b>Building Emotional Connections</b>Go beyond demographics. What makes an elder hesitate to ask for help? What keeps a caregiver awake at night? What would make both feel in control?</div>
+  <div class="e-b1"><ul class="b"><li>Interview elders and family caregivers</li><li>Observe medicine routines at home</li><li>Build empathy maps of feelings and needs</li></ul></div>
+  <div class="e-b2"><ul class="b"><li>Medicine-routine diary studies</li><li>Contextual enquiry in homes and care centres</li><li>Journey mapping of an emergency</li></ul></div>
+  <div class="em card" style="left:955px;top:232px"><div class="l">SAYS</div><p>"Did she take her tablets? Is she okay?"</p></div>
+  <div class="em card" style="left:1190px;top:232px"><div class="l">THINKS</div><p>"What if something happens and I am not there?"</p></div>
+  <div class="em card" style="left:955px;top:476px"><div class="l">FEELS</div><p>Anxious, guilty, always on call</p></div>
+  <div class="em card" style="left:1190px;top:476px"><div class="l">DOES</div><p>Calls repeatedly, asks neighbours to check in</p></div>
+  <div class="foot it" style="left:77px;bottom:28px">Empathy map of a family caregiver. Illustrative persona; interviews with real elders and caregivers are planned.</div>
+</section>
+
+<!-- 4. DEFINE -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Define</span> the Problem: Identifying Core Pain Points in Elder Care</h1>
+  <div class="d-grid">
+    <div class="d-card card"><div class="ic">{{i:Pill}}</div><div><h3>Missed Medicines</h3><p>Several daily medicines are easy to forget, and the family finds out late, if at all.</p></div></div>
+    <div class="d-card card"><div class="ic">{{i:Siren}}</div><div><h3>Slow Emergency Response</h3><p>A fall or sudden illness can go unnoticed. Help depends on someone happening to call.</p></div></div>
+    <div class="d-card card"><div class="ic">{{i:Link}}</div><div><h3>Disconnected Information</h3><p>Family, doctor, pharmacy and hospital each hold a piece, so prescriptions, vitals and history are not shared.</p></div></div>
+    <div class="d-card card"><div class="ic">{{i:DeviceMobile}}</div><div><h3>Hard-to-Use Technology</h3><p>Small text, crowded screens and complex steps leave out the people who need help most.</p></div></div>
+  </div>
+  <div class="quote">The problem statement emerges from synthesis: "Elders and their families need a simple, connected way to take medicines on time, share health information and get help fast, so older adults can live independently with confidence."</div>
+</section>
+
+<!-- 5. IDEATE -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Ideate</span> Creative Solutions: Brainstorming Elder Care Features</h1>
+  <div class="i-grid">
+    <div class="i-card card"><div class="ic">{{i:Pill}}</div><h3>Reminders That Get Answered</h3><p>One gentle alarm per dose time. A tap logs the dose, and repeated misses alert the caregiver.</p></div>
+    <div class="i-card card"><div class="ic">{{i:Siren}}</div><h3>One-Tap SOS with Escalation</h3><p>Family first, then a second contact, the hospital desk and emergency services on a timer.</p></div>
+    <div class="i-card card"><div class="ic">{{i:Robot}}</div><h3>Vitals and AI Companion</h3><p>Track blood pressure, sugar, oxygen and heart rate, and chat with Mevi, a patient AI companion.</p></div>
+  </div>
+  <div class="more"><h4>More ideas from the brainstorm</h4>
+    <ul><li>Prescription scanner that turns a photo into a medicine schedule</li><li>Doctor appointments with queue tokens</li><li>Doctor-to-pharmacy e-prescriptions</li><li>Five role-based portals with a large-text mode</li></ul></div>
+  <div class="foot it">Innovation thrives when we encourage wild ideas, defer judgement and build on each other's concepts. Generate quantity first, then refine for safety and quality.</div>
+</section>
+
+<!-- 6. PROPOSED SOLUTION -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Proposed Solution:</span> How ElderGuard Works End to End</h1>
+  <div class="s-row">
+    <div class="s-step card"><div class="ic">{{i:Pill}}</div><h3>1. Capture</h3><p>Elders log medicines and vitals; doctors write prescriptions</p></div>
+    <div class="s-arrow">{{i:CaretRight}}</div>
+    <div class="s-step card"><div class="ic">{{i:Link}}</div><h3>2. Connect</h3><p>One shared record links elder, caregiver, doctor, pharmacy and hospital</p></div>
+    <div class="s-arrow">{{i:CaretRight}}</div>
+    <div class="s-step card"><div class="ic">{{i:Bell}}</div><h3>3. Alert</h3><p>Reminders ring, unusual readings are flagged, SOS goes out in one tap</p></div>
+    <div class="s-arrow">{{i:CaretRight}}</div>
+    <div class="s-step card"><div class="ic">{{i:Siren}}</div><h3>4. Escalate</h3><p>Caregiver now, second contact at 2 min, hospital at 5, emergency services at 10</p></div>
+    <div class="s-arrow">{{i:CaretRight}}</div>
+    <div class="s-step card"><div class="ic">{{i:ArrowsClockwise}}</div><h3>5. Review</h3><p>History and records let family and doctors act on what happened</p></div>
+  </div>
+  <div class="s-guard bcard"><h3>Safety guardrails built in</h3><ul><li>Role-based access: each user sees only the elders they are linked to</li><li>ElderGuard alerts and informs; it does not diagnose or replace a doctor or emergency services</li></ul></div>
+</section>
+
+<!-- 7. PROTOTYPE -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Prototype</span> Development: Building Tangible Solutions for User Testing</h1>
+  <div class="pr-dark">
+    <div class="hd">ElderGuard AI &middot; working prototype</div>
+    <img class="pr-main" src="assets/shot-elder.jpg" alt="Elder portal">
+    <div class="pr-thumbs">
+      <figure><img src="assets/shot-caregiver.jpg" alt="Caregiver portal"><figcaption>Caregiver portal</figcaption></figure>
+      <figure><img src="assets/shot-pharmacy.jpg" alt="Pharmacy portal"><figcaption>Pharmacy queue</figcaption></figure>
+      <figure><img src="assets/shot-landing.jpg" alt="Landing page"><figcaption>Landing page</figcaption></figure>
+    </div>
+  </div>
+  <div class="pr-right">
+    <div class="pr-item"><div class="ic">{{i:PencilRuler}}</div><div><h3>Design System</h3><p>Warm paper background, one teal accent, large readable type and a text-size control for low vision.</p></div></div>
+    <div class="pr-item"><div class="ic">{{i:Cursor}}</div><div><h3>Interactive Portals</h3><p>Five role-based portals (elder, caregiver, doctor, hospital, pharmacy) running on real data.</p></div></div>
+    <div class="pr-item"><div class="ic">{{i:Cube}}</div><div><h3>Minimum Viable Product</h3><p>A working React and FastAPI app: reminders, SOS escalation, vitals, and prescriptions that reach the pharmacy.</p></div></div>
+  </div>
+  <div class="foot" style="left:712px;bottom:34px;font-size:21px">Prototypes are learning tools. Build fast, fail fast and iterate based on what real users show you.</div>
+</section>
+
+<!-- 8. TESTING -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Testing</span> Phase: Verifying the Prototype and Planning User Trials</h1>
+  <div class="t-left">
+    <h3>Automated Testing</h3>
+    <p>An automated browser opens every portal page, the demo story is checked end to end, and each screen is scanned against WCAG 2.1 accessibility rules.</p>
+    <h3>Key Testing Methods</h3>
+    <ul>
+      <li><b>End-to-end tests (Playwright):</b> 22 tests across all five portals and phone size</li>
+      <li><b>Accessibility audit (axe):</b> 0 serious violations against WCAG 2.1 A/AA</li>
+      <li><b>SOS escalation drill:</b> all 4 tiers fired in order in a timed run</li>
+      <li><b>Planned:</b> teach-back and think-aloud sessions with real elders and caregivers</li>
+    </ul>
+  </div>
+  <div class="donut" style="left:960px;top:180px;background:conic-gradient(#8B5D52 0 100%)"><div class="in">22/22</div></div>
+  <div class="dl" style="left:1236px;top:276px">Automated tests passing</div>
+  <div class="donut" style="left:960px;top:466px;background:conic-gradient(#8B5D52 0 100%)"><div class="in">4/4</div></div>
+  <div class="dl" style="left:1236px;top:562px">SOS tiers fired in the timed drill</div>
+  <div class="foot">Testing is discovery, not validation. Automated checks show that it works; sessions with real elders will show whether it helps.</div>
+</section>
+
+<!-- 9. USE CASE -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Use Case:</span> How Connected Care Protects an Elder at Home</h1>
+  <div class="u-line"></div>
+  <div class="u-l" style="top:214px"><h3>Initial Challenge</h3><p>Mrs. Anaya Rao, 77, lives alone and takes three medicines a day. Her daughter Maya lives in another city and worries about missed doses and emergencies.</p></div>
+  <div class="u-num" style="top:214px">1</div>
+  <div class="u-num" style="top:366px">2</div>
+  <div class="u-r" style="top:366px"><h3>Empathy Insights</h3><p>Anaya does not want to be a burden and Maya cannot call every hour. They want reassurance that does not feel like surveillance.</p></div>
+  <div class="u-l" style="top:500px"><h3>Design Response</h3><p>A reminder rings and Anaya taps Taken; Maya sees it live. Dr. Mehta prescribes in the app and the order reaches the pharmacy. One tap on SOS alerts Maya first, then the hospital.</p></div>
+  <div class="u-num" style="top:500px">3</div>
+  <div class="u-num" style="top:640px">4</div>
+  <div class="u-r" style="top:640px"><h3>Expected Impact</h3><p>Fewer missed doses, faster response and less worry for the family. To be measured in a pilot.</p></div>
+  <div class="foot it" style="bottom:20px;font-size:19px">Illustrative scenario based on this project's demo data; impact is a target to be validated.</div>
+</section>
+
+<!-- 10. INTEGRATION CHALLENGES -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Integration</span> Challenges: Balancing Elder Needs with Technical and Clinical Constraints</h1>
+  <div class="g-grid">
+    <div class="g-card card"><div class="hd"><div class="ic sm">{{i:Lock}}</div><h3>Privacy &amp; Compliance</h3></div><p>Health data is highly sensitive. It needs consent, encryption and access logs in line with India's DPDP Act. Role-based access is in place; consent and audit features come next.</p></div>
+    <div class="g-card card"><div class="hd"><div class="ic sm">{{i:Siren}}</div><h3>Emergency Reliability</h3></div><p>SOS must never stall. Alerts are in-app and push today; SMS and voice-call providers and a durable job queue are needed for production.</p></div>
+    <div class="g-card card"><div class="hd"><div class="ic sm">{{i:Database}}</div><h3>Data &amp; Integration</h3></div><p>Records come from elders, doctors, pharmacies and hospitals. One shared data model and clean APIs keep them consistent.</p></div>
+    <div class="g-card card"><div class="hd"><div class="ic sm">{{i:WifiHigh}}</div><h3>Access &amp; Performance</h3></div><p>Older users often have older phones and slow networks. Large text and simple screens are prioritised; an installable app is next.</p></div>
+  </div>
+  <div class="g-safe bcard"><div class="big">{{i:ShieldCheck}}</div><h3>Safety first</h3><p>ElderGuard alerts and informs; it does not diagnose or replace a doctor or emergency services.</p></div>
+  <div class="foot" style="bottom:28px;font-size:21px">Successful integration needs continuous dialogue between clinicians, designers and engineers. Constraints often spark creative solutions when teams collaborate early.</div>
+</section>
+
+<!-- 11. SUCCESS METRICS -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title">Success Metrics: Measuring the Impact of ElderGuard</h1>
+  <div class="m-row">
+    <div><div class="n">22/22</div><h3>Tests Passing</h3><p>Automated end-to-end checks across all five portals</p></div>
+    <div><div class="n">0</div><h3>Accessibility Issues</h3><p>Serious issues found by an axe audit (WCAG 2.1 A/AA) on every page</p></div>
+    <div><div class="n">4</div><h3>Escalation Tiers</h3><p>Caregiver, second contact, hospital, emergency services, verified in a timed drill</p></div>
+    <div><div class="n">90%+</div><h3>Doses On Time</h3><p>Pilot target for doses logged when due, to be validated</p></div>
+  </div>
+  <div class="m-note">The first three are measured on the prototype; the last is a target for the pilot, to be validated with real users</div>
+  <div class="m-q"><h3>Qualitative Indicators of Success</h3>
+    <ul><li>Caregivers report less worry and fewer check-in calls</li><li>Elders use the SOS button and large-text mode without help</li><li>Doctors and pharmacies adopt the shared prescription flow</li><li>Shorter time from SOS to first response</li></ul></div>
+</section>
+
+<!-- 12. FUTURE ENHANCEMENTS -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Future Enhancements:</span> Expanding ElderGuard's Reach and Reliability</h1>
+  <div class="f-grid">
+    <div class="f-card card"><div class="ic sm">{{i:Phone}}</div><span class="tag">Phase 1</span><h3>SMS &amp; Voice-Call Alerts</h3><p>Reach caregivers and hospitals even without the app, with delivery receipts and retries.</p></div>
+    <div class="f-card card"><div class="ic sm">{{i:SealCheck}}</div><span class="tag">Phase 1</span><h3>Verified Doctors &amp; Hospitals</h3><p>Licence checks before a clinical account can issue prescriptions.</p></div>
+    <div class="f-card card"><div class="ic sm">{{i:Microphone}}</div><span class="tag">Phase 2</span><h3>Multilingual Voice Assistant</h3><p>Speak and listen in Tamil, Hindi and other regional languages.</p></div>
+    <div class="f-card card"><div class="ic sm">{{i:DeviceMobile}}</div><span class="tag">Phase 2</span><h3>Installable Mobile App</h3><p>Push notifications, offline mode and an always-ready SOS button.</p></div>
+    <div class="f-card card"><div class="ic sm">{{i:Watch}}</div><span class="tag">Phase 3</span><h3>Wearable Integration</h3><p>Read heart rate and blood pressure, and detect falls, from smart watches.</p></div>
+    <div class="f-card card"><div class="ic sm">{{i:Link}}</div><span class="tag">Phase 3</span><h3>EHR &amp; ABDM Integration</h3><p>Pull records securely from hospitals and ABHA health IDs, with consent.</p></div>
+  </div>
+  <div class="foot it">Roadmap: Phase 1 reliable alerts and trusted accounts &rarr; Phase 2 voice and mobile &rarr; Phase 3 wearables and health-record integration.</div>
+</section>
+
+<!-- 13. NEXT STEPS -->
+<section class="slide">
+  <img class="crest" src="assets/crest.png" alt=""><img class="badges" src="assets/badges.png" alt="">
+  <h1 class="title"><span class="brown">Next Steps:</span> Taking ElderGuard from Prototype to Pilot</h1>
+  <div class="n-list">
+    <div class="n-row card"><div class="ic">{{i:Users}}</div><div><h3>Validate with Elders and Families</h3><p>Run usability sessions with older adults and caregivers, and refine the screens from what they struggle with.</p></div></div>
+    <div class="n-row card"><div class="ic">{{i:ShieldCheck}}</div><div><h3>Harden for Real Use</h3><p>Add SMS and call alerts, secure secrets and logins, privacy consent and monitoring.</p></div></div>
+    <div class="n-row card"><div class="ic">{{i:Rocket}}</div><div><h3>Pilot and Scale</h3><p>Partner with a clinic or care home for a small pilot, measure results, then expand.</p></div></div>
+  </div>
+  <div class="n-sum bcard"><div><h3>In Summary</h3><div class="flow">Connected information<br>&rarr; faster response<br>&rarr; safer elders<br>&rarr; peace of mind</div></div><div class="it">Start small, measure impact, and scale what works.</div></div>
+  <div class="foot" style="bottom:30px;font-size:21px">Elder care is an ongoing commitment to staying close to the people we serve and improving relentlessly.</div>
+</section>
+
+<!-- 14. THANK YOU -->
+<section class="slide grey">
+  <img class="crest" src="assets/crest-grey.png" alt=""><img class="badges" src="assets/badges-grey.png" alt="">
+  <div class="thanks">Thank you!</div>
+  <div class="thanks-sub">ElderGuard AI: Care that reaches them, wherever you are</div>
+</section>
+
+</body>
+</html>
