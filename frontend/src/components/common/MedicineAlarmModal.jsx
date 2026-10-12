@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Pill, Volume2, VolumeX, CheckCircle2, Clock, X, BellRing } from 'lucide-react';
 import medicinesService from '../../services/medicinesService';
 
 export default function MedicineAlarmModal({ currentUser }) {
+  const reduceMotion = useReducedMotion();
   const [activeSession, setActiveSession] = useState(null);
   const [isAudioMuted, setIsAudioMuted] = useState(false);
   const [testAlarmTriggered, setTestAlarmTriggered] = useState(false);
@@ -269,18 +271,22 @@ export default function MedicineAlarmModal({ currentUser }) {
     { id: 'i1', medicine_name: 'Prescribed Medicine', dosage: '1 Dose' }
   ];
 
-  const timingDisplay = activeSession.scheduled_time || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const formatTime = (v) => {
+    const d = new Date(v);
+    return isNaN(d.getTime()) ? v : d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  };
+  const timingDisplay = activeSession.scheduled_time ? formatTime(activeSession.scheduled_time) : new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-300">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.25 }} className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80">
       
       {/* Alarm Pop-Up Dialog */}
-      <div className="bg-gradient-to-b from-[#1B6B93] via-[#155373] to-[#0F3C54] text-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-[0_0_60px_rgba(27,107,147,0.7)] border-2 border-sky-300/40 relative overflow-hidden text-center space-y-6">
+      <motion.div initial={reduceMotion ? false : { opacity: 0, y: 28, scale: 0.94 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ type: "spring", stiffness: 300, damping: 26 }} className="bg-eg-teal-dark text-white rounded-2xl max-w-lg w-full p-6 sm:p-8  border-2 border-sky-300/40 relative overflow-hidden text-center space-y-6">
         
         {/* Top Alarm Badge Header */}
         <div className="flex justify-between items-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-bold uppercase tracking-wider animate-pulse">
-            <BellRing className="w-4 h-4 text-amber-300" />
+            <motion.span animate={reduceMotion ? undefined : { rotate: [0, -18, 16, -12, 10, -6, 0] }} transition={{ duration: 1.1, repeat: Infinity, repeatDelay: 1.4 }} style={{ display: "inline-flex", transformOrigin: "50% 15%" }}><BellRing className="w-4 h-4 text-amber-300" /></motion.span>
             <span>Medicine Reminder Alarm</span>
           </div>
 
@@ -294,8 +300,8 @@ export default function MedicineAlarmModal({ currentUser }) {
         <div className="flex justify-center py-2">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-sky-400/30 blur-xl animate-ping" />
-            <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-[#FFE8D6] to-[#FFE0C2] text-[#1B6B93] border-4 border-white shadow-2xl flex items-center justify-center relative">
-              <Pill className="w-14 h-14 text-[#1B6B93] animate-pulse" />
+            <div className="bg-white w-24 h-24 rounded-2xl text-eg-teal border-4 border-white shadow-sm flex items-center justify-center relative">
+              <Pill className="w-14 h-14 text-eg-teal animate-pulse" />
             </div>
           </div>
         </div>
@@ -303,7 +309,7 @@ export default function MedicineAlarmModal({ currentUser }) {
         {/* Pop-up Title & Scheduled Timing Header */}
         <div className="space-y-1">
           <h2 className="font-fraunces font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-            Time for Medicine! 💊
+            Time for your medicine
           </h2>
           <p className="text-sm text-sky-200 font-semibold">
             Scheduled Time: <span className="text-white font-extrabold underline">{timingDisplay}</span>
@@ -311,15 +317,15 @@ export default function MedicineAlarmModal({ currentUser }) {
         </div>
 
         {/* Medicine List Container */}
-        <div className="bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl p-4 divide-y divide-white/10 text-left space-y-3">
-          <p className="text-xs text-sky-200 font-bold uppercase tracking-wider mb-2">Prescribed Medicines List:</p>
+        <div className="bg-white/10 border border-white/20  rounded-2xl p-4 divide-y divide-white/10 text-left space-y-3">
+          <p className="text-xs text-sky-200 font-bold uppercase tracking-wider mb-2">Take now</p>
           {items.map((item, idx) => (
             <div key={item.id || idx} className="pt-2.5 first:pt-0 flex justify-between items-center">
               <div>
                 <h4 className="font-bold text-base text-white">{item.medicine_name}</h4>
                 <p className="text-xs text-sky-200">Dosage: <span className="font-semibold text-white">{item.dosage}</span></p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-emerald-400/20 border border-emerald-300/40 text-emerald-200 text-xs font-bold shrink-0">
+              <span className="px-3 py-1 rounded-full bg-emerald-400/20 border border-emerald-300/40 text-emerald-50 text-xs font-bold shrink-0">
                 Scheduled Dose
               </span>
             </div>
@@ -333,7 +339,7 @@ export default function MedicineAlarmModal({ currentUser }) {
           <button
             onClick={handleOffSound}
             disabled={isAudioMuted}
-            className={`py-4 rounded-2xl font-bold text-base shadow-lg transition-all flex items-center justify-center gap-2.5 cursor-pointer min-h-[56px] border ${
+            className={`py-4 rounded-2xl font-bold text-base shadow-sm transition-all flex items-center justify-center gap-2.5 cursor-pointer min-h-[56px] border ${
               isAudioMuted 
                 ? 'bg-white/10 text-sky-200 border-white/20 opacity-70 cursor-default'
                 : 'bg-amber-500 hover:bg-amber-600 text-slate-950 border-amber-300 shadow-amber-500/30 hover:scale-[1.02]'
@@ -346,7 +352,7 @@ export default function MedicineAlarmModal({ currentUser }) {
           {/* Button 2: Medicine Taken (Pressed after taking tablet -> closes pop-up) */}
           <button
             onClick={handleMedicineTaken}
-            className="py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-base shadow-xl shadow-emerald-900/40 transition-all hover:scale-[1.02] flex items-center justify-center gap-2.5 cursor-pointer min-h-[56px] border border-emerald-300/40"
+            className="py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-base shadow-sm shadow-emerald-900/40 transition-all hover:scale-[1.02] flex items-center justify-center gap-2.5 cursor-pointer min-h-[56px] border border-emerald-300/40"
           >
             <CheckCircle2 className="w-6 h-6 text-white" />
             <span>Medicine Taken</span>
@@ -354,7 +360,7 @@ export default function MedicineAlarmModal({ currentUser }) {
 
         </div>
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

@@ -115,8 +115,8 @@ export default function UserProfile({ currentUser, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto font-sans">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80  p-4 overflow-y-auto font-sans">
+      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-sm text-white">
         
         {/* Header */}
         <div className="flex justify-between items-center pb-4 mb-6 border-b border-slate-800">
@@ -277,7 +277,7 @@ export default function UserProfile({ currentUser, onClose }) {
               {isEditing ? (
                 <button
                   onClick={handleSaveProfile}
-                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg transition"
+                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center gap-2 shadow-sm transition"
                 >
                   <Save className="w-4 h-4" />
                   <span>Save Changes</span>

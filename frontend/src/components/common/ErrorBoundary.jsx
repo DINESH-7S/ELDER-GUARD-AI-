@@ -1,4 +1,10 @@
 import React from 'react';
+import { ArrowClockwise, WarningCircle } from '@phosphor-icons/react';
+
+const RELOAD_FLAG = 'eg_stale_reload';
+// A null React dispatcher ("reading 'useState'") means the browser is holding a stale or
+// mixed set of modules, for example after the dev server re-bundled. A reload fixes it.
+const isStaleModuleError = (error) => /Cannot read properties of null \(reading 'use[A-Z]\w*'\)/.test(String((error && error.message) || error));
 
 export class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,9 +18,30 @@ export class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error("ElderGuard React Boundary caught an error:", error, errorInfo);
+    try {
+      if (isStaleModuleError(error) && !sessionStorage.getItem(RELOAD_FLAG)) {
+        sessionStorage.setItem(RELOAD_FLAG, '1');
+        window.location.reload();
+      }
+    } catch (_) {}
+  }
+
+  componentDidMount() {
+    // Allow another automatic recovery later, but never loop within a few seconds
+    this.clearFlagTimer = setTimeout(() => {
+      try { sessionStorage.removeItem(RELOAD_FLAG); } catch (_) {}
+    }, 5000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.clearFlagTimer);
   }
 
   handleTryAgain = () => {
+    if (isStaleModuleError(this.state.error)) {
+      window.location.reload();
+      return;
+    }
     this.setState({ hasError: false, error: null });
   };
 
@@ -33,7 +60,7 @@ export class ErrorBoundary extends React.Component {
         <div className="min-h-screen bg-[#FAF7F2] text-[#2E2E2E] flex flex-col items-center justify-center p-6 text-center font-inter">
           <div className="bg-white border border-[#EBE3D5] rounded-3xl p-8 max-w-md w-full shadow-xl space-y-4">
             <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto text-2xl">
-              ⚠️
+              <WarningCircle size={32} weight="fill" aria-hidden="true" />
             </div>
             <h2 className="font-fraunces text-2xl font-bold text-[#2E2E2E]">Display Refresh Recovery</h2>
             <p className="text-sm text-[#6B7280]">
@@ -47,9 +74,9 @@ export class ErrorBoundary extends React.Component {
             <div className="space-y-2 pt-2">
               <button
                 onClick={this.handleTryAgain}
-                className="w-full py-3.5 rounded-2xl bg-[#1B6B93] hover:bg-[#155373] text-white font-bold text-sm shadow-md transition cursor-pointer"
+                className="w-full py-3.5 rounded-2xl bg-[#1B6B93] hover:bg-[#155373] text-white font-bold text-sm shadow-md transition cursor-pointer inline-flex items-center justify-center gap-2"
               >
-                Try Again 🔄
+                <ArrowClockwise size={18} weight="bold" aria-hidden="true" /> Try again
               </button>
               <button
                 onClick={this.handleReset}

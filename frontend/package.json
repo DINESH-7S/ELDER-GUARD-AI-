@@ -6,14 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "playwright test --project=desktop",
+    "test:mobile": "playwright test --project=mobile",
+    "test:a11y": "playwright test a11y.spec.js --project=desktop"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.85.0",
+    "@phosphor-icons/react": "^2.1.10",
     "@react-three/fiber": "^8.17.6",
+    "@tanstack/react-query": "^5.85.0",
     "axios": "^1.7.5",
     "clsx": "^2.1.1",
+    "framer-motion": "^14.0.0",
     "lucide-react": "^0.437.0",
+    "motion": "^14.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
@@ -22,6 +28,8 @@
     "three": "^0.168.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
