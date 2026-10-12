@@ -231,61 +231,61 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
   };
 
   return (
-    <div className="space-y-8 bg-[#FAF7F2] text-[#2E2E2E] font-inter min-h-screen pb-12">
+    <div className="space-y-8 bg-eg-paper text-eg-ink font-inter min-h-screen pb-12">
       {/* Main Grid: Left Column (8 cols) & Right Column (4 cols) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
         
         {/* Left / Center Column */}
-        <div className="lg:col-span-8 space-y-8">
+        <div className="xl:col-span-8 space-y-8">
           
           {/* Greeting Card */}
-          <div className="bg-gradient-to-br from-[#FFE8D6] via-[#FFF3E5] to-[#FCEFE3] border border-[#F5DFCD] shadow-[0_10px_30px_rgba(245,223,205,0.4)] rounded-3xl p-6 md:p-8 relative overflow-hidden">
+          <div className="bg-white border border-eg-line  rounded-2xl p-6 lg:p-8 relative overflow-hidden">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
               <div className="space-y-2 max-w-xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-[#F5DFCD] text-[#1B6B93] text-xs font-semibold shadow-sm">
-                  <Sun className="w-4 h-4 text-[#F5A623] animate-spin-slow" />
-                  <span>Warm Greetings</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/80 border border-eg-line text-eg-teal text-xs font-semibold shadow-sm">
+                  <Sun className="w-4 h-4 text-[#9A5B00] animate-spin-slow" />
+                  <span>Today</span>
                 </div>
-                <h2 className="font-fraunces font-bold text-3xl md:text-4xl text-[#2E2E2E] leading-tight">
-                  Good Day, {currentUser?.name || 'Elder'}! ☀️
+                <h2 className="font-fraunces font-bold text-3xl lg:text-4xl text-eg-ink leading-tight">
+                  Good day, {currentUser?.name || 'Elder'}
                 </h2>
-                <p className="text-[#525252] text-base md:text-lg font-medium leading-relaxed">
-                  Welcome to ElderGuard. You have <span className="font-bold text-[#1B6B93]">{medicines.length} medicine(s)</span> scheduled.
+                <p className="text-eg-muted text-base lg:text-lg font-medium leading-relaxed">
+                  Welcome to ElderGuard. You have <span className="font-bold text-eg-teal">{medicines.length} {medicines.length === 1 ? 'medicine' : 'medicines'}</span> scheduled today.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Today's Medicine Card */}
-          <div className="bg-white border border-[#EBE3D5] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 md:p-8 space-y-6">
-            <div className="flex flex-wrap justify-between items-center border-b border-[#F0EBE1] pb-4 gap-3">
+          <div className="bg-white border border-eg-line  rounded-2xl p-6 lg:p-8 space-y-6">
+            <div className="flex flex-wrap justify-between items-center border-b border-eg-line pb-4 gap-3">
               <div className="flex items-center gap-3">
-                <div className="p-3.5 rounded-2xl bg-[#FFE8D6] text-[#1B6B93]">
+                <div className="p-3.5 rounded-2xl bg-eg-tint text-eg-teal">
                   <Pill className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">Scheduled Medicines</h3>
-                  <span className="text-xs text-[#6B7280] font-medium">Real-time Medication Tracker</span>
+                  <h3 className="font-fraunces font-bold text-2xl text-eg-ink">Scheduled Medicines</h3>
+                  <span className="text-xs text-eg-muted font-medium">Real-time Medication Tracker</span>
                 </div>
               </div>
             </div>
 
             {medicines.length === 0 ? (
-              <div className="text-center py-10 space-y-3 bg-[#FAF7F2] rounded-2xl border border-dashed border-[#EBE3D5]">
-                <Pill className="w-10 h-10 text-[#9CA3AF] mx-auto" />
-                <p className="text-base font-semibold text-[#525252]">No medicines scheduled yet</p>
-                <p className="text-xs text-[#6B7280]">New medicines prescribed by your doctor will appear here.</p>
+              <div className="text-center py-10 space-y-3 bg-eg-paper rounded-2xl border border-dashed border-eg-line">
+                <Pill className="w-10 h-10 text-eg-muted mx-auto" />
+                <p className="text-base font-semibold text-eg-muted">No medicines scheduled yet</p>
+                <p className="text-xs text-eg-muted">New medicines prescribed by your doctor will appear here.</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {medicines.map((m) => (
                   <div 
                     key={m.id}
-                    className="p-5 rounded-2xl border border-[#EBE3D5] bg-[#FAF7F2] flex justify-between items-center"
+                    className="p-5 rounded-2xl border border-eg-line bg-eg-paper flex justify-between items-center"
                   >
                     <div>
-                      <h4 className="text-lg font-bold text-[#2E2E2E]">{m.name}</h4>
-                      <p className="text-xs text-[#6B7280]">Dosage: {m.dosage}</p>
+                      <h4 className="text-lg font-bold text-eg-ink">{m.name}</h4>
+                      <p className="text-xs text-eg-muted">Dosage: {m.dosage}</p>
                     </div>
                   </div>
                 ))}
@@ -294,45 +294,45 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
           </div>
 
           {/* My Vitals Card */}
-          <div className="bg-white border border-[#EBE3D5] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 md:p-8 space-y-6">
-            <div className="flex justify-between items-center border-b border-[#F0EBE1] pb-4">
+          <div className="bg-white border border-eg-line  rounded-2xl p-6 lg:p-8 space-y-6">
+            <div className="flex justify-between items-center border-b border-eg-line pb-4">
               <div className="flex items-center gap-3">
-                <div className="p-3.5 rounded-2xl bg-[#E6F4F1] text-[#1B6B93]">
+                <div className="p-3.5 rounded-2xl bg-eg-tint text-eg-teal">
                   <HeartPulse className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">My Vitals</h3>
-                  <span className="text-xs text-[#6B7280] font-medium">Real-time Biosensor Checkpoints</span>
+                  <h3 className="font-fraunces font-bold text-2xl text-eg-ink">My Vitals</h3>
+                  <span className="text-xs text-eg-muted font-medium">Real-time Biosensor Checkpoints</span>
                 </div>
               </div>
             </div>
 
             {/* 4 Metric Tiles Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] space-y-2">
-                <span className="text-xs font-semibold text-[#6B7280] block">Blood Pressure</span>
-                <span className="font-bold text-2xl text-[#2E2E2E] block">
+            <div className="grid grid-cols-2 2xl:grid-cols-4 gap-4">
+              <div className="p-4 rounded-2xl bg-eg-paper border border-eg-line space-y-2">
+                <span className="text-xs font-semibold text-eg-muted block">Blood Pressure</span>
+                <span className="font-bold text-2xl text-eg-ink block">
                   {systolicBp && diastolicBp ? `${systolicBp}/${diastolicBp}` : '120/80'}
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] space-y-2">
-                <span className="text-xs font-semibold text-[#6B7280] block">Heart Rate</span>
-                <span className="font-bold text-2xl text-[#2E2E2E] block">
+              <div className="p-4 rounded-2xl bg-eg-paper border border-eg-line space-y-2">
+                <span className="text-xs font-semibold text-eg-muted block">Heart Rate</span>
+                <span className="font-bold text-2xl text-eg-ink block">
                   {heartRateVal ? `${heartRateVal} BPM` : '72 BPM'}
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] space-y-2">
-                <span className="text-xs font-semibold text-[#6B7280] block">Blood Sugar</span>
-                <span className="font-bold text-2xl text-[#2E2E2E] block">
+              <div className="p-4 rounded-2xl bg-eg-paper border border-eg-line space-y-2">
+                <span className="text-xs font-semibold text-eg-muted block">Blood Sugar</span>
+                <span className="font-bold text-2xl text-eg-ink block">
                   {bloodSugarVal ? `${bloodSugarVal} mg/dL` : '104 mg/dL'}
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] space-y-2">
-                <span className="text-xs font-semibold text-[#6B7280] block">SpO2 Oxygen</span>
-                <span className="font-bold text-2xl text-[#2E2E2E] block">
+              <div className="p-4 rounded-2xl bg-eg-paper border border-eg-line space-y-2">
+                <span className="text-xs font-semibold text-eg-muted block">SpO2 Oxygen</span>
+                <span className="font-bold text-2xl text-eg-ink block">
                   {spo2Val ? `${spo2Val}%` : '98%'}
                 </span>
               </div>
@@ -341,7 +341,7 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
             {/* Weekly Trend Graph */}
             {vitalsTrend.length > 0 && (
               <div className="pt-2">
-                <span className="text-xs font-bold text-[#6B7280] uppercase tracking-wider block mb-2">Vitals Trend Graph</span>
+                <span className="text-xs font-bold text-eg-muted uppercase tracking-wider block mb-2">Vitals Trend Graph</span>
                 <div className="h-56 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={vitalsTrend}>
@@ -361,12 +361,12 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
         </div>
 
         {/* Right Column (4 cols) */}
-        <div className="lg:col-span-4 space-y-8">
+        <div className="xl:col-span-4 space-y-8">
           
           {/* Prominent SOS / Emergency Card */}
-          <div className="bg-gradient-to-br from-[#D32F2F] via-[#C62828] to-[#B71C1C] rounded-3xl p-6 md:p-8 text-white shadow-[0_12px_40px_rgba(211,47,47,0.35)] space-y-6 relative overflow-hidden">
+          <div className="bg-gradient-to-br rounded-2xl p-6 lg:p-8 text-white  space-y-6 relative overflow-hidden from-[#D32F2F] via-[#C62828] to-[#B71C1C]">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-white/20 text-white backdrop-blur-md">
+              <div className="p-3 rounded-2xl bg-white/20 text-white ">
                 <PhoneCall className="w-8 h-8" />
               </div>
               <div>
@@ -380,7 +380,7 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
                 setSosActive(true);
                 setSosCountdown(10);
               }}
-              className="w-full py-5 rounded-2xl bg-white text-[#C62828] font-fraunces font-bold text-xl shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 min-h-[64px] cursor-pointer"
+              className="eg-sos-pulse w-full py-5 rounded-2xl bg-white text-[#C62828] font-fraunces font-bold text-xl shadow-sm hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 min-h-[64px] cursor-pointer"
             >
               <PhoneCall className="w-7 h-7 text-[#C62828] animate-bounce" />
               <span>1-TAP EMERGENCY SOS</span>
@@ -388,33 +388,33 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
           </div>
 
           {/* "I'm OK" Daily Check-in Card */}
-          <div className="bg-gradient-to-br from-[#FFE8D6]/60 via-[#FFF8F0] to-white border border-[#F5DFCD] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 space-y-5">
-            <h4 className="font-fraunces font-bold text-lg text-[#2E2E2E]">Daily "I'm OK" Check-in</h4>
+          <div className="bg-white to-white border border-eg-line  rounded-2xl p-6 space-y-5">
+            <h4 className="font-fraunces font-bold text-lg text-eg-ink">Daily "I'm OK" Check-in</h4>
 
             <button
               onClick={handleCheckIn}
-              className="w-full py-4 rounded-full bg-gradient-to-r from-[#4CAA6D] to-[#3B9559] hover:from-[#3B9559] hover:to-[#2F8049] text-white font-bold text-lg transition-all min-h-[52px] flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-4 rounded-full bg-gradient-to-r text-white font-bold text-lg transition-all min-h-[52px] flex items-center justify-center gap-2 cursor-pointer from-[#4CAA6D] to-[#3B9559] hover:from-[#3B9559] hover:to-[#2F8049]"
             >
               <CheckCircle2 className="w-6 h-6" />
               <span>I'm OK Today</span>
             </button>
 
-            <div className="text-center text-xs text-[#4CAA6D] font-semibold flex items-center justify-center gap-1.5">
+            <div className="text-center text-xs text-[#2F7D4C] font-semibold flex items-center justify-center gap-1.5">
               <span>Status: {checkInTime}</span>
             </div>
           </div>
 
           {/* Mevi's AI Vitals Report Card */}
-          <div className="bg-[#FFFDF9] border border-[#EBE3D5] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#F0EBE1] pb-3">
+          <div className="bg-[#FFFDF9] border border-eg-line  rounded-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-eg-line pb-3">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-2xl bg-gradient-to-br from-[#1B6B93] to-[#2E86B9] text-white shadow-sm">
+                <div className="bg-eg-teal-dark p-2.5 rounded-2xl text-white shadow-sm">
                   <Bot className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-fraunces font-bold text-lg text-[#2E2E2E]">Mevi's Health Report</h4>
-                  <span className="text-xs font-medium text-[#1B6B93] flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-[#F5A623]" />
+                  <h4 className="font-fraunces font-bold text-lg text-eg-ink">Mevi's Health Report</h4>
+                  <span className="text-xs font-medium text-eg-teal flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-[#9A5B00]" />
                     AI Vitals Analysis
                   </span>
                 </div>
@@ -427,22 +427,22 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
               )}
             </div>
 
-            <p className="text-sm text-[#525252] leading-relaxed">
+            <p className="text-sm text-eg-muted leading-relaxed">
               {meviLoading ? 'Mevi is analyzing your vitals history with Groq AI...' : meviUpdate}
             </p>
 
-            <div className="flex items-center justify-between pt-2 border-t border-[#F0EBE1]">
+            <div className="flex items-center justify-between pt-2 border-t border-eg-line">
               <button
                 onClick={() => setShowReportModal(true)}
-                className="text-xs font-bold text-[#1B6B93] bg-[#E6F4F1] hover:bg-[#D4ECE6] px-3.5 py-2 rounded-xl border border-[#B8DCD4] transition-all flex items-center gap-1.5"
+                className="text-xs font-bold text-eg-teal bg-eg-tint hover:bg-[#D4ECE6] px-3.5 py-2 rounded-xl border border-[#B8DCD4] transition-all flex items-center gap-1.5"
               >
-                <FileCheck className="w-4 h-4 text-[#1B6B93]" />
+                <FileCheck className="w-4 h-4 text-eg-teal" />
                 <span>View Full Vitals Report</span>
               </button>
 
               <button
                 onClick={() => onNavigateTab?.('aiassistant')}
-                className="text-xs font-bold text-[#1B6B93] hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-eg-teal hover:underline flex items-center gap-1"
               >
                 <span>Talk with Mevi</span>
                 <ChevronRight className="w-4 h-4" />
@@ -451,16 +451,16 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
           </div>
 
           {/* Upcoming Doctor Appointments Card */}
-          <div className="bg-white border border-[#EBE3D5] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 space-y-4">
-            <span className="text-xs font-bold text-[#1B6B93] uppercase tracking-wider block border-b border-[#F0EBE1] pb-3">Upcoming Appointments</span>
+          <div className="bg-white border border-eg-line  rounded-2xl p-6 space-y-4">
+            <span className="text-xs font-bold text-eg-teal uppercase tracking-wider block border-b border-eg-line pb-3">Upcoming Appointments</span>
 
             {upcomingAppointments.length === 0 ? (
-              <p className="text-xs text-[#6B7280] text-center py-4">No upcoming appointments</p>
+              <p className="text-xs text-eg-muted text-center py-4">No upcoming appointments</p>
             ) : (
               upcomingAppointments.map((appt) => (
-                <div key={appt.id} className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5]">
-                  <h4 className="font-bold text-sm text-[#2E2E2E]">Doctor Appointment</h4>
-                  <span className="text-xs text-[#1B6B93] font-bold block">{appt.scheduled_at || `${appt.appointment_date} at ${appt.start_time}`}</span>
+                <div key={appt.id} className="p-3.5 rounded-2xl bg-eg-paper border border-eg-line">
+                  <h4 className="font-bold text-sm text-eg-ink">Doctor Appointment</h4>
+                  <span className="text-xs text-eg-teal font-bold block">{appt.scheduled_at || `${appt.appointment_date} at ${appt.start_time}`}</span>
                 </div>
               ))
             )}
@@ -474,8 +474,8 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
 
       {/* Emergency Countdown / Confirmation Modal */}
       {sosActive && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in">
-          <div className="bg-white border-4 border-[#D32F2F] rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80  p-4 animate-in fade-in">
+          <div className="bg-white border-4 border-[#D32F2F] rounded-2xl p-8 max-w-md w-full text-center space-y-6 shadow-sm">
             {!sosSentConfirmed ? (
               <>
                 <h3 className="text-3xl font-fraunces font-bold text-[#C62828]">EMERGENCY SOS</h3>
@@ -489,7 +489,7 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
                     setSosSentConfirmed(false);
                     setSosCountdown(10);
                   }}
-                  className="w-full py-4 rounded-2xl bg-[#FAF7F2] text-[#2E2E2E] font-bold text-lg border border-[#EBE3D5] cursor-pointer hover:bg-gray-100 transition"
+                  className="w-full py-4 rounded-2xl bg-eg-paper text-eg-ink font-bold text-lg border border-eg-line cursor-pointer hover:bg-gray-100 transition"
                 >
                   Cancel False Alarm
                 </button>
@@ -500,7 +500,7 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#1F8A5F]">SOS SENT SUCCESSFULLY!</h3>
-                <p className="text-sm text-[#525252] font-semibold leading-relaxed">
+                <p className="text-sm text-eg-muted font-semibold leading-relaxed">
                   Emergency alert & live GPS coordinates have been sent to your <strong>Caretaker</strong> and <strong>Hospital Emergency Dispatch Desk</strong>.
                 </p>
                 <button
@@ -509,7 +509,7 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
                     setSosSentConfirmed(false);
                     setSosCountdown(10);
                   }}
-                  className="w-full py-4 rounded-2xl bg-[#1F8A5F] hover:bg-[#1F8A5F]/90 text-white font-bold text-lg shadow-lg transition cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-[#1F8A5F] hover:bg-[#1F8A5F]/90 text-white font-bold text-lg shadow-sm transition cursor-pointer"
                 >
                   Close Confirmation
                 </button>
@@ -521,28 +521,28 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
 
       {/* Full Mevi Vitals Report Modal */}
       {showReportModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white border border-[#EBE3D5] rounded-3xl max-w-2xl w-full p-6 md:p-8 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/60  z-50 flex items-center justify-center p-4">
+          <div className="bg-white border border-eg-line rounded-2xl max-w-2xl w-full p-6 lg:p-8 space-y-6 shadow-sm relative max-h-[90vh] overflow-y-auto">
             
             <button
               onClick={() => setShowReportModal(false)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-[#FAF7F2] hover:bg-[#EBE3D5] text-[#525252] transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full bg-eg-paper hover:bg-eg-line text-eg-muted transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-4 border-b border-[#F0EBE1] pb-4">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1B6B93] to-[#2E86B9] text-white flex items-center justify-center shadow-md">
+            <div className="flex items-center gap-4 border-b border-eg-line pb-4">
+              <div className="bg-eg-teal-dark w-14 h-14 rounded-2xl text-white flex items-center justify-center shadow-md">
                 <Bot className="w-8 h-8 text-white" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">Mevi's AI Vitals Analysis</h3>
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#E6F4F1] text-[#1B6B93] text-xs font-bold border border-[#B8DCD4]">
+                  <h3 className="font-fraunces font-bold text-2xl text-eg-ink">Mevi's AI Vitals Analysis</h3>
+                  <span className="px-2.5 py-0.5 rounded-full bg-eg-tint text-eg-teal text-xs font-bold border border-[#B8DCD4]">
                     Groq AI
                   </span>
                 </div>
-                <p className="text-xs text-[#6B7280]">
+                <p className="text-xs text-eg-muted">
                   Generated on {new Date(meviFullReport?.created_at || Date.now()).toLocaleDateString()} for {currentUser?.name || 'Elder'}
                 </p>
               </div>
@@ -566,17 +566,17 @@ export default function ElderDashboard({ currentUser, onNavigateTab }) {
             )}
 
             {/* Report Content Body */}
-            <div className="bg-[#FAF7F2] border border-[#EBE3D5] rounded-2xl p-5 text-sm leading-relaxed text-[#2E2E2E] whitespace-pre-line font-inter">
+            <div className="bg-eg-paper border border-eg-line rounded-2xl p-5 text-sm leading-relaxed text-eg-ink whitespace-pre-line font-inter">
               {meviFullReport?.report || meviUpdate}
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2">
-              <span className="text-xs text-[#6B7280] italic">
+              <span className="text-xs text-eg-muted italic">
                 * Note: Mevi provides supportive wellness summaries based on your connected vitals history. Always consult your doctor for medical advice.
               </span>
               <button
                 onClick={() => setShowReportModal(false)}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#1B6B93] hover:bg-[#155373] text-white font-bold text-sm shadow-md transition"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-eg-teal hover:bg-eg-teal-dark text-white font-bold text-sm shadow-md transition"
               >
                 Close Report
               </button>

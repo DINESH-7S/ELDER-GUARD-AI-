@@ -126,23 +126,23 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       // Update local vitalsList state with manual entry
       setVitalsList(prev => prev.map(item => {
         if (newReading.vitalType === 'Blood Pressure' && item.id === 'bp') {
-          return { ...item, value: newReading.value || '120/80', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
+          return { ...item, value: newReading.value || '120/80', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
         }
         if (newReading.vitalType === 'Blood Sugar' && item.id === 'glucose') {
-          return { ...item, value: newReading.value || '110', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
+          return { ...item, value: newReading.value || '110', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
         }
         if (newReading.vitalType === 'Heart Rate' && item.id === 'heart_rate') {
-          return { ...item, value: newReading.value || '75', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
+          return { ...item, value: newReading.value || '75', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
         }
         if (newReading.vitalType === 'Oxygen SpO2' && item.id === 'spo2') {
           const rawVal = newReading.value || '98';
-          return { ...item, value: rawVal.includes('%') ? rawVal : `${rawVal}%`, statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
+          return { ...item, value: rawVal.includes('%') ? rawVal : `${rawVal}%`, statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
         }
         if (newReading.vitalType === 'Weight' && item.id === 'weight') {
-          return { ...item, value: newReading.value || '65', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
+          return { ...item, value: newReading.value || '65', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
         }
         if (newReading.vitalType === 'Sleep Duration' && item.id === 'sleep') {
-          return { ...item, value: newReading.value || '7', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
+          return { ...item, value: newReading.value || '7', statusTag: 'Recorded', statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30', plainText: 'Latest manual reading.' };
         }
         return item;
       }));
@@ -218,7 +218,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       statusColor: 'bg-[#94A3B8]/15 text-[#64748B] border-[#94A3B8]/30',
       dotColor: 'bg-[#94A3B8]',
       icon: Heart,
-      iconBg: 'bg-[#FFE8D6] text-[#E2694B]',
+      iconBg: 'bg-eg-tint text-[#E2694B]',
       plainText: 'No blood pressure reading recorded yet.'
     },
     {
@@ -230,7 +230,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       statusColor: 'bg-[#94A3B8]/15 text-[#64748B] border-[#94A3B8]/30',
       dotColor: 'bg-[#94A3B8]',
       icon: Droplets,
-      iconBg: 'bg-[#E6F4F1] text-[#1B6B93]',
+      iconBg: 'bg-eg-tint text-eg-teal',
       plainText: 'No blood sugar reading recorded yet.'
     },
     {
@@ -242,7 +242,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       statusColor: 'bg-[#94A3B8]/15 text-[#64748B] border-[#94A3B8]/30',
       dotColor: 'bg-[#94A3B8]',
       icon: Activity,
-      iconBg: 'bg-[#F4F9F5] text-[#4CAA6D]',
+      iconBg: 'bg-eg-paper text-[#25663E]',
       plainText: 'No pulse reading recorded yet.'
     },
     {
@@ -254,7 +254,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       statusColor: 'bg-[#94A3B8]/15 text-[#64748B] border-[#94A3B8]/30',
       dotColor: 'bg-[#94A3B8]',
       icon: Wind,
-      iconBg: 'bg-[#FFE8D6] text-[#F5A623]',
+      iconBg: 'bg-eg-tint text-[#9A5B00]',
       plainText: 'No oxygen level reading recorded yet.'
     },
     {
@@ -266,7 +266,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       statusColor: 'bg-[#94A3B8]/15 text-[#64748B] border-[#94A3B8]/30',
       dotColor: 'bg-[#94A3B8]',
       icon: Scale,
-      iconBg: 'bg-[#E6F4F1] text-[#1B6B93]',
+      iconBg: 'bg-eg-tint text-eg-teal',
       plainText: 'No weight recorded yet.'
     },
     {
@@ -278,7 +278,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       statusColor: 'bg-[#94A3B8]/15 text-[#64748B] border-[#94A3B8]/30',
       dotColor: 'bg-[#94A3B8]',
       icon: Moon,
-      iconBg: 'bg-[#FFF3E5] text-[#F5A623]',
+      iconBg: 'bg-[#FFF3E5] text-[#9A5B00]',
       plainText: 'No sleep log recorded yet.'
     }
   ]);
@@ -293,7 +293,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             ...item,
             value: vitals.bp || '120/80',
             statusTag: 'Live Realtime (5s)',
-            statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30',
+            statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30',
             dotColor: 'bg-[#4CAA6D]',
             plainText: 'Live sensor reading (updates every 5s)'
           };
@@ -303,7 +303,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             ...item,
             value: `${vitals.glucose || 104}`,
             statusTag: 'Live Realtime (15m)',
-            statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30',
+            statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30',
             dotColor: 'bg-[#4CAA6D]',
             plainText: 'Live sensor reading (updates every 15m)'
           };
@@ -313,7 +313,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             ...item,
             value: `${vitals.hr || vitals.heart_rate || 72}`,
             statusTag: 'Live Realtime (5s)',
-            statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30',
+            statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30',
             dotColor: 'bg-[#4CAA6D]',
             plainText: 'Live pulse reading (updates every 5s)'
           };
@@ -323,7 +323,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             ...item,
             value: `${vitals.spo2 || 98}%`,
             statusTag: 'Live Realtime (5m)',
-            statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30',
+            statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30',
             dotColor: 'bg-[#4CAA6D]',
             plainText: 'Live sensor reading (updates every 5m)'
           };
@@ -333,7 +333,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             ...item,
             value: `${vitals.weight || 65}`,
             statusTag: 'Live Daily',
-            statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30',
+            statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30',
             dotColor: 'bg-[#4CAA6D]',
             plainText: 'Daily recorded weight'
           };
@@ -343,7 +343,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             ...item,
             value: `${vitals.sleep || 7.5}`,
             statusTag: 'Live Daily',
-            statusColor: 'bg-[#4CAA6D]/15 text-[#4CAA6D] border-[#4CAA6D]/30',
+            statusColor: 'bg-[#4CAA6D]/15 text-[#25663E] border-[#4CAA6D]/30',
             dotColor: 'bg-[#4CAA6D]',
             plainText: 'Daily recorded sleep duration'
           };
@@ -366,21 +366,21 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
 
   // Weekly glance dot strip
   const weeklyGlance = [
-    { day: 'Mon', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' },
-    { day: 'Tue', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' },
-    { day: 'Wed', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' },
-    { day: 'Thu', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' },
-    { day: 'Fri', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' },
-    { day: 'Sat', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' },
-    { day: 'Sun (Today)', bp: 'bg-[#CBD5E1]', sugar: 'bg-[#CBD5E1]', hr: 'bg-[#CBD5E1]' }
+    { day: 'Mon', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' },
+    { day: 'Tue', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' },
+    { day: 'Wed', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' },
+    { day: 'Thu', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' },
+    { day: 'Fri', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' },
+    { day: 'Sat', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' },
+    { day: 'Sun (Today)', bp: 'bg-eg-line', sugar: 'bg-eg-line', hr: 'bg-eg-line' }
   ];
 
   return (
-    <div className="space-y-8 bg-[#FAF7F2] text-[#2E2E2E] font-inter min-h-screen pb-16">
+    <div className="space-y-8 bg-eg-paper text-eg-ink font-inter min-h-screen pb-16">
       
       {/* Log Success Toast */}
       {logSuccessToast && (
-        <div className="fixed top-6 right-6 z-50 bg-[#4CAA6D] text-white px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3 font-semibold animate-bounce">
+        <div className="fixed top-6 right-6 z-50 bg-[#4CAA6D] text-white px-6 py-4 rounded-2xl shadow-sm flex items-center gap-3 font-semibold animate-bounce">
           <CheckCircle2 className="w-6 h-6 shrink-0 text-white" />
           <span>{logSuccessToast}</span>
           <button onClick={() => setLogSuccessToast(null)} className="ml-4 text-white/80 hover:text-white">
@@ -390,40 +390,40 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
       )}
 
       {/* Responsive Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
         
         {/* Left / Main Content Column (~65% width / 8 cols) */}
-        <div className="lg:col-span-8 space-y-8">
+        <div className="xl:col-span-8 space-y-8">
           
           {/* Header Card (Soft Peach Gradient Banner) */}
-          <div className="bg-gradient-to-br from-[#FFE8D6] via-[#FFF3E5] to-[#FCEFE3] border border-[#F5DFCD] shadow-[0_10px_30px_rgba(245,223,205,0.4)] rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-wrap justify-between items-center gap-6">
+          <div className="bg-white border border-eg-line  rounded-2xl p-6 lg:p-8 relative overflow-hidden flex flex-wrap justify-between items-center gap-6">
             <div className="space-y-2 max-w-lg">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-[#F5DFCD] text-[#1B6B93] text-xs font-bold shadow-sm">
-                <Sun className="w-4 h-4 text-[#F5A623]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-eg-line text-eg-teal text-xs font-bold shadow-sm">
+                <Sun className="w-4 h-4 text-[#9A5B00]" />
                 <span>Daily Health Overview</span>
               </div>
-              <h1 className="font-fraunces font-bold text-3xl md:text-4xl text-[#2E2E2E] tracking-tight">
+              <h1 className="font-fraunces font-bold text-3xl lg:text-4xl text-eg-ink tracking-tight">
                 Your Vitals Today
               </h1>
-              <p className="text-base text-[#525252] font-medium leading-relaxed">
-                Welcome {currentUser?.name || 'Elder'} 🌿 Click '+ Log Vital' to enter your first health reading!
+              <p className="text-base text-eg-muted font-medium leading-relaxed">
+                Welcome {currentUser?.name || 'Elder'} Click '+ Log Vital' to enter your first health reading!
               </p>
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#1B6B93] pt-1">
-                <Clock className="w-4 h-4 text-[#F5A623]" />
+              <div className="flex items-center gap-2 text-xs font-semibold text-eg-teal pt-1">
+                <Clock className="w-4 h-4 text-[#9A5B00]" />
                 <span>Ready for manual entries</span>
               </div>
             </div>
 
             {/* Pulse / Heartbeat Line Illustration Badge */}
-            <div className="p-5 rounded-3xl bg-gradient-to-tr from-[#1B6B93] to-[#2E7D8C] text-white shadow-xl flex items-center justify-center shrink-0 border-2 border-white/60">
-              <Activity className="w-12 h-12 text-[#FFE8D6] animate-pulse" />
+            <div className="bg-eg-teal-dark p-5 rounded-2xl text-white shadow-sm flex items-center justify-center shrink-0 border-2 border-white/60">
+              <Activity className="w-12 h-12 text-eg-tint animate-pulse" />
             </div>
           </div>
 
           {/* Log New Reading Card (Prominent Teal Accent CTA Banner) */}
-          <div className="bg-gradient-to-r from-[#1B6B93] to-[#2E7D8C] text-white rounded-3xl p-6 md:p-8 shadow-[0_10px_30px_rgba(27,107,147,0.3)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-2 border-white/40">
+          <div className="bg-eg-teal-dark text-white rounded-2xl p-6 lg:p-8  flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 border-2 border-white/40">
             <div className="space-y-1">
-              <span className="text-xs text-[#FFE8D6] font-bold uppercase tracking-wider">Quick Biosensor Log</span>
+              <span className="text-xs text-eg-tint font-bold uppercase tracking-wider">Quick Biosensor Log</span>
               <h2 className="font-fraunces font-bold text-2xl text-white">Record a New Reading</h2>
               <p className="text-xs text-sky-100/90 font-medium">Or sync automatically from your home BP monitor</p>
             </div>
@@ -434,7 +434,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                   setLogMethod('type');
                   setShowLogModal(true);
                 }}
-                className="flex-1 sm:flex-initial px-5 py-3.5 rounded-2xl bg-white text-[#1B6B93] font-bold text-sm hover:bg-[#FFE8D6] transition shadow-md flex items-center justify-center gap-2 min-h-[48px] cursor-pointer"
+                className="flex-1 sm:flex-initial px-5 py-3.5 rounded-2xl bg-white text-eg-teal font-bold text-sm hover:bg-eg-tint transition shadow-md flex items-center justify-center gap-2 min-h-[48px] cursor-pointer"
               >
                 <Keyboard className="w-4 h-4" />
                 <span>Type it in</span>
@@ -445,7 +445,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                   setLogMethod('voice');
                   setShowLogModal(true);
                 }}
-                className="flex-1 sm:flex-initial px-5 py-3.5 rounded-2xl bg-[#FFE8D6] text-[#2E2E2E] font-bold text-sm hover:bg-white transition shadow-md flex items-center justify-center gap-2 min-h-[48px] cursor-pointer"
+                className="flex-1 sm:flex-initial px-5 py-3.5 rounded-2xl bg-eg-tint text-eg-ink font-bold text-sm hover:bg-white transition shadow-md flex items-center justify-center gap-2 min-h-[48px] cursor-pointer"
               >
                 <Mic className="w-4 h-4 text-[#E2694B]" />
                 <span>Say it out loud</span>
@@ -456,8 +456,8 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
           {/* Vitals Cards Grid (2x3 Grid) */}
           <div className="space-y-4">
             <div className="flex justify-between items-center px-1">
-              <h2 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">Current Vitals Summary</h2>
-              <span className="text-xs font-semibold text-[#6B7280] bg-white border border-[#EBE3D5] px-3.5 py-1 rounded-full">
+              <h2 className="font-fraunces font-bold text-2xl text-eg-ink">Current Vitals Summary</h2>
+              <span className="text-xs font-semibold text-eg-muted bg-white border border-eg-line px-3.5 py-1 rounded-full">
                 6 Parameters Tracked
               </span>
             </div>
@@ -468,7 +468,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                 return (
                   <div 
                     key={item.id}
-                    className="p-6 rounded-3xl bg-white border border-[#EBE3D5] shadow-[0_8px_25px_rgba(0,0,0,0.03)] space-y-4 hover:border-[#1B6B93]/40 transition-all duration-300"
+                    className="p-6 rounded-2xl bg-white border border-eg-line  space-y-4 hover:border-eg-teal/40 transition-all duration-300"
                   >
                     <div className="flex justify-between items-start">
                       <div className="flex items-center gap-3">
@@ -476,10 +476,10 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                           <IconComp className="w-6 h-6" />
                         </div>
                         <div>
-                          <span className="text-xs font-semibold text-[#6B7280] block">{item.title}</span>
+                          <span className="text-xs font-semibold text-eg-muted block">{item.title}</span>
                           <div className="flex items-baseline gap-1.5 mt-0.5">
-                            <span className="font-fraunces font-bold text-3xl text-[#2E2E2E]">{item.value}</span>
-                            {item.unit && <span className="text-xs text-[#6B7280] font-semibold">{item.unit}</span>}
+                            <span className="font-fraunces font-bold text-3xl text-eg-ink">{item.value}</span>
+                            {item.unit && <span className="text-xs text-eg-muted font-semibold">{item.unit}</span>}
                           </div>
                         </div>
                       </div>
@@ -492,8 +492,8 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                     </div>
 
                     {/* Reassuring Plain Language Sentence */}
-                    <div className="pt-3 border-t border-[#F0EBE1] flex items-center gap-2 text-xs text-[#525252] font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-[#4CAA6D] shrink-0" />
+                    <div className="pt-3 border-t border-eg-line flex items-center gap-2 text-xs text-eg-muted font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-[#25663E] shrink-0" />
                       <span>{item.plainText}</span>
                     </div>
                   </div>
@@ -503,21 +503,21 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
           </div>
 
           {/* Simple Weekly Glance Card (Weekly Vitals Consistency) */}
-          <div className="bg-white border border-[#EBE3D5] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 md:p-8 space-y-5">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#F0EBE1] pb-4">
+          <div className="bg-white border border-eg-line  rounded-2xl p-6 lg:p-8 space-y-5">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-eg-line pb-4">
               <div>
-                <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">Weekly Vitals Consistency</h3>
-                <p className="text-xs text-[#6B7280] font-medium mt-0.5">7-Day gentle wellness pulse check</p>
+                <h3 className="font-fraunces font-bold text-2xl text-eg-ink">Weekly Vitals Consistency</h3>
+                <p className="text-xs text-eg-muted font-medium mt-0.5">7-Day gentle wellness pulse check</p>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="px-3.5 py-1.5 rounded-full bg-[#4CAA6D]/15 text-[#4CAA6D] font-bold text-xs flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#4CAA6D]" />
+                <span className="px-3.5 py-1.5 rounded-full bg-[#4CAA6D]/15 text-[#25663E] font-bold text-xs flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#25663E]" />
                   <span>100% Calm Week</span>
                 </span>
                 <span className="px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-purple-700 font-bold text-xs flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-                  <span>Mevi Report Ready 👉</span>
+                  <span>Mevi Report Ready</span>
                 </span>
               </div>
             </div>
@@ -525,14 +525,14 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
             {/* Light dot matrix representation */}
             <div className="space-y-5">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-bold text-[#6B7280]">Daily Multi-Vital Logs</span>
-                <span className="text-xs font-bold text-[#1B6B93]">Mon – Sun Overview</span>
+                <span className="text-xs font-bold text-eg-muted">Daily Multi-Vital Logs</span>
+                <span className="text-xs font-bold text-eg-teal">Mon – Sun Overview</span>
               </div>
 
-              <div className="grid grid-cols-7 gap-2 md:gap-4 text-center pt-1">
+              <div className="grid grid-cols-7 gap-2 lg:gap-4 text-center pt-1">
                 {weeklyGlance.map((w, idx) => (
-                  <div key={idx} className="p-3.5 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] space-y-2">
-                    <span className="text-xs font-bold text-[#6B7280] block">{w.day}</span>
+                  <div key={idx} className="p-3.5 rounded-2xl bg-eg-paper border border-eg-line space-y-2">
+                    <span className="text-xs font-bold text-eg-muted block">{w.day}</span>
                     <div className="flex flex-col items-center gap-1.5 pt-1">
                       <span className={`w-3.5 h-3.5 rounded-full ${w.bp} shadow-sm`} title="Blood Pressure" />
                       <span className={`w-3.5 h-3.5 rounded-full ${w.sugar} shadow-sm`} title="Blood Sugar" />
@@ -542,8 +542,8 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                 ))}
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#E6F4F1]/60 border border-[#CDEAE5] text-center text-xs text-[#1B6B93] font-semibold flex items-center justify-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#F5A623]" />
+              <div className="p-4 rounded-2xl bg-eg-tint/60 border border-eg-line text-center text-xs text-eg-teal font-semibold flex items-center justify-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#9A5B00]" />
                 <span>Your blood pressure and sugar levels have been remarkably steady all week!</span>
               </div>
             </div>
@@ -553,12 +553,12 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
         </div>
 
         {/* Right Sidebar (~35% width / 4 cols) */}
-        <div className="lg:col-span-4 space-y-8">
+        <div className="xl:col-span-4 space-y-8">
           
           {/* 1. Prominent Emergency SOS Card (Red Gradient) */}
-          <div className="bg-gradient-to-br from-[#D32F2F] via-[#C62828] to-[#B71C1C] rounded-3xl p-6 md:p-8 text-white shadow-[0_12px_40px_rgba(211,47,47,0.35)] space-y-6 relative overflow-hidden">
+          <div className="bg-gradient-to-br rounded-2xl p-6 lg:p-8 text-white  space-y-6 relative overflow-hidden from-[#D32F2F] via-[#C62828] to-[#B71C1C]">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-white/20 text-white backdrop-blur-md">
+              <div className="p-3 rounded-2xl bg-white/20 text-white ">
                 <PhoneCall className="w-8 h-8" />
               </div>
               <div>
@@ -576,78 +576,78 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                 setSosActive(true);
                 setSosCountdown(10);
               }}
-              className="w-full py-5 rounded-2xl bg-white hover:bg-red-50 text-[#C62828] font-fraunces font-bold text-xl shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 min-h-[64px] cursor-pointer border-2 border-white/80"
+              className="w-full py-5 rounded-2xl bg-white hover:bg-red-50 text-[#C62828] font-fraunces font-bold text-xl shadow-sm hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 min-h-[64px] cursor-pointer border-2 border-white/80"
             >
               <PhoneCall className="w-7 h-7 text-[#C62828] animate-bounce" />
               <span>1-TAP EMERGENCY SOS</span>
             </button>
 
             <div className="text-center text-xs text-white/80 font-medium pt-1">
-              🔒 Notifies your caregiver & 24/7 Hospital Dispatch Immediately
+              Notifies your caregiver & 24/7 Hospital Dispatch Immediately
             </div>
           </div>
 
           {/* 2. Doctor's Note Card */}
-          <div className="bg-gradient-to-br from-[#FFE8D6]/70 via-[#FFF8F0] to-white border border-[#F5DFCD] shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-6 space-y-4">
+          <div className="bg-white to-white border border-eg-line  rounded-2xl p-6 space-y-4">
             <div className="flex items-center gap-3">
               <img 
                 src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=120" 
                 alt="Doctor Avatar" 
-                className="w-14 h-14 rounded-2xl object-cover border-2 border-[#1B6B93] shadow-sm"
+                className="w-14 h-14 rounded-2xl object-cover border-2 border-eg-teal shadow-sm"
               />
               <div>
-                <h4 className="font-fraunces font-bold text-lg text-[#2E2E2E]">Doctor's Note</h4>
-                <p className="text-xs text-[#1B6B93] font-semibold">Care team note</p>
+                <h4 className="font-fraunces font-bold text-lg text-eg-ink">Doctor's Note</h4>
+                <p className="text-xs text-eg-teal font-semibold">Care team note</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-[#F5DFCD] text-sm text-[#2E2E2E] font-medium leading-relaxed shadow-sm">
+            <div className="p-4 rounded-2xl bg-white border border-eg-line text-sm text-eg-ink font-medium leading-relaxed shadow-sm">
               "No doctor note has been added yet."
             </div>
 
-            <span className="text-[11px] text-[#6B7280] font-semibold block text-right">
+            <span className="text-[11px] text-eg-muted font-semibold block text-right">
               Reviewed Yesterday at 4:30 PM
             </span>
           </div>
 
           {/* 3. Your Target Ranges Card (Soft Blue-Tinted) */}
-          <div className="bg-[#E6F4F1]/60 border border-[#CDEAE5] shadow-[0_8px_30px_rgba(0,0,0,0.03)] rounded-3xl p-6 space-y-4">
-            <div className="flex items-center gap-3 border-b border-[#CDEAE5] pb-3">
-              <div className="p-2.5 rounded-xl bg-[#1B6B93] text-white">
+          <div className="bg-eg-tint/60 border border-eg-line  rounded-2xl p-6 space-y-4">
+            <div className="flex items-center gap-3 border-b border-eg-line pb-3">
+              <div className="p-2.5 rounded-xl bg-eg-teal text-white">
                 <Info className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-fraunces font-bold text-lg text-[#2E2E2E]">Your Target Ranges</h4>
-                <span className="text-xs text-[#6B7280] font-medium">Personalized Doctor Bounds</span>
+                <h4 className="font-fraunces font-bold text-lg text-eg-ink">Your Target Ranges</h4>
+                <span className="text-xs text-eg-muted font-medium">Personalized Doctor Bounds</span>
               </div>
             </div>
 
-            <ul className="space-y-3 text-xs font-medium text-[#2E2E2E]">
-              <li className="p-3 rounded-xl bg-white border border-[#CDEAE5] flex justify-between items-center">
+            <ul className="space-y-3 text-xs font-medium text-eg-ink">
+              <li className="p-3 rounded-xl bg-white border border-eg-line flex justify-between items-center">
                 <span>Blood Pressure</span>
-                <span className="font-bold text-[#1B6B93]">110-130 / 70-85</span>
+                <span className="font-bold text-eg-teal">110-130 / 70-85</span>
               </li>
-              <li className="p-3 rounded-xl bg-white border border-[#CDEAE5] flex justify-between items-center">
+              <li className="p-3 rounded-xl bg-white border border-eg-line flex justify-between items-center">
                 <span>Blood Sugar (Fasting)</span>
-                <span className="font-bold text-[#1B6B93]">under 140 mg/dL</span>
+                <span className="font-bold text-eg-teal">under 140 mg/dL</span>
               </li>
-              <li className="p-3 rounded-xl bg-white border border-[#CDEAE5] flex justify-between items-center">
+              <li className="p-3 rounded-xl bg-white border border-eg-line flex justify-between items-center">
                 <span>Heart Rate</span>
-                <span className="font-bold text-[#1B6B93]">60 - 90 bpm</span>
+                <span className="font-bold text-eg-teal">60 - 90 bpm</span>
               </li>
-              <li className="p-3 rounded-xl bg-white border border-[#CDEAE5] flex justify-between items-center">
+              <li className="p-3 rounded-xl bg-white border border-eg-line flex justify-between items-center">
                 <span>Oxygen Level (SpO2)</span>
-                <span className="font-bold text-[#1B6B93]">95% - 100%</span>
+                <span className="font-bold text-eg-teal">95% - 100%</span>
               </li>
             </ul>
 
-            <p className="text-[11px] text-[#6B7280] text-center italic">
+            <p className="text-[11px] text-eg-muted text-center italic">
               Simple plain-language bounds set by your care team.
             </p>
           </div>
 
           {/* 4. Mevi's Report Card (Right of "Weekly Vitals Consistency" & Below "Your Target Ranges") */}
-          <div className="bg-gradient-to-br from-purple-950 via-indigo-950 to-slate-900 text-white border-2 border-purple-800/50 shadow-[0_12px_40px_rgba(112,26,117,0.25)] rounded-3xl p-6 space-y-4 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-purple-950 via-indigo-950 to-slate-900 text-white border-2 border-purple-800/50  rounded-2xl p-6 space-y-4 relative overflow-hidden">
             
             <div className="flex items-center justify-between border-b border-purple-800/50 pb-3">
               <div className="flex items-center gap-3">
@@ -672,7 +672,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
 
             {/* Mevi AI Summary Paragraph */}
             <p className="text-xs text-purple-100/90 leading-relaxed font-medium">
-              Hello {currentUser?.name ? currentUser.name.split(' ')[0] : 'there'}! Mevi here 🤖. I analyzed your complete 7-day vital trends. Your consistency is <strong>exceptional</strong> with zero dangerous spikes.
+              Hello {currentUser?.name ? currentUser.name.split(' ')[0] : 'there'}! Mevi here. I analyzed your complete 7-day vital trends. Your consistency is <strong>exceptional</strong> with zero dangerous spikes.
             </p>
 
             {/* Metric Cards List */}
@@ -748,8 +748,8 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
 
       {/* Emergency SOS Countdown / Confirmation Modal */}
       {sosActive && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in">
-          <div className="bg-white border-4 border-[#D32F2F] rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/70  flex items-center justify-center p-4 animate-in fade-in">
+          <div className="bg-white border-4 border-[#D32F2F] rounded-2xl p-8 max-w-md w-full text-center space-y-6 shadow-sm">
             {!sosSentConfirmed ? (
               <div className="space-y-6">
                 <div className="w-20 h-20 rounded-full bg-[#D32F2F]/10 mx-auto flex items-center justify-center animate-pulse">
@@ -757,7 +757,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                 </div>
                 <div>
                   <h2 className="font-fraunces font-bold text-3xl text-[#D32F2F]">DISPATCHING SOS ALERT</h2>
-                  <p className="text-sm text-[#525252] font-medium mt-2">
+                  <p className="text-sm text-eg-muted font-medium mt-2">
                     Alerting your Caretaker & Hospital Emergency Dispatch Team in
                   </p>
                 </div>
@@ -770,7 +770,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                     setSosSentConfirmed(false);
                     setSosCountdown(10);
                   }}
-                  className="w-full py-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] text-[#2E2E2E] font-bold text-lg hover:bg-gray-100 transition cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-eg-paper border border-eg-line text-eg-ink font-bold text-lg hover:bg-gray-100 transition cursor-pointer"
                 >
                   CANCEL EMERGENCY SOS
                 </button>
@@ -781,7 +781,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <h2 className="font-fraunces font-bold text-2xl text-[#1F8A5F]">SOS SENT SUCCESSFULLY!</h2>
-                <p className="text-sm text-[#525252] font-semibold leading-relaxed">
+                <p className="text-sm text-eg-muted font-semibold leading-relaxed">
                   Emergency alert & live GPS coordinates have been sent to your <strong>Caretaker</strong> and <strong>Hospital Emergency Dispatch Desk</strong>.
                 </p>
                 <button
@@ -790,7 +790,7 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                     setSosSentConfirmed(false);
                     setSosCountdown(10);
                   }}
-                  className="w-full py-4 rounded-2xl bg-[#1F8A5F] hover:bg-[#1F8A5F]/90 text-white font-bold text-lg shadow-lg transition cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-[#1F8A5F] hover:bg-[#1F8A5F]/90 text-white font-bold text-lg shadow-sm transition cursor-pointer"
                 >
                   Close Confirmation
                 </button>
@@ -802,22 +802,22 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
 
       {/* Log New Reading Modal */}
       {showLogModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full space-y-5 shadow-2xl border border-[#EBE3D5] font-inter">
+        <div className="fixed inset-0 z-50 bg-black/50  flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl p-6 lg:p-8 max-w-md w-full space-y-5 shadow-sm border border-eg-line font-inter">
             <div className="flex justify-between items-center border-b pb-3">
-              <h3 className="font-fraunces font-bold text-xl text-[#2E2E2E]">Log New Vital Reading</h3>
+              <h3 className="font-fraunces font-bold text-xl text-eg-ink">Log New Vital Reading</h3>
               <button onClick={() => setShowLogModal(false)} className="text-gray-400 hover:text-gray-600">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Toggle Log Mode */}
-            <div className="flex bg-[#FAF7F2] p-1.5 rounded-2xl border border-[#EBE3D5]">
+            <div className="flex bg-eg-paper p-1.5 rounded-2xl border border-eg-line">
               <button
                 type="button"
                 onClick={() => setLogMethod('type')}
                 className={`flex-1 py-2.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer ${
-                  logMethod === 'type' ? 'bg-[#1B6B93] text-white shadow-sm' : 'text-[#6B7280]'
+                  logMethod === 'type' ? 'bg-eg-teal text-white shadow-sm' : 'text-eg-muted'
                 }`}
               >
                 <Keyboard className="w-4 h-4" />
@@ -827,40 +827,40 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                 type="button"
                 onClick={() => setLogMethod('voice')}
                 className={`flex-1 py-2.5 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2 cursor-pointer ${
-                  logMethod === 'voice' ? 'bg-[#1B6B93] text-white shadow-sm' : 'text-[#6B7280]'
+                  logMethod === 'voice' ? 'bg-eg-teal text-white shadow-sm' : 'text-eg-muted'
                 }`}
               >
-                <Mic className="w-4 h-4 text-[#FFE8D6]" />
+                <Mic className="w-4 h-4 text-eg-tint" />
                 <span>Voice Input</span>
               </button>
             </div>
 
             {logMethod === 'voice' ? (
-              <div className="p-6 bg-[#FAF7F2] rounded-2xl border border-[#EBE3D5] text-center space-y-4">
+              <div className="p-6 bg-eg-paper rounded-2xl border border-eg-line text-center space-y-4">
                 <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center transition ${
-                  voiceListening ? 'bg-red-500 text-white animate-pulse' : 'bg-[#1B6B93] text-white'
+                  voiceListening ? 'bg-red-500 text-white animate-pulse' : 'bg-eg-teal text-white'
                 }`}>
                   <Mic className="w-8 h-8" />
                 </div>
-                <p className="text-xs text-[#525252] font-semibold">
+                <p className="text-xs text-eg-muted font-semibold">
                   {voiceListening ? 'Listening... Speak your reading (e.g., "124 over 82")' : 'Tap below and say your reading out loud.'}
                 </p>
                 <button
                   type="button"
                   onClick={handleVoiceListen}
-                  className="px-6 py-3 rounded-2xl bg-[#1B6B93] text-white font-bold text-xs hover:bg-[#155373] transition cursor-pointer"
+                  className="px-6 py-3 rounded-2xl bg-eg-teal text-white font-bold text-xs hover:bg-eg-teal-dark transition cursor-pointer"
                 >
-                  {voiceListening ? 'Listening...' : 'Start Voice Input 🎙️'}
+                  {voiceListening ? 'Listening...' : 'Start Voice Input'}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSaveLog} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#6B7280] mb-1">Select Vital Type</label>
+                  <label className="block text-xs font-bold text-eg-muted mb-1">Select Vital Type</label>
                   <select
                     value={newReading.vitalType}
                     onChange={(e) => setNewReading({ ...newReading, vitalType: e.target.value })}
-                    className="w-full bg-[#FAF7F2] border border-[#EBE3D5] rounded-xl px-4 py-3 text-xs font-bold text-[#2E2E2E] outline-none focus:border-[#1B6B93]"
+                    className="w-full bg-eg-paper border border-eg-line rounded-xl px-4 py-3 text-xs font-bold text-eg-ink outline-none focus:border-eg-teal"
                   >
                     <option value="Blood Pressure">Blood Pressure (BP)</option>
                     <option value="Blood Sugar">Blood Sugar (Glucose)</option>
@@ -871,13 +871,13 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#6B7280] mb-1">Enter Value</label>
+                  <label className="block text-xs font-bold text-eg-muted mb-1">Enter Value</label>
                   <input
                     type="text"
                     value={newReading.value}
                     onChange={(e) => setNewReading({ ...newReading, value: e.target.value })}
                     placeholder="e.g. 120/80 or 110"
-                    className="w-full bg-[#FAF7F2] border border-[#EBE3D5] rounded-xl px-4 py-3 text-sm text-[#2E2E2E] font-bold outline-none focus:border-[#1B6B93]"
+                    className="w-full bg-eg-paper border border-eg-line rounded-xl px-4 py-3 text-sm text-eg-ink font-bold outline-none focus:border-eg-teal"
                     required
                   />
                 </div>
@@ -886,13 +886,13 @@ export default function ElderVitalsPage({ currentUser, onNavigateTab }) {
                   <button
                     type="button"
                     onClick={() => setShowLogModal(false)}
-                    className="px-4 py-3 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] text-xs font-bold text-[#2E2E2E]"
+                    className="px-4 py-3 rounded-2xl bg-eg-paper border border-eg-line text-xs font-bold text-eg-ink"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-3 rounded-2xl bg-[#1B6B93] hover:bg-[#155373] text-white text-xs font-bold shadow-md cursor-pointer"
+                    className="px-6 py-3 rounded-2xl bg-eg-teal hover:bg-eg-teal-dark text-white text-xs font-bold shadow-md cursor-pointer"
                   >
                     Save Reading
                   </button>

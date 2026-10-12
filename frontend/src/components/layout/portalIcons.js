@@ -1,0 +1,22 @@
+// One icon family for the portal shell (Phosphor), under the names the nav config uses.
+export {
+  Pulse as Activity,
+  Robot as Bot,
+  Buildings as Building2,
+  CalendarBlank as Calendar,
+  FolderOpen,
+  House as Home,
+  List,
+  SignOut as LogOut,
+  ChatCircle as MessageSquare,
+  Confetti as PartyPopper,
+  Pill,
+  GearSix as Settings,
+  ShieldWarning as ShieldAlert,
+  Stethoscope,
+  Storefront as Store,
+  Truck,
+  UserCircle,
+  Users,
+  X,
+} from '@phosphor-icons/react';

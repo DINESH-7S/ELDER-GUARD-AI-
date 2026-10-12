@@ -355,47 +355,47 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
   };
 
   return (
-    <div className="bg-[#F8FAF9] text-[#131917] font-inter space-y-5">
+    <div className="bg-eg-paper text-eg-ink font-inter space-y-5">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="font-bold text-xl text-[#131917]">Connected Patient Roster & Medical Workspace</h2>
-          <p className="text-xs text-[#5C6B64]">Consolidated 1-screen doctor workspace — View vitals, issue e-Rx, and upload OCR diagnostic reports in-place.</p>
+          <h2 className="font-bold text-xl text-eg-ink">Connected Patient Roster & Medical Workspace</h2>
+          <p className="text-xs text-eg-muted">Consolidated 1-screen doctor workspace — View vitals, issue e-Rx, and upload OCR diagnostic reports in-place.</p>
         </div>
-        <button onClick={() => onNavigateTab('appointments')} className="px-4 py-2 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold text-xs cursor-pointer shadow-xs">
+        <button onClick={() => onNavigateTab('appointments')} className="px-4 py-2 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold text-xs cursor-pointer shadow-xs">
           View Consult Queue
         </button>
       </div>
 
       {/* Roster Overview Bar */}
-      <div className="bg-white border border-[#E2E9E4] rounded-lg p-4 flex justify-between items-center text-xs shadow-xs">
+      <div className="bg-white border border-eg-line rounded-lg p-4 flex justify-between items-center text-xs shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded bg-[#EEF3F0] text-[#0F6B5C] font-bold">
+          <div className="p-2 rounded bg-eg-tint text-eg-teal font-bold">
             <User className="w-4 h-4" />
           </div>
           <div>
-            <span className="font-bold text-[#131917] block">Active Connected Patient Charts</span>
-            <span className="text-[#5C6B64]">{patients.length} Patient Records Available</span>
+            <span className="font-bold text-eg-ink block">Active Connected Patient Charts</span>
+            <span className="text-eg-muted">{patients.length} Patient Records Available</span>
           </div>
         </div>
         
         {selectedPatient && (
-          <div className="hidden md:flex items-center gap-2 bg-[#EEF3F0] px-3 py-1.5 rounded text-[#0F6B5C] font-bold border border-[#0F6B5C]/30">
+          <div className="hidden md:flex items-center gap-2 bg-eg-tint px-3 py-1.5 rounded text-eg-teal font-bold border border-eg-teal/30">
             <span>Selected Patient: <strong>{selectedPatient.name}</strong> ({selectedPatient.mrn})</span>
           </div>
         )}
       </div>
 
       {/* Search Input Bar */}
-      <div className="bg-white p-3 rounded-lg border border-[#E2E9E4] flex flex-wrap justify-between items-center gap-3 text-xs shadow-xs">
+      <div className="bg-white p-3 rounded-lg border border-eg-line flex flex-wrap justify-between items-center gap-3 text-xs shadow-xs">
         <div className="relative flex-1 max-w-lg">
-          <Search className="w-4 h-4 text-[#5C6B64] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-eg-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search patient by name, MRN ID, email, or phone number..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded pl-10 pr-3 py-2 outline-none font-medium focus:border-[#0F6B5C]"
+            className="w-full bg-eg-paper border border-eg-line rounded pl-10 pr-3 py-2 outline-none font-medium focus:border-eg-teal"
           />
         </div>
       </div>
@@ -405,14 +405,14 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
         
         {/* Left Column: Patient Roster List (4 Cols) */}
         <div className="lg:col-span-4 space-y-3">
-          <div className="bg-white border border-[#E2E9E4] rounded-lg p-3 font-bold text-xs text-[#131917] flex justify-between items-center">
+          <div className="bg-white border border-eg-line rounded-lg p-3 font-bold text-xs text-eg-ink flex justify-between items-center">
             <span>Select Patient Record</span>
-            <span className="text-[#5C6B64] font-normal">{patients.length} total</span>
+            <span className="text-eg-muted font-normal">{patients.length} total</span>
           </div>
 
           <div className="space-y-2 max-h-[750px] overflow-y-auto pr-1">
             {patients.length === 0 ? (
-              <div className="bg-white border border-[#E2E9E4] rounded-lg p-6 text-center text-xs text-[#5C6B64]">
+              <div className="bg-white border border-eg-line rounded-lg p-6 text-center text-xs text-eg-muted">
                 No patients match "{searchQuery}"
               </div>
             ) : patients.map(pt => {
@@ -423,30 +423,30 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                   onClick={() => handleSelectPatient(pt)}
                   className={`p-3.5 rounded-lg border transition cursor-pointer text-xs space-y-2 ${
                     isSelected
-                      ? 'bg-[#EEF3F0] border-[#0F6B5C] shadow-xs'
-                      : 'bg-white border-[#E2E9E4] hover:bg-[#F8FAF9]'
+                      ? 'bg-eg-tint border-eg-teal shadow-xs'
+                      : 'bg-white border-eg-line hover:bg-eg-paper'
                   }`}
                 >
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-3">
                       <div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm border ${
-                        isSelected ? 'bg-[#0F6B5C] text-white border-[#0F6B5C]' : 'bg-[#EEF3F0] text-[#0F6B5C] border-[#E2E9E4]'
+                        isSelected ? 'bg-eg-teal text-white border-eg-teal' : 'bg-eg-tint text-eg-teal border-eg-line'
                       }`}>
                         {patientInitials(pt.name)}
                       </div>
                       <div>
-                        <span className="font-bold text-[#131917] block text-sm">{pt.name}</span>
-                        <span className="font-mono text-[11px] text-[#5C6B64]">{pt.mrn}</span>
+                        <span className="font-bold text-eg-ink block text-sm">{pt.name}</span>
+                        <span className="font-mono text-[11px] text-eg-muted">{pt.mrn}</span>
                       </div>
                     </div>
                     {isSelected && (
-                      <span className="px-2 py-0.5 rounded bg-[#0F6B5C] text-white text-[10px] font-bold uppercase tracking-wider">
+                      <span className="px-2 py-0.5 rounded bg-eg-teal text-white text-[10px] font-bold uppercase tracking-wider">
                         Active
                       </span>
                     )}
                   </div>
 
-                  <div className="flex justify-between text-[11px] text-[#5C6B64] font-medium pt-1 border-t border-[#E2E9E4]/60">
+                  <div className="flex justify-between text-[11px] text-eg-muted font-medium pt-1 border-t border-eg-line/60">
                     <span>Appt: {pt.date || 'Active Record'}</span>
                     <span>Visits: {pt.visits}</span>
                   </div>
@@ -459,29 +459,29 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
         {/* Right Column: In-Place Selected Patient Workspace (8 Cols) */}
         <div className="lg:col-span-8 space-y-4">
           {!selectedPatient ? (
-            <div className="bg-white border border-[#E2E9E4] rounded-lg p-12 text-center text-xs text-[#5C6B64]">
+            <div className="bg-white border border-eg-line rounded-lg p-12 text-center text-xs text-eg-muted">
               Select a patient from the roster on the left to view vitals, issue prescriptions, and upload lab reports.
             </div>
           ) : (
             <div className="space-y-4">
               
               {/* Selected Patient Banner & Actions */}
-              <div className="bg-white border border-[#E2E9E4] rounded-lg p-5 space-y-4 shadow-xs">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#E2E9E4] pb-4">
+              <div className="bg-white border border-eg-line rounded-lg p-5 space-y-4 shadow-xs">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-eg-line pb-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-[#EEF3F0] text-[#0F6B5C] font-bold text-xl flex items-center justify-center border-2 border-[#0F6B5C] shadow-xs">
+                    <div className="w-14 h-14 rounded-full bg-eg-tint text-eg-teal font-bold text-xl flex items-center justify-center border-2 border-eg-teal shadow-xs">
                       {patientInitials(selectedPatient.name)}
                     </div>
                     <div>
                       <div className="flex items-center gap-3">
-                        <h3 className="font-bold text-2xl text-[#131917]">{selectedPatient.name}</h3>
-                        <span className="font-mono text-xs px-2.5 py-0.5 bg-[#EEF3F0] font-bold text-[#0F6B5C] rounded border border-[#0F6B5C]/30">{selectedPatient.mrn}</span>
+                        <h3 className="font-bold text-2xl text-eg-ink">{selectedPatient.name}</h3>
+                        <span className="font-mono text-xs px-2.5 py-0.5 bg-eg-tint font-bold text-eg-teal rounded border border-eg-teal/30">{selectedPatient.mrn}</span>
                       </div>
-                      <div className="flex flex-wrap gap-4 text-xs text-[#5C6B64] mt-1 font-medium">
-                        <span>DOB / Age: <strong className="text-[#131917]">{selectedPatient.dob || `${selectedPatient.age || 56} yrs`}</strong></span>
-                        <span>Home Address: <strong className="text-[#131917]">{selectedPatient.address || '126, Anna Nagar ,Coimbatore - 641007'}</strong></span>
+                      <div className="flex flex-wrap gap-4 text-xs text-eg-muted mt-1 font-medium">
+                        <span>DOB / Age: <strong className="text-eg-ink">{selectedPatient.dob || `${selectedPatient.age || 56} yrs`}</strong></span>
+                        <span>Home Address: <strong className="text-eg-ink">{selectedPatient.address || '126, Anna Nagar ,Coimbatore - 641007'}</strong></span>
                         <span>Mode: <strong>{selectedPatient.type || 'Telehealth'}</strong></span>
-                        <span>Status: <strong className="text-[#2E9E6B]">{selectedPatient.status || 'Confirmed'}</strong></span>
+                        <span>Status: <strong className="text-[#1F7A50]">{selectedPatient.status || 'Confirmed'}</strong></span>
                       </div>
                     </div>
                   </div>
@@ -490,13 +490,13 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                   <div className="flex flex-wrap gap-2">
                     <button
                       onClick={handleOpenRxModal}
-                      className="px-3.5 py-2 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-xs"
+                      className="px-3.5 py-2 rounded bg-eg-teal hover:bg-eg-teal-dark text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-xs"
                     >
                       <Pill className="w-4 h-4" /> + Give Prescription
                     </button>
                     <button
                       onClick={handleOpenReportModal}
-                      className="px-3.5 py-2 rounded border border-[#0F6B5C] text-[#0F6B5C] font-bold text-xs hover:bg-[#EEF3F0] cursor-pointer flex items-center gap-1.5"
+                      className="px-3.5 py-2 rounded border border-eg-teal text-eg-teal font-bold text-xs hover:bg-eg-tint cursor-pointer flex items-center gap-1.5"
                     >
                       <Upload className="w-4 h-4" /> + Upload Report (OCR)
                     </button>
@@ -504,7 +504,7 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                 </div>
 
                 {/* Sub Navigation Node Tabs */}
-                <div className="flex border-b border-[#E2E9E4] gap-4 text-xs font-bold">
+                <div className="flex border-b border-eg-line gap-4 text-xs font-bold">
                   {[
                     { key: 'vitals', label: 'Inline Vitals Telemetry' },
                     { key: 'meds', label: `Prescriptions Roster (${prescriptions.length})` },
@@ -513,7 +513,7 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                     <button
                       key={tab.key}
                       onClick={() => setActiveTab(tab.key)}
-                      className={`pb-2.5 px-2 border-b-2 cursor-pointer transition ${activeTab === tab.key ? 'border-[#0F6B5C] text-[#0F6B5C]' : 'border-transparent text-[#5C6B64]'}`}
+                      className={`pb-2.5 px-2 border-b-2 cursor-pointer transition ${activeTab === tab.key ? 'border-eg-teal text-eg-teal' : 'border-transparent text-eg-muted'}`}
                     >
                       {tab.label}
                     </button>
@@ -523,88 +523,88 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
 
               {/* 1. Vitals Display Section */}
               {activeTab === 'vitals' && (
-                <div className="bg-white border border-[#E2E9E4] rounded-lg p-5 space-y-4 shadow-xs">
-                  <div className="flex justify-between items-center border-b border-[#E2E9E4] pb-3">
-                    <h4 className="font-bold text-sm text-[#131917] flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-[#0F6B5C]" />
+                <div className="bg-white border border-eg-line rounded-lg p-5 space-y-4 shadow-xs">
+                  <div className="flex justify-between items-center border-b border-eg-line pb-3">
+                    <h4 className="font-bold text-sm text-eg-ink flex items-center gap-2">
+                      <Activity className="w-4 h-4 text-eg-teal" />
                       <span>Live Vitals Telemetry — {selectedPatient.name}</span>
                     </h4>
-                    <span className="text-[11px] text-[#5C6B64] font-medium flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-[#0F6B5C]" /> Last Updated: Aug 10, 2026 at 10:45 AM
+                    <span className="text-[11px] text-eg-muted font-medium flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-eg-teal" /> Last Updated: Aug 10, 2026 at 10:45 AM
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
                     {/* Blood Pressure */}
-                    <div className="p-4 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-1.5">
-                      <div className="flex justify-between items-center text-[#5C6B64]">
+                    <div className="p-4 rounded-lg bg-eg-paper border border-eg-line space-y-1.5">
+                      <div className="flex justify-between items-center text-eg-muted">
                         <span className="font-bold uppercase tracking-wider text-[10px]">Blood Pressure</span>
                         <Heart className="w-4 h-4 text-[#C6363E]" />
                       </div>
-                      <span className="text-2xl font-bold text-[#131917] font-mono block">
+                      <span className="text-2xl font-bold text-eg-ink font-mono block">
                         {vitals?.blood_pressure || vitals?.bp || '128 / 82 mmHg'}
                       </span>
-                      <span className="text-[10px] text-[#2E9E6B] font-bold block">Optimal Resting Range</span>
+                      <span className="text-[10px] text-[#1F7A50] font-bold block">Optimal Resting Range</span>
                     </div>
 
                     {/* Heart Rate */}
-                    <div className="p-4 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-1.5">
-                      <div className="flex justify-between items-center text-[#5C6B64]">
+                    <div className="p-4 rounded-lg bg-eg-paper border border-eg-line space-y-1.5">
+                      <div className="flex justify-between items-center text-eg-muted">
                         <span className="font-bold uppercase tracking-wider text-[10px]">Heart Rate (Pulse)</span>
-                        <Activity className="w-4 h-4 text-[#0F6B5C]" />
+                        <Activity className="w-4 h-4 text-eg-teal" />
                       </div>
-                      <span className="text-2xl font-bold text-[#131917] font-mono block">
+                      <span className="text-2xl font-bold text-eg-ink font-mono block">
                         {vitals?.pulse || vitals?.heart_rate || '74 BPM'}
                       </span>
-                      <span className="text-[10px] text-[#2E9E6B] font-bold block">Normal Pulse Rhythm</span>
+                      <span className="text-[10px] text-[#1F7A50] font-bold block">Normal Pulse Rhythm</span>
                     </div>
 
                     {/* Body Temperature */}
-                    <div className="p-4 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-1.5">
-                      <div className="flex justify-between items-center text-[#5C6B64]">
+                    <div className="p-4 rounded-lg bg-eg-paper border border-eg-line space-y-1.5">
+                      <div className="flex justify-between items-center text-eg-muted">
                         <span className="font-bold uppercase tracking-wider text-[10px]">Body Temperature</span>
                         <Thermometer className="w-4 h-4 text-[#E8A03C]" />
                       </div>
-                      <span className="text-2xl font-bold text-[#131917] font-mono block">
+                      <span className="text-2xl font-bold text-eg-ink font-mono block">
                         {vitals?.temperature || '98.6 °F'}
                       </span>
-                      <span className="text-[10px] text-[#2E9E6B] font-bold block">Afebrile Baseline</span>
+                      <span className="text-[10px] text-[#1F7A50] font-bold block">Afebrile Baseline</span>
                     </div>
 
                     {/* Blood Sugar */}
-                    <div className="p-4 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-1.5">
-                      <div className="flex justify-between items-center text-[#5C6B64]">
+                    <div className="p-4 rounded-lg bg-eg-paper border border-eg-line space-y-1.5">
+                      <div className="flex justify-between items-center text-eg-muted">
                         <span className="font-bold uppercase tracking-wider text-[10px]">Blood Glucose Level</span>
-                        <Droplets className="w-4 h-4 text-[#0F6B5C]" />
+                        <Droplets className="w-4 h-4 text-eg-teal" />
                       </div>
-                      <span className="text-2xl font-bold text-[#131917] font-mono block">
+                      <span className="text-2xl font-bold text-eg-ink font-mono block">
                         {vitals?.blood_sugar || vitals?.glucose || '104 mg/dL'}
                       </span>
-                      <span className="text-[10px] text-[#5C6B64] block">Fasting Measurement</span>
+                      <span className="text-[10px] text-eg-muted block">Fasting Measurement</span>
                     </div>
 
                     {/* Oxygen Saturation */}
-                    <div className="p-4 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-1.5">
-                      <div className="flex justify-between items-center text-[#5C6B64]">
+                    <div className="p-4 rounded-lg bg-eg-paper border border-eg-line space-y-1.5">
+                      <div className="flex justify-between items-center text-eg-muted">
                         <span className="font-bold uppercase tracking-wider text-[10px]">Oxygen SpO2</span>
-                        <ShieldCheck className="w-4 h-4 text-[#2E9E6B]" />
+                        <ShieldCheck className="w-4 h-4 text-[#1F7A50]" />
                       </div>
-                      <span className="text-2xl font-bold text-[#131917] font-mono block">
+                      <span className="text-2xl font-bold text-eg-ink font-mono block">
                         {vitals?.spo2 || '98 %'}
                       </span>
-                      <span className="text-[10px] text-[#2E9E6B] font-bold block">Normal Saturation</span>
+                      <span className="text-[10px] text-[#1F7A50] font-bold block">Normal Saturation</span>
                     </div>
 
                     {/* Body Weight */}
-                    <div className="p-4 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-1.5">
-                      <div className="flex justify-between items-center text-[#5C6B64]">
+                    <div className="p-4 rounded-lg bg-eg-paper border border-eg-line space-y-1.5">
+                      <div className="flex justify-between items-center text-eg-muted">
                         <span className="font-bold uppercase tracking-wider text-[10px]">Body Weight</span>
-                        <Scale className="w-4 h-4 text-[#5C6B64]" />
+                        <Scale className="w-4 h-4 text-eg-muted" />
                       </div>
-                      <span className="text-2xl font-bold text-[#131917] font-mono block">
+                      <span className="text-2xl font-bold text-eg-ink font-mono block">
                         {vitals?.weight || '68 kg'}
                       </span>
-                      <span className="text-[10px] text-[#5C6B64] block">Stable Weight Trend</span>
+                      <span className="text-[10px] text-eg-muted block">Stable Weight Trend</span>
                     </div>
                   </div>
                 </div>
@@ -612,43 +612,43 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
 
               {/* 2. Prescriptions Section */}
               {activeTab === 'meds' && (
-                <div className="bg-white border border-[#E2E9E4] rounded-lg p-5 space-y-4 shadow-xs">
-                  <div className="flex justify-between items-center border-b border-[#E2E9E4] pb-3">
+                <div className="bg-white border border-eg-line rounded-lg p-5 space-y-4 shadow-xs">
+                  <div className="flex justify-between items-center border-b border-eg-line pb-3">
                     <div>
-                      <h4 className="font-bold text-sm text-[#131917]">Active Prescriptions — {selectedPatient.name}</h4>
-                      <p className="text-[11px] text-[#5C6B64]">Prescriptions saved under MRN {selectedPatient.mrn}</p>
+                      <h4 className="font-bold text-sm text-eg-ink">Active Prescriptions — {selectedPatient.name}</h4>
+                      <p className="text-[11px] text-eg-muted">Prescriptions saved under MRN {selectedPatient.mrn}</p>
                     </div>
                     <button
                       onClick={handleOpenRxModal}
-                      className="px-3.5 py-1.5 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
+                      className="px-3.5 py-1.5 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
                     >
                       <Pill className="w-3.5 h-3.5" /> + Give Prescription
                     </button>
                   </div>
 
                   {prescriptions.length === 0 ? (
-                    <div className="text-center py-8 text-xs text-[#5C6B64]">
+                    <div className="text-center py-8 text-xs text-eg-muted">
                       No active prescriptions on record for {selectedPatient.name}. Click <strong>+ Give Prescription</strong> above to issue a new prescription.
                     </div>
                   ) : (
-                    <div className="divide-y divide-[#E2E9E4] text-xs">
+                    <div className="divide-y divide-eg-line text-xs">
                       {prescriptions.map(p => (
                         <div key={p.id} className="py-3.5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="font-bold text-[#131917] text-sm">{p.medicine}</span>
-                              <span className="font-mono text-[11px] font-bold text-[#0F6B5C] px-2 py-0.5 bg-[#EEF3F0] rounded border border-[#0F6B5C]/20">{p.date}</span>
+                              <span className="font-bold text-eg-ink text-sm">{p.medicine}</span>
+                              <span className="font-mono text-[11px] font-bold text-eg-teal px-2 py-0.5 bg-eg-tint rounded border border-eg-teal/20">{p.date}</span>
                             </div>
-                            <div className="text-[#5C6B64] font-medium mt-0.5">
+                            <div className="text-eg-muted font-medium mt-0.5">
                               Sig: <strong>{p.sig}</strong> · Duration: <strong>{p.duration || '30 Days'}</strong> · Refills: <span className="font-mono">{p.refills}</span> · Pharmacy: <strong>{p.pharmacy}</strong>
                             </div>
                             {p.instructions && (
-                              <p className="text-[11px] text-[#5C6B64] italic mt-0.5">Notes: {p.instructions}</p>
+                              <p className="text-[11px] text-eg-muted italic mt-0.5">Notes: {p.instructions}</p>
                             )}
                           </div>
 
                           <div className="flex items-center gap-2 shrink-0">
-                            <span className="px-2.5 py-1 rounded bg-[#2E9E6B]/15 text-[#2E9E6B] font-bold text-[10px]">{p.status}</span>
+                            <span className="px-2.5 py-1 rounded bg-[#2E9E6B]/15 text-[#1F7A50] font-bold text-[10px]">{p.status}</span>
                             
                             {/* DELETE PRESCRIPTION BUTTON */}
                             <button
@@ -668,46 +668,46 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
 
               {/* 3. Diagnostic Reports Section */}
               {activeTab === 'labs' && (
-                <div className="bg-white border border-[#E2E9E4] rounded-lg p-5 space-y-4 shadow-xs">
-                  <div className="flex justify-between items-center border-b border-[#E2E9E4] pb-3">
+                <div className="bg-white border border-eg-line rounded-lg p-5 space-y-4 shadow-xs">
+                  <div className="flex justify-between items-center border-b border-eg-line pb-3">
                     <div>
-                      <h4 className="font-bold text-sm text-[#131917]">Diagnostic Test Reports (OCR Vault) — {selectedPatient.name}</h4>
-                      <p className="text-[11px] text-[#5C6B64]">Lab test vault with automated OCR parameter extraction</p>
+                      <h4 className="font-bold text-sm text-eg-ink">Diagnostic Test Reports (OCR Vault) — {selectedPatient.name}</h4>
+                      <p className="text-[11px] text-eg-muted">Lab test vault with automated OCR parameter extraction</p>
                     </div>
                     <button
                       onClick={handleOpenReportModal}
-                      className="px-3.5 py-1.5 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
+                      className="px-3.5 py-1.5 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
                     >
                       <Upload className="w-3.5 h-3.5" /> + Upload Report (OCR)
                     </button>
                   </div>
 
                   {reports.length === 0 ? (
-                    <div className="text-center py-8 text-xs text-[#5C6B64]">
+                    <div className="text-center py-8 text-xs text-eg-muted">
                       No lab reports uploaded for {selectedPatient.name} yet. Click <strong>+ Upload Report (OCR)</strong> to process a diagnostic report PDF or image.
                     </div>
                   ) : (
                     <div className="space-y-3 text-xs">
                       {reports.map(r => (
-                        <div key={r.id} className="p-3.5 rounded-lg bg-[#FAFBFA] border border-[#E2E9E4] space-y-3">
+                        <div key={r.id} className="p-3.5 rounded-lg bg-eg-paper border border-eg-line space-y-3">
                           <div className="flex justify-between items-center">
                             <div className="flex items-center gap-3">
-                              <FileText className="w-5 h-5 text-[#0F6B5C]" />
+                              <FileText className="w-5 h-5 text-eg-teal" />
                               <div>
                                 <div className="flex items-center gap-2">
-                                  <span className="font-bold text-[#131917] text-sm">{r.title}</span>
-                                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${r.tier === 'warning' ? 'bg-[#C6363E]/15 text-[#C6363E]' : 'bg-[#2E9E6B]/15 text-[#2E9E6B]'}`}>
+                                  <span className="font-bold text-eg-ink text-sm">{r.title}</span>
+                                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${r.tier === 'warning' ? 'bg-[#C6363E]/15 text-[#C6363E]' : 'bg-[#2E9E6B]/15 text-[#1F7A50]'}`}>
                                     {r.status}
                                   </span>
                                 </div>
-                                <span className="text-[#5C6B64]">Uploaded {r.date} · Source: {r.source} {r.fileName ? `· File: ${r.fileName}` : ''}</span>
+                                <span className="text-eg-muted">Uploaded {r.date} · Source: {r.source} {r.fileName ? `· File: ${r.fileName}` : ''}</span>
                               </div>
                             </div>
 
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => setInspectReport(r)}
-                                className="px-3 py-1.5 rounded border border-[#E2E9E4] text-[#0F6B5C] font-bold cursor-pointer flex items-center gap-1 hover:bg-[#F2F6F3]"
+                                className="px-3 py-1.5 rounded border border-eg-line text-eg-teal font-bold cursor-pointer flex items-center gap-1 hover:bg-[#F2F6F3]"
                               >
                                 <Eye className="w-3.5 h-3.5" /> Inspect OCR Data
                               </button>
@@ -725,11 +725,11 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
 
                           {/* Extracted Values Quick Summary */}
                           {r.values && r.values.length > 0 && (
-                            <div className="bg-white border border-[#E2E9E4] rounded p-2.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
+                            <div className="bg-white border border-eg-line rounded p-2.5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
                               {r.values.map((v, idx) => (
                                 <div key={idx} className="flex justify-between items-center">
-                                  <span className="text-[#5C6B64] font-medium">{v.name}:</span>
-                                  <span className="font-bold font-mono text-[#131917]">{v.result}</span>
+                                  <span className="text-eg-muted font-medium">{v.name}:</span>
+                                  <span className="font-bold font-mono text-eg-ink">{v.result}</span>
                                 </div>
                               ))}
                             </div>
@@ -749,22 +749,22 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
       {/* --- GIVE PRESCRIPTION MODAL (Text / Image / PDF Options) --- */}
       {rxModalOpen && selectedPatient && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 backdrop-blur-xs p-4">
-          <div className="bg-white border border-[#E2E9E4] rounded-lg p-6 max-w-xl w-full shadow-2xl space-y-4 text-xs">
-            <div className="flex justify-between items-center border-b border-[#E2E9E4] pb-3">
+          <div className="bg-white border border-eg-line rounded-lg p-6 max-w-xl w-full shadow-sm space-y-4 text-xs">
+            <div className="flex justify-between items-center border-b border-eg-line pb-3">
               <div className="flex items-center gap-2">
-                <Pill className="w-5 h-5 text-[#0F6B5C]" />
-                <h3 className="font-bold text-base text-[#131917]">Give Prescription — {selectedPatient.name} ({selectedPatient.mrn})</h3>
+                <Pill className="w-5 h-5 text-eg-teal" />
+                <h3 className="font-bold text-base text-eg-ink">Give Prescription — {selectedPatient.name} ({selectedPatient.mrn})</h3>
               </div>
-              <button onClick={() => setRxModalOpen(false)}><X className="w-4 h-4 text-[#5C6B64]" /></button>
+              <button onClick={() => setRxModalOpen(false)}><X className="w-4 h-4 text-eg-muted" /></button>
             </div>
 
             {/* 3 Format Tabs: Text / Image / PDF */}
-            <div className="grid grid-cols-3 gap-2 bg-[#F8FAF9] p-1.5 rounded-lg border border-[#E2E9E4] text-xs font-bold">
+            <div className="grid grid-cols-3 gap-2 bg-eg-paper p-1.5 rounded-lg border border-eg-line text-xs font-bold">
               <button
                 type="button"
                 onClick={() => setRxMode('text')}
                 className={`py-2 rounded flex items-center justify-center gap-1.5 cursor-pointer transition ${
-                  rxMode === 'text' ? 'bg-[#0F6B5C] text-white shadow-xs' : 'text-[#5C6B64] hover:text-[#131917]'
+                  rxMode === 'text' ? 'bg-eg-teal text-white shadow-xs' : 'text-eg-muted hover:text-eg-ink'
                 }`}
               >
                 <FileCode className="w-3.5 h-3.5" /> Structured Text
@@ -773,7 +773,7 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                 type="button"
                 onClick={() => setRxMode('image')}
                 className={`py-2 rounded flex items-center justify-center gap-1.5 cursor-pointer transition ${
-                  rxMode === 'image' ? 'bg-[#0F6B5C] text-white shadow-xs' : 'text-[#5C6B64] hover:text-[#131917]'
+                  rxMode === 'image' ? 'bg-eg-teal text-white shadow-xs' : 'text-eg-muted hover:text-eg-ink'
                 }`}
               >
                 <ImageIcon className="w-3.5 h-3.5" /> Image File
@@ -782,7 +782,7 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                 type="button"
                 onClick={() => setRxMode('pdf')}
                 className={`py-2 rounded flex items-center justify-center gap-1.5 cursor-pointer transition ${
-                  rxMode === 'pdf' ? 'bg-[#0F6B5C] text-white shadow-xs' : 'text-[#5C6B64] hover:text-[#131917]'
+                  rxMode === 'pdf' ? 'bg-eg-teal text-white shadow-xs' : 'text-eg-muted hover:text-eg-ink'
                 }`}
               >
                 <FileUp className="w-3.5 h-3.5" /> PDF Document
@@ -795,73 +795,73 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                 <>
                   <div className="grid grid-cols-3 gap-3">
                     <div className="col-span-2">
-                      <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Drug Name</label>
+                      <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Drug Name</label>
                       <input
                         type="text"
                         required
                         placeholder="e.g. Metformin, Lisinopril, Atorvastatin"
                         value={rxForm.medicine}
                         onChange={(e) => setRxForm({ ...rxForm, medicine: e.target.value })}
-                        className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                        className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Strength</label>
+                      <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Strength</label>
                       <input
                         type="text"
                         required
                         placeholder="e.g. 500mg"
                         value={rxForm.strength}
                         onChange={(e) => setRxForm({ ...rxForm, strength: e.target.value })}
-                        className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                        className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Dosage / Sig</label>
+                      <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Dosage / Sig</label>
                       <input
                         type="text"
                         placeholder="1 Tab Daily"
                         value={rxForm.frequency}
                         onChange={(e) => setRxForm({ ...rxForm, frequency: e.target.value })}
-                        className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                        className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Duration</label>
+                      <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Duration</label>
                       <input
                         type="text"
                         placeholder="30 Days"
                         value={rxForm.duration}
                         onChange={(e) => setRxForm({ ...rxForm, duration: e.target.value })}
-                        className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs"
+                        className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Refills</label>
+                      <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Refills</label>
                       <input
                         type="number"
                         min="0"
                         max="11"
                         value={rxForm.refills}
                         onChange={(e) => setRxForm({ ...rxForm, refills: parseInt(e.target.value) || 0 })}
-                        className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-mono"
+                        className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-mono"
                       />
                     </div>
                   </div>
 
                   {/* Scheduled Medicine Timings Assignment */}
-                  <div className="p-3 rounded-lg bg-[#EEF3F0] border border-[#0F6B5C]/30 space-y-2">
-                    <span className="font-bold text-[11px] text-[#0F6B5C] uppercase block tracking-wider">Assign Medicine Timing & Schedule</span>
+                  <div className="p-3 rounded-lg bg-eg-tint border border-eg-teal/30 space-y-2">
+                    <span className="font-bold text-[11px] text-eg-teal uppercase block tracking-wider">Assign Medicine Timing & Schedule</span>
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-[10px] font-bold text-[#5C6B64] uppercase mb-1">Scheduled Time Slot</label>
+                        <label className="block text-[10px] font-bold text-eg-muted uppercase mb-1">Scheduled Time Slot</label>
                         <select
                           value={rxForm.timeSlot}
                           onChange={(e) => setRxForm({ ...rxForm, timeSlot: e.target.value })}
-                          className="w-full bg-white border border-[#E2E9E4] rounded px-2.5 py-1.5 text-xs font-bold"
+                          className="w-full bg-white border border-eg-line rounded px-2.5 py-1.5 text-xs font-bold"
                         >
                           <option value="08:00 AM">Morning (08:00 AM)</option>
                           <option value="01:00 PM">Afternoon (01:00 PM)</option>
@@ -872,11 +872,11 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                       </div>
 
                       <div>
-                        <label className="block text-[10px] font-bold text-[#5C6B64] uppercase mb-1">Meal Instruction</label>
+                        <label className="block text-[10px] font-bold text-eg-muted uppercase mb-1">Meal Instruction</label>
                         <select
                           value={rxForm.mealTiming}
                           onChange={(e) => setRxForm({ ...rxForm, mealTiming: e.target.value })}
-                          className="w-full bg-white border border-[#E2E9E4] rounded px-2.5 py-1.5 text-xs font-bold"
+                          className="w-full bg-white border border-eg-line rounded px-2.5 py-1.5 text-xs font-bold"
                         >
                           <option value="After Meals">After Meals (With Water)</option>
                           <option value="Before Meals">Before Meals (Empty Stomach)</option>
@@ -888,13 +888,13 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
 
                     {rxForm.timeSlot === 'custom' && (
                       <div>
-                        <label className="block text-[10px] font-bold text-[#5C6B64] uppercase mb-1">Custom Time (e.g. 07:30 AM)</label>
+                        <label className="block text-[10px] font-bold text-eg-muted uppercase mb-1">Custom Time (e.g. 07:30 AM)</label>
                         <input
                           type="text"
                           placeholder="e.g. 07:30 AM"
                           value={rxForm.customTime}
                           onChange={(e) => setRxForm({ ...rxForm, customTime: e.target.value })}
-                          className="w-full bg-white border border-[#E2E9E4] rounded px-2.5 py-1.5 text-xs font-mono font-bold"
+                          className="w-full bg-white border border-eg-line rounded px-2.5 py-1.5 text-xs font-mono font-bold"
                         />
                       </div>
                     )}
@@ -906,29 +906,29 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
               {rxMode === 'image' && (
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Select Prescription Image (.png, .jpg, .webp — max 10MB)</label>
+                    <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Select Prescription Image (.png, .jpg, .webp — max 10MB)</label>
                     <input
                       type="file"
                       accept="image/png, image/jpeg, image/jpg, image/webp"
                       onChange={handleRxFileSelect}
-                      className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs"
+                      className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs"
                       required={!rxForm.fileName}
                     />
                   </div>
                   {rxForm.fileName && (
-                    <div className="p-2.5 rounded bg-[#EEF3F0] text-[11px] text-[#0F6B5C] font-bold flex justify-between">
+                    <div className="p-2.5 rounded bg-eg-tint text-[11px] text-eg-teal font-bold flex justify-between">
                       <span>Selected File: {rxForm.fileName}</span>
                       <span>{rxForm.fileSize}</span>
                     </div>
                   )}
                   <div>
-                    <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Prescription Label / Drug Title</label>
+                    <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Prescription Label / Drug Title</label>
                     <input
                       type="text"
                       placeholder="e.g. Scanned Handwritten Prescription"
                       value={rxForm.medicine}
                       onChange={(e) => setRxForm({ ...rxForm, medicine: e.target.value })}
-                      className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                      className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                     />
                   </div>
                 </div>
@@ -938,58 +938,58 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
               {rxMode === 'pdf' && (
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Select Prescription Document (.pdf — max 10MB)</label>
+                    <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Select Prescription Document (.pdf — max 10MB)</label>
                     <input
                       type="file"
                       accept="application/pdf"
                       onChange={handleRxFileSelect}
-                      className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs"
+                      className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs"
                       required={!rxForm.fileName}
                     />
                   </div>
                   {rxForm.fileName && (
-                    <div className="p-2.5 rounded bg-[#EEF3F0] text-[11px] text-[#0F6B5C] font-bold flex justify-between">
+                    <div className="p-2.5 rounded bg-eg-tint text-[11px] text-eg-teal font-bold flex justify-between">
                       <span>Selected PDF: {rxForm.fileName}</span>
                       <span>{rxForm.fileSize}</span>
                     </div>
                   )}
                   <div>
-                    <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Prescription Document Title</label>
+                    <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Prescription Document Title</label>
                     <input
                       type="text"
                       placeholder="e.g. Official Digital e-Prescription PDF"
                       value={rxForm.medicine}
                       onChange={(e) => setRxForm({ ...rxForm, medicine: e.target.value })}
-                      className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                      className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                     />
                   </div>
                 </div>
               )}
 
               <div>
-                <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Destination Pharmacy</label>
+                <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Destination Pharmacy</label>
                 <input
                   type="text"
                   value={rxForm.pharmacy}
                   onChange={(e) => setRxForm({ ...rxForm, pharmacy: e.target.value })}
-                  className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-medium"
+                  className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-medium"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Instructions / Notes</label>
+                <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Instructions / Notes</label>
                 <textarea
                   rows={2}
                   placeholder="Special instructions for patient or dispensing pharmacist..."
                   value={rxForm.instructions}
                   onChange={(e) => setRxForm({ ...rxForm, instructions: e.target.value })}
-                  className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded p-2 text-xs"
+                  className="w-full bg-eg-paper border border-eg-line rounded p-2 text-xs"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-[#E2E9E4]">
-                <button type="button" onClick={() => setRxModalOpen(false)} className="px-4 py-2 rounded border border-[#E2E9E4] text-[#5C6B64]">Cancel</button>
-                <button type="submit" className="px-5 py-2 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold cursor-pointer">
+              <div className="flex justify-end gap-2 pt-3 border-t border-eg-line">
+                <button type="button" onClick={() => setRxModalOpen(false)} className="px-4 py-2 rounded border border-eg-line text-eg-muted">Cancel</button>
+                <button type="submit" className="px-5 py-2 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold cursor-pointer">
                   Save Prescription to Patient Record
                 </button>
               </div>
@@ -1001,67 +1001,67 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
       {/* --- UPLOAD REPORT WITH OCR MODAL --- */}
       {reportModalOpen && selectedPatient && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 backdrop-blur-xs p-4">
-          <div className="bg-white border border-[#E2E9E4] rounded-lg p-6 max-w-lg w-full shadow-2xl space-y-4 text-xs">
-            <div className="flex justify-between items-center border-b border-[#E2E9E4] pb-3">
+          <div className="bg-white border border-eg-line rounded-lg p-6 max-w-lg w-full shadow-sm space-y-4 text-xs">
+            <div className="flex justify-between items-center border-b border-eg-line pb-3">
               <div className="flex items-center gap-2">
-                <Upload className="w-5 h-5 text-[#0F6B5C]" />
-                <h3 className="font-bold text-base text-[#131917]">Upload Lab PDF & Parse OCR — {selectedPatient.name}</h3>
+                <Upload className="w-5 h-5 text-eg-teal" />
+                <h3 className="font-bold text-base text-eg-ink">Upload Lab PDF & Parse OCR — {selectedPatient.name}</h3>
               </div>
-              <button onClick={() => setReportModalOpen(false)}><X className="w-4 h-4 text-[#5C6B64]" /></button>
+              <button onClick={() => setReportModalOpen(false)}><X className="w-4 h-4 text-eg-muted" /></button>
             </div>
 
             <form onSubmit={handleSubmitReport} className="space-y-3">
               <div>
-                <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Select Diagnostic Lab File (.pdf, .png, .jpg — max 10MB)</label>
+                <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Select Diagnostic Lab File (.pdf, .png, .jpg — max 10MB)</label>
                 <input
                   type="file"
                   accept="application/pdf, image/png, image/jpeg"
                   onChange={handleReportFileSelect}
-                  className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs"
+                  className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs"
                   required={!reportForm.fileName}
                 />
               </div>
 
               {ocrLoading && (
-                <div className="p-3 rounded bg-[#EEF3F0] text-[#0F6B5C] font-bold flex items-center justify-center gap-2 animate-pulse text-xs">
+                <div className="p-3 rounded bg-eg-tint text-eg-teal font-bold flex items-center justify-center gap-2 animate-pulse text-xs">
                   <Sparkles className="w-4 h-4" /> Extracting medical text and parsing parameters via OCR Engine...
                 </div>
               )}
 
               {ocrSuccess && (
-                <div className="p-3 rounded bg-[#2E9E6B]/15 text-[#2E9E6B] font-bold flex items-center gap-2 text-xs">
+                <div className="p-3 rounded bg-[#2E9E6B]/15 text-[#1F7A50] font-bold flex items-center gap-2 text-xs">
                   <CheckCircle2 className="w-4 h-4" /> OCR Text Extraction & Parameter Parsing Complete!
                 </div>
               )}
 
               <div>
-                <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Report Document Title</label>
+                <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Report Document Title</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Lipid Profile & Cardiac Markers, Fasting Glucose"
                   value={reportForm.title}
                   onChange={(e) => setReportForm({ ...reportForm, title: e.target.value })}
-                  className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                  className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Pathology Lab Source</label>
+                  <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Pathology Lab Source</label>
                   <input
                     type="text"
                     value={reportForm.source}
                     onChange={(e) => setReportForm({ ...reportForm, source: e.target.value })}
-                    className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs"
+                    className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-[#5C6B64] uppercase mb-1">Flag Status Tier</label>
+                  <label className="block text-[11px] font-bold text-eg-muted uppercase mb-1">Flag Status Tier</label>
                   <select
                     value={reportForm.tier}
                     onChange={(e) => setReportForm({ ...reportForm, tier: e.target.value })}
-                    className="w-full bg-[#F8FAF9] border border-[#E2E9E4] rounded px-3 py-2 text-xs font-bold"
+                    className="w-full bg-eg-paper border border-eg-line rounded px-3 py-2 text-xs font-bold"
                   >
                     <option value="normal">Verified Normal</option>
                     <option value="warning">Out of Bounds / High Flagged</option>
@@ -1070,46 +1070,46 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
               </div>
 
               {/* Extracted Structured OCR Parameters Preview */}
-              <div className="border border-[#E2E9E4] rounded p-3 bg-[#FAFBFA] space-y-2">
-                <span className="font-bold text-[11px] text-[#0F6B5C] uppercase block flex items-center gap-1">
+              <div className="border border-eg-line rounded p-3 bg-eg-paper space-y-2">
+                <span className="font-bold text-[11px] text-eg-teal uppercase block flex items-center gap-1">
                   <FileCheck className="w-3.5 h-3.5" /> Parsed OCR Test Analytes
                 </span>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
-                    <label className="block text-[10px] font-bold text-[#5C6B64] uppercase">Analyte Name</label>
+                    <label className="block text-[10px] font-bold text-eg-muted uppercase">Analyte Name</label>
                     <input
                       type="text"
                       value={reportForm.analyteName}
                       onChange={(e) => setReportForm({ ...reportForm, analyteName: e.target.value })}
-                      className="w-full bg-white border border-[#E2E9E4] rounded px-2 py-1 text-xs"
+                      className="w-full bg-white border border-eg-line rounded px-2 py-1 text-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-bold text-[#5C6B64] uppercase">Result Value</label>
+                    <label className="block text-[10px] font-bold text-eg-muted uppercase">Result Value</label>
                     <input
                       type="text"
                       value={reportForm.analyteResult}
                       onChange={(e) => setReportForm({ ...reportForm, analyteResult: e.target.value })}
-                      className="w-full bg-white border border-[#E2E9E4] rounded px-2 py-1 text-xs font-mono font-bold"
+                      className="w-full bg-white border border-eg-line rounded px-2 py-1 text-xs font-mono font-bold"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold text-[#5C6B64] uppercase">Reference Range</label>
+                  <label className="block text-[10px] font-bold text-eg-muted uppercase">Reference Range</label>
                   <input
                     type="text"
                     value={reportForm.analyteRef}
                     onChange={(e) => setReportForm({ ...reportForm, analyteRef: e.target.value })}
-                    className="w-full bg-white border border-[#E2E9E4] rounded px-2 py-1 text-xs font-mono"
+                    className="w-full bg-white border border-eg-line rounded px-2 py-1 text-xs font-mono"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-[#E2E9E4]">
-                <button type="button" onClick={() => setReportModalOpen(false)} className="px-4 py-2 rounded border border-[#E2E9E4] text-[#5C6B64]">Cancel</button>
-                <button type="submit" className="px-5 py-2 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold cursor-pointer">
+              <div className="flex justify-end gap-2 pt-3 border-t border-eg-line">
+                <button type="button" onClick={() => setReportModalOpen(false)} className="px-4 py-2 rounded border border-eg-line text-eg-muted">Cancel</button>
+                <button type="submit" className="px-5 py-2 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold cursor-pointer">
                   Save Report & OCR Data to Chart
                 </button>
               </div>
@@ -1121,17 +1121,17 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
       {/* --- INSPECT OCR LAB REPORT MODAL --- */}
       {inspectReport && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-white border border-[#E2E9E4] rounded-lg p-6 max-w-2xl w-full shadow-2xl space-y-4 text-xs">
-            <div className="flex justify-between items-center border-b border-[#E2E9E4] pb-3">
+          <div className="bg-white border border-eg-line rounded-lg p-6 max-w-2xl w-full shadow-sm space-y-4 text-xs">
+            <div className="flex justify-between items-center border-b border-eg-line pb-3">
               <div>
-                <h3 className="font-bold text-base text-[#131917]">{inspectReport.title}</h3>
-                <span className="font-mono text-xs text-[#5C6B64]">Patient: {inspectReport.patient} ({inspectReport.mrn}) · {inspectReport.date}</span>
+                <h3 className="font-bold text-base text-eg-ink">{inspectReport.title}</h3>
+                <span className="font-mono text-xs text-eg-muted">Patient: {inspectReport.patient} ({inspectReport.mrn}) · {inspectReport.date}</span>
               </div>
-              <button onClick={() => setInspectReport(null)}><X className="w-4 h-4 text-[#5C6B64]" /></button>
+              <button onClick={() => setInspectReport(null)}><X className="w-4 h-4 text-eg-muted" /></button>
             </div>
 
             <table className="w-full text-left border-collapse">
-              <thead className="bg-[#EEF3F0] font-bold text-[11px] uppercase">
+              <thead className="bg-eg-tint font-bold text-[11px] uppercase">
                 <tr>
                   <th className="p-2.5">Test Analyte Name</th>
                   <th className="p-2.5">Observed Result</th>
@@ -1139,14 +1139,14 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
                   <th className="p-2.5 text-right">Flag Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E9E4]">
+              <tbody className="divide-y divide-eg-line">
                 {(inspectReport.values || []).map((v, i) => (
-                  <tr key={i} className="hover:bg-[#F8FAF9]">
-                    <td className="p-2.5 font-bold text-[#131917]">{v.name}</td>
-                    <td className="p-2.5 font-mono font-bold text-[#131917]">{v.result}</td>
-                    <td className="p-2.5 font-mono text-[#5C6B64]">{v.ref}</td>
+                  <tr key={i} className="hover:bg-eg-paper">
+                    <td className="p-2.5 font-bold text-eg-ink">{v.name}</td>
+                    <td className="p-2.5 font-mono font-bold text-eg-ink">{v.result}</td>
+                    <td className="p-2.5 font-mono text-eg-muted">{v.ref}</td>
                     <td className="p-2.5 text-right font-mono font-bold">
-                      <span className={`px-2 py-0.5 rounded text-[10px] ${v.status === 'HIGH' ? 'bg-[#C6363E]/15 text-[#C6363E]' : 'bg-[#2E9E6B]/15 text-[#2E9E6B]'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] ${v.status === 'HIGH' ? 'bg-[#C6363E]/15 text-[#C6363E]' : 'bg-[#2E9E6B]/15 text-[#1F7A50]'}`}>
                         {v.status}
                       </span>
                     </td>
@@ -1155,8 +1155,8 @@ export default function DoctorMyPatientsPage({ currentUser, onNavigateTab }) {
               </tbody>
             </table>
 
-            <div className="flex justify-end gap-2 pt-3 border-t border-[#E2E9E4]">
-              <button onClick={() => setInspectReport(null)} className="px-4 py-2 rounded bg-[#0F6B5C] text-white font-bold cursor-pointer">
+            <div className="flex justify-end gap-2 pt-3 border-t border-eg-line">
+              <button onClick={() => setInspectReport(null)} className="px-4 py-2 rounded bg-eg-teal text-white font-bold cursor-pointer">
                 Close Report Inspection
               </button>
             </div>

@@ -28,27 +28,27 @@ export default function HospitalEmergencyDispatchPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-[#1A1520] tracking-tight">Emergency & SOS Dispatch</h1>
-        <p className="text-xs text-[#6B6272]">Live SOS events appear here when elders trigger them.</p>
+        <h1 className="text-2xl font-bold text-eg-ink tracking-tight">Emergency & SOS Dispatch</h1>
+        <p className="text-xs text-eg-muted">Live SOS events appear here when elders trigger them.</p>
       </div>
 
-      <div className="bg-white border border-[#E8E3ED] rounded-xl p-5">
-        <div className="flex items-center gap-2 border-b border-[#E8E3ED] pb-3">
+      <div className="bg-white border border-eg-line rounded-xl p-5">
+        <div className="flex items-center gap-2 border-b border-eg-line pb-3">
           <ShieldAlert className="w-4 h-4 text-[#D6373F]" />
-          <h2 className="font-bold text-sm text-[#1A1520]">Active SOS Alerts</h2>
+          <h2 className="font-bold text-sm text-eg-ink">Active SOS Alerts</h2>
         </div>
 
         {alerts.length === 0 ? (
-          <div className="py-10 text-center text-xs text-[#6B6272]">No active SOS alerts.</div>
+          <div className="py-10 text-center text-xs text-eg-muted">No active SOS alerts.</div>
         ) : (
-          <div className="divide-y divide-[#E8E3ED]">
+          <div className="divide-y divide-eg-line">
             {alerts.map(alert => (
               <div key={alert.id} className="py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
                 <div>
-                  <span className="font-bold text-[#1A1520] block">{alert.elderName}</span>
-                  <span className="text-[#6B6272]">{new Date(alert.triggeredAt).toLocaleString()}</span>
+                  <span className="font-bold text-eg-ink block">{alert.elderName}</span>
+                  <span className="text-eg-muted">{new Date(alert.triggeredAt).toLocaleString()}</span>
                   {alert.location && (
-                    <span className="text-[#5B2A86] flex items-center gap-1 mt-1">
+                    <span className="text-eg-teal flex items-center gap-1 mt-1">
                       <MapPin className="w-3 h-3" /> {alert.location}
                     </span>
                   )}

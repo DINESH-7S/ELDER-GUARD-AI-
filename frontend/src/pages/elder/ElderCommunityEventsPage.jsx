@@ -39,7 +39,7 @@ const EVENTS = [
     categoryColor: 'bg-purple-50 text-purple-700 border-purple-200',
     tag: 'Online Class',
     tagColor: 'bg-purple-100 text-purple-800 border-purple-300',
-    image: '🌸',
+    image: '',
     date: 'Oct 24, 2026',
     time: '10:00 AM - 11:30 AM EST',
     location: 'Online / Virtual (AARP Platform)',
@@ -57,7 +57,7 @@ const EVENTS = [
     categoryColor: 'bg-amber-50 text-amber-700 border-amber-200',
     tag: 'Holiday Tour',
     tagColor: 'bg-amber-100 text-amber-800 border-amber-300',
-    image: '🐫',
+    image: '',
     date: 'Dec 29, 2026 - Jan 02, 2027',
     time: '6:00 AM Departure',
     location: 'Vadodara, Gujarat → Jodhpur & Jaisalmer',
@@ -75,7 +75,7 @@ const EVENTS = [
     categoryColor: 'bg-teal-50 text-teal-700 border-teal-200',
     tag: 'Ocean Voyage',
     tagColor: 'bg-teal-100 text-teal-800 border-teal-300',
-    image: '🚢',
+    image: '',
     date: 'Nov 12, 2026 - Nov 26, 2026',
     time: '9:00 AM Boarding',
     location: 'Singapore → Indonesian Archipelago → Bali',
@@ -186,7 +186,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
 
   function handleRegister(event) {
     setRegistrations(prev => ({ ...prev, [event.id]: true }));
-    showToast(`You're registered for "${event.title}"! 🎉`);
+    showToast(`You're registered for "${event.title}"!`);
   }
 
   function handleUnregisterSingle(eventId) {
@@ -246,11 +246,11 @@ export default function ElderCommunityEventsPage({ currentUser }) {
   }
 
   return (
-    <div className="space-y-8 bg-[#FAF7F2] text-[#2E2E2E] font-inter min-h-screen pb-16">
+    <div className="space-y-8 bg-eg-paper text-eg-ink font-inter min-h-screen pb-16">
 
       {/* Floating Success Toast */}
       {toastMessage && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] bg-[#4CAA6D] text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 font-semibold animate-bounce max-w-md w-full">
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] bg-[#4CAA6D] text-white px-8 py-4 rounded-2xl shadow-sm flex items-center gap-3 font-semibold animate-bounce max-w-md w-full">
           <CheckCircle2 className="w-6 h-6 shrink-0" />
           <span className="flex-1 text-sm">{toastMessage}</span>
           <button onClick={() => setToastMessage(null)} className="p-1 hover:bg-white/20 rounded-lg">
@@ -260,17 +260,17 @@ export default function ElderCommunityEventsPage({ currentUser }) {
       )}
 
       {/* Header Banner */}
-      <div className="bg-gradient-to-br from-[#FFE8D6] via-[#FFF3E5] to-[#FCEFE3] border border-[#F5DFCD] shadow-[0_10px_30px_rgba(245,223,205,0.4)] rounded-3xl p-6 md:p-8 flex flex-wrap justify-between items-center gap-6">
+      <div className="bg-white border border-eg-line  rounded-2xl p-6 lg:p-8 flex flex-wrap justify-between items-center gap-6">
         <div className="space-y-2 max-w-xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-[#F5DFCD] text-[#1B6B93] text-xs font-bold shadow-sm">
-            <Sun className="w-4 h-4 text-[#F5A623]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 border border-eg-line text-eg-teal text-xs font-bold shadow-sm">
+            <Sun className="w-4 h-4 text-[#9A5B00]" />
             <span>Stay Connected & Active</span>
           </div>
-          <h1 className="font-fraunces font-bold text-3xl md:text-4xl text-[#2E2E2E] tracking-tight leading-tight">
-            Community Events 🎉
+          <h1 className="font-fraunces font-bold text-3xl lg:text-4xl text-eg-ink tracking-tight leading-tight">
+            Community events
           </h1>
-          <p className="text-base text-[#525252] font-medium leading-relaxed">
-            Events, activities, and gatherings curated just for you, {currentUser?.name ? currentUser.name.split(' ')[0] : 'there'}.
+          <p className="text-base text-eg-muted font-medium leading-relaxed">
+            Events, activities, and gatherings curated just for you{currentUser?.name ? `, ${currentUser.name.split(' ')[0]}` : ''}.
           </p>
         </div>
         
@@ -278,12 +278,12 @@ export default function ElderCommunityEventsPage({ currentUser }) {
         <div className="flex items-center gap-3">
           <button
             onClick={() => { setSosActive(true); setSosCountdown(10); }}
-            className="px-5 py-3.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-2xl shadow-md hover:shadow-lg hover:scale-105 transition flex items-center gap-2 text-xs border border-red-500 cursor-pointer"
+            className="px-5 py-3.5 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-2xl shadow-md hover:shadow-sm hover:scale-105 transition flex items-center gap-2 text-xs border border-red-500 cursor-pointer"
           >
             <PhoneCall className="w-4 h-4 animate-bounce" /> 1-Tap SOS
           </button>
-          <div className="p-4 rounded-3xl bg-gradient-to-tr from-[#1B6B93] to-[#2E7D8C] shadow-xl shrink-0 border-2 border-white/60">
-            <PartyPopper className="w-10 h-10 text-[#FFE8D6]" />
+          <div className="bg-white p-4 rounded-2xl shadow-sm shrink-0 border-2 border-white/60">
+            <PartyPopper className="w-10 h-10 text-eg-tint" />
           </div>
         </div>
       </div>
@@ -293,26 +293,26 @@ export default function ElderCommunityEventsPage({ currentUser }) {
           1) My Registrations
           2) Did You Know ?
       ══════════════════════════════════════════════════════════════ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* RECTANGULAR BOX 1: MY REGISTRATIONS */}
         <div
           onClick={() => setMyRegModalOpen(true)}
-          className="group relative bg-gradient-to-br from-white via-[#F4F9F5] to-[#EBF6EE] border-2 border-[#C8E6D0] hover:border-[#4CAA6D] rounded-3xl p-6 md:p-7 shadow-[0_8px_30px_rgba(76,170,109,0.12)] hover:shadow-[0_12px_40px_rgba(76,170,109,0.22)] transition-all cursor-pointer flex flex-col justify-between"
+          className="bg-white group relative from-white border-2 border-eg-line hover:border-[#4CAA6D] rounded-2xl p-6 lg:p-7   transition-all cursor-pointer flex flex-col justify-between"
         >
-          <div className="flex justify-between items-start">
+          <div className="flex flex-wrap justify-between items-start gap-3">
             <div className="flex items-center gap-3.5">
               <div className="p-3.5 rounded-2xl bg-[#4CAA6D] text-white shadow-md group-hover:scale-110 transition-transform">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#4CAA6D]">Personal Dashboard</span>
-                <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E] group-hover:text-[#4CAA6D] transition-colors">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2F7D4C]">Personal Dashboard</span>
+                <h3 className="font-fraunces font-bold text-2xl text-eg-ink group-hover:text-[#2F7D4C] transition-colors">
                   My Registrations
                 </h3>
               </div>
             </div>
-            <span className="px-3.5 py-1.5 rounded-full bg-[#4CAA6D] text-white text-xs font-black shadow-sm">
+            <span className="px-3.5 py-1.5 rounded-full bg-[#2F7D4C] text-white text-xs font-black shadow-sm whitespace-nowrap">
               {myCount} Registered
             </span>
           </div>
@@ -323,7 +323,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                 ? `${myCount} event${myCount > 1 ? 's' : ''} saved in your schedule`
                 : 'No events registered yet'}
             </p>
-            <div className="inline-flex items-center gap-1 text-xs font-bold text-[#4CAA6D] group-hover:translate-x-1 transition-transform">
+            <div className="inline-flex items-center gap-1 text-xs font-bold text-[#2F7D4C] group-hover:translate-x-1 transition-transform">
               <span>View & Manage</span>
               <ChevronRight className="w-4 h-4" />
             </div>
@@ -333,7 +333,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
         {/* RECTANGULAR BOX 2: DID YOU KNOW ? */}
         <div
           onClick={() => setDidYouKnowModalOpen(true)}
-          className="group relative bg-gradient-to-br from-white via-[#FFF9F2] to-[#FFF1E0] border-2 border-[#FCDDBB] hover:border-[#F5A623] rounded-3xl p-6 md:p-7 shadow-[0_8px_30px_rgba(245,166,35,0.12)] hover:shadow-[0_12px_40px_rgba(245,166,35,0.22)] transition-all cursor-pointer flex flex-col justify-between"
+          className="group relative bg-gradient-to-br from-white border-2 border-[#FCDDBB] hover:border-[#F5A623] rounded-2xl p-6 lg:p-7   transition-all cursor-pointer flex flex-col justify-between"
         >
           <div className="flex justify-between items-start">
             <div className="flex items-center gap-3.5">
@@ -341,22 +341,22 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                 <Lightbulb className="w-7 h-7" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#D98200]">Senior Health & Wellness</span>
-                <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E] group-hover:text-[#D98200] transition-colors">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#9A5B00]">Senior Health & Wellness</span>
+                <h3 className="font-fraunces font-bold text-2xl text-eg-ink group-hover:text-[#9A5B00] transition-colors">
                   Did You Know ?
                 </h3>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-full bg-[#FFF3E5] border border-[#FCDDBB] text-[#D98200] text-xs font-bold flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-[#F5A623]" /> Tips & Facts
+            <span className="px-3 py-1 rounded-full bg-[#FFF3E5] border border-[#FCDDBB] text-[#9A5B00] text-xs font-bold flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5 text-[#9A5B00]" /> Tips & Facts
             </span>
           </div>
 
           <div className="mt-5 pt-4 border-t border-[#FEEAD4] flex items-center justify-between">
-            <p className="text-sm font-semibold text-[#525252] truncate max-w-[80%]">
-              Seniors in community events report 40% lower loneliness! 🌿
+            <p className="text-sm font-semibold text-eg-muted truncate max-w-[80%]">
+              Seniors in community events report 40% lower loneliness!
             </p>
-            <div className="inline-flex items-center gap-1 text-xs font-bold text-[#D98200] group-hover:translate-x-1 transition-transform">
+            <div className="inline-flex items-center gap-1 text-xs font-bold text-[#9A5B00] group-hover:translate-x-1 transition-transform">
               <span>Read Insights</span>
               <ChevronRight className="w-4 h-4" />
             </div>
@@ -373,7 +373,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
 
         {/* Section Title & Category Filter Chips */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <h2 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">Upcoming Near You</h2>
+          <h2 className="font-fraunces font-bold text-2xl text-eg-ink">Upcoming Near You</h2>
 
           <div className="flex gap-2 overflow-x-auto pb-1 max-w-full">
             {CATEGORIES.map((cat) => (
@@ -382,8 +382,8 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-2xl border-2 text-xs font-bold whitespace-nowrap transition cursor-pointer min-h-[40px] ${
                   activeCategory === cat
-                    ? 'bg-[#1B6B93] border-[#1B6B93] text-white shadow-md'
-                    : 'bg-white border-[#EBE3D5] text-[#525252] hover:border-[#1B6B93]/40'
+                    ? 'bg-eg-teal border-eg-teal text-white shadow-md'
+                    : 'bg-white border-eg-line text-eg-muted hover:border-eg-teal/40'
                 }`}
               >
                 {cat}
@@ -394,19 +394,19 @@ export default function ElderCommunityEventsPage({ currentUser }) {
 
         {/* Square Boxes Grid Layout (1 col sm, 2 col md, 3 col lg) */}
         {EVENTS.length === 0 ? (
-          <div className="col-span-3 py-20 flex flex-col items-center justify-center bg-white border-2 border-dashed border-[#EBE3D5] rounded-3xl gap-5 text-center px-6">
-            <div className="w-20 h-20 rounded-full bg-[#FAF7F2] border border-[#EBE3D5] flex items-center justify-center text-4xl shadow-sm">
-              🎉
+          <div className="col-span-3 py-20 flex flex-col items-center justify-center bg-white border-2 border-dashed border-eg-line rounded-2xl gap-5 text-center px-6">
+            <div className="w-20 h-20 rounded-full bg-eg-paper border border-eg-line flex items-center justify-center text-4xl shadow-sm">
+              <PartyPopper className="w-9 h-9 text-[#B8651F]" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">No Events Yet</h3>
-              <p className="text-sm text-[#6B7280] font-medium max-w-sm mx-auto leading-relaxed">
+              <h3 className="font-fraunces font-bold text-2xl text-eg-ink">No Events Yet</h3>
+              <p className="text-sm text-eg-muted font-medium max-w-sm mx-auto leading-relaxed">
                 Community events and activities near you will appear here once they are added. Check back soon!
               </p>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {EVENTS.filter(e => activeCategory === 'All' || e.category === activeCategory).map((event) => {
               const isRegistered = !!registrations[event.id];
               const CatIcon = event.categoryIcon;
@@ -414,8 +414,8 @@ export default function ElderCommunityEventsPage({ currentUser }) {
               return (
                 <div
                   key={event.id}
-                  className={`group relative bg-white border-2 rounded-3xl p-6 shadow-[0_6px_20px_rgba(0,0,0,0.04)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between aspect-square ${
-                    isRegistered ? 'border-[#4CAA6D]/60 bg-[#F4F9F5]/30' : 'border-[#EBE3D5] hover:border-[#1B6B93]'
+                  className={`group relative bg-white border-2 rounded-2xl p-6  hover:shadow-sm transition-all duration-300 flex flex-col justify-between aspect-square ${
+                    isRegistered ? 'border-[#4CAA6D]/60 bg-eg-paper/30' : 'border-eg-line hover:border-eg-teal'
                   }`}
                 >
                   {/* Top Badge & Category */}
@@ -439,17 +439,17 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                     className="my-auto space-y-3 cursor-pointer"
                     onClick={() => setSelectedEventDetails(event)}
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] flex items-center justify-center text-3xl shadow-sm group-hover:scale-110 transition-transform">
-                      {event.image}
+                    <div className="w-14 h-14 rounded-2xl bg-eg-paper border border-eg-line flex items-center justify-center text-3xl shadow-sm group-hover:scale-110 transition-transform">
+                      <PartyPopper className="w-7 h-7 text-[#B8651F]" />
                     </div>
 
-                    <h3 className="font-fraunces font-bold text-xl text-[#2E2E2E] line-clamp-2 leading-tight group-hover:text-[#1B6B93] transition-colors">
+                    <h3 className="font-fraunces font-bold text-xl text-eg-ink line-clamp-2 leading-tight group-hover:text-eg-teal transition-colors">
                       {event.title}
                     </h3>
 
-                    <div className="space-y-1.5 text-xs text-[#6B7280] font-semibold">
+                    <div className="space-y-1.5 text-xs text-eg-muted font-semibold">
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-[#1B6B93] shrink-0" />
+                        <Calendar className="w-3.5 h-3.5 text-eg-teal shrink-0" />
                         <span>{event.date} · {event.time}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
@@ -463,7 +463,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                   <div className="flex items-center gap-2 mt-2">
                     <button
                       onClick={() => setSelectedEventDetails(event)}
-                      className="flex-1 py-3 px-3 rounded-2xl bg-[#1B6B93]/10 hover:bg-[#1B6B93] text-[#1B6B93] hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 border border-[#1B6B93]/20 cursor-pointer min-h-[44px]"
+                      className="flex-1 py-3 px-3 rounded-2xl bg-eg-teal/10 hover:bg-eg-teal text-eg-teal hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-1.5 border border-eg-teal/20 cursor-pointer min-h-[44px]"
                     >
                       <span>View Details</span>
                       <ArrowUpRight className="w-4 h-4" />
@@ -495,23 +495,23 @@ export default function ElderCommunityEventsPage({ currentUser }) {
           POPUP MODAL 1: MY REGISTRATIONS (WITH MULTI-DELETE & SINGLE DELETE)
       ══════════════════════════════════════════════════════════════ */}
       {myRegModalOpen && (
-        <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-[#EBE3D5] overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div className="fixed inset-0 z-[90] bg-black/60  flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-sm border border-eg-line overflow-hidden animate-in fade-in zoom-in duration-200">
             
             {/* Modal Header */}
-            <div className="p-6 border-b border-[#F0EBE1] bg-[#FAF7F2] flex items-center justify-between">
+            <div className="p-6 border-b border-eg-line bg-eg-paper flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-3 rounded-2xl bg-[#4CAA6D] text-white">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">My Event Registrations</h3>
-                  <p className="text-xs text-[#6B7280] font-medium">Manage and view your upcoming registered activities</p>
+                  <h3 className="font-fraunces font-bold text-2xl text-eg-ink">My Event Registrations</h3>
+                  <p className="text-xs text-eg-muted font-medium">Manage and view your upcoming registered activities</p>
                 </div>
               </div>
               <button
                 onClick={() => setMyRegModalOpen(false)}
-                className="p-2 rounded-full hover:bg-gray-200 text-[#525252] transition cursor-pointer"
+                className="p-2 rounded-full hover:bg-gray-200 text-eg-muted transition cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -519,13 +519,13 @@ export default function ElderCommunityEventsPage({ currentUser }) {
 
             {/* Selection Toolbar (if registered events exist) */}
             {registeredEvents.length > 0 && (
-              <div className="px-6 py-3 bg-[#F4F9F5] border-b border-[#C8E6D0] flex items-center justify-between text-xs font-semibold text-[#4A5568]">
+              <div className="px-6 py-3 bg-eg-paper border-b border-eg-line flex items-center justify-between text-xs font-semibold text-[#4A5568]">
                 <button
                   onClick={toggleSelectAllRegs}
-                  className="flex items-center gap-2 text-[#1B6B93] hover:underline cursor-pointer"
+                  className="flex items-center gap-2 text-eg-teal hover:underline cursor-pointer"
                 >
                   {selectedRegIds.length === registeredEvents.length ? (
-                    <CheckSquare className="w-4 h-4 text-[#4CAA6D]" />
+                    <CheckSquare className="w-4 h-4 text-[#2F7D4C]" />
                   ) : (
                     <Square className="w-4 h-4 text-gray-400" />
                   )}
@@ -548,11 +548,11 @@ export default function ElderCommunityEventsPage({ currentUser }) {
             <div className="p-6 overflow-y-auto flex-1 space-y-4">
               {registeredEvents.length === 0 ? (
                 <div className="text-center py-12 space-y-3">
-                  <div className="w-16 h-16 rounded-full bg-[#FAF7F2] mx-auto flex items-center justify-center text-3xl">
-                    🗓️
+                  <div className="w-16 h-16 rounded-full bg-eg-paper mx-auto flex items-center justify-center text-3xl">
+                    <Calendar className="w-7 h-7 text-[#B8651F]" />
                   </div>
-                  <h4 className="font-fraunces font-bold text-lg text-[#2E2E2E]">No Registrations Found</h4>
-                  <p className="text-xs text-[#9CA3AF] max-w-sm mx-auto">
+                  <h4 className="font-fraunces font-bold text-lg text-eg-ink">No Registrations Found</h4>
+                  <p className="text-xs text-eg-muted max-w-sm mx-auto">
                     You haven't joined any events yet. Explore the square event boxes below and click "View Details & Register"!
                   </p>
                 </div>
@@ -563,14 +563,14 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                     <div
                       key={ev.id}
                       className={`p-4 rounded-2xl border-2 transition-all flex items-center justify-between gap-4 ${
-                        isChecked ? 'border-red-300 bg-red-50/40' : 'border-[#EBE3D5] bg-[#FAF7F2] hover:border-[#1B6B93]/40'
+                        isChecked ? 'border-red-300 bg-red-50/40' : 'border-eg-line bg-eg-paper hover:border-eg-teal/40'
                       }`}
                     >
                       <div className="flex items-center gap-3.5 min-w-0">
                         {/* Multi-select Checkbox */}
                         <button
                           onClick={() => toggleSelectRegItem(ev.id)}
-                          className="text-[#1B6B93] cursor-pointer shrink-0"
+                          className="text-eg-teal cursor-pointer shrink-0"
                         >
                           {isChecked ? (
                             <CheckSquare className="w-5 h-5 text-red-600" />
@@ -579,17 +579,17 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                           )}
                         </button>
 
-                        <span className="text-3xl shrink-0">{ev.image}</span>
+                        <span className="text-3xl shrink-0"><PartyPopper className="w-7 h-7 text-[#B8651F]" /></span>
 
                         <div className="min-w-0">
-                          <h4 className="font-bold text-sm text-[#2E2E2E] truncate">{ev.title}</h4>
-                          <div className="flex flex-wrap gap-2 text-xs text-[#6B7280] font-medium mt-0.5">
+                          <h4 className="font-bold text-sm text-eg-ink truncate">{ev.title}</h4>
+                          <div className="flex flex-wrap gap-2 text-xs text-eg-muted font-medium mt-0.5">
                             <span className="flex items-center gap-1">
-                              <Calendar className="w-3 h-3 text-[#1B6B93]" /> {ev.date}
+                              <Calendar className="w-3 h-3 text-eg-teal" /> {ev.date}
                             </span>
                             <span>•</span>
                             <span className="flex items-center gap-1">
-                              <Clock className="w-3 h-3 text-[#1B6B93]" /> {ev.time}
+                              <Clock className="w-3 h-3 text-eg-teal" /> {ev.time}
                             </span>
                           </div>
                         </div>
@@ -601,7 +601,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                             href={ev.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-xl bg-[#1B6B93]/10 hover:bg-[#1B6B93] text-[#1B6B93] hover:text-white transition cursor-pointer flex items-center gap-1 text-xs font-bold"
+                            className="p-2.5 rounded-xl bg-eg-teal/10 hover:bg-eg-teal text-eg-teal hover:text-white transition cursor-pointer flex items-center gap-1 text-xs font-bold"
                             title="Open Official Event Page"
                           >
                             <span>Open</span>
@@ -624,10 +624,10 @@ export default function ElderCommunityEventsPage({ currentUser }) {
             </div>
 
             {/* Footer */}
-            <div className="p-4 border-t border-[#F0EBE1] bg-[#FAF7F2] text-right">
+            <div className="p-4 border-t border-eg-line bg-eg-paper text-right">
               <button
                 onClick={() => setMyRegModalOpen(false)}
-                className="px-6 py-2.5 rounded-2xl bg-[#1B6B93] text-white font-bold text-xs hover:bg-[#155373] transition cursor-pointer"
+                className="px-6 py-2.5 rounded-2xl bg-eg-teal text-white font-bold text-xs hover:bg-eg-teal-dark transition cursor-pointer"
               >
                 Close
               </button>
@@ -642,8 +642,8 @@ export default function ElderCommunityEventsPage({ currentUser }) {
           POPUP MODAL 2: DID YOU KNOW ? (SENIOR HEALTH & TRIVIA)
       ══════════════════════════════════════════════════════════════ */}
       {didYouKnowModalOpen && (
-        <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-[#FCDDBB] overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div className="fixed inset-0 z-[90] bg-black/60  flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-sm border border-[#FCDDBB] overflow-hidden animate-in fade-in zoom-in duration-200">
             
             {/* Header */}
             <div className="p-6 border-b border-[#FEEAD4] bg-[#FFF9F2] flex items-center justify-between">
@@ -652,13 +652,13 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                   <Lightbulb className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-fraunces font-bold text-2xl text-[#2E2E2E]">Did You Know ?</h3>
-                  <p className="text-xs text-[#D98200] font-bold">Scientific & Health Benefits of Community Engagement</p>
+                  <h3 className="font-fraunces font-bold text-2xl text-eg-ink">Did You Know ?</h3>
+                  <p className="text-xs text-[#9A5B00] font-bold">Scientific & Health Benefits of Community Engagement</p>
                 </div>
               </div>
               <button
                 onClick={() => setDidYouKnowModalOpen(false)}
-                className="p-2 rounded-full hover:bg-gray-200 text-[#525252] transition cursor-pointer"
+                className="p-2 rounded-full hover:bg-gray-200 text-eg-muted transition cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -677,7 +677,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                       <ItemIcon className="w-6 h-6" />
                     </div>
                     <div className="space-y-1">
-                      <h4 className="font-fraunces font-bold text-base text-[#2E2E2E]">{item.title}</h4>
+                      <h4 className="font-fraunces font-bold text-base text-eg-ink">{item.title}</h4>
                       <p className="text-xs text-[#4A5568] leading-relaxed font-medium">{item.description}</p>
                     </div>
                   </div>
@@ -704,11 +704,11 @@ export default function ElderCommunityEventsPage({ currentUser }) {
           POPUP MODAL 3: EVENT DETAILS & REGISTER NOW BUTTON
       ══════════════════════════════════════════════════════════════ */}
       {selectedEventDetails && (
-        <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-[#EBE3D5] overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div className="fixed inset-0 z-[90] bg-black/60  flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col shadow-sm border border-eg-line overflow-hidden animate-in fade-in zoom-in duration-200">
             
             {/* Header / Hero */}
-            <div className="p-6 bg-gradient-to-r from-[#1B6B93] to-[#2E7D8C] text-white relative">
+            <div className="bg-eg-teal-dark p-6 text-white relative">
               <button
                 onClick={() => setSelectedEventDetails(null)}
                 className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition cursor-pointer"
@@ -717,11 +717,11 @@ export default function ElderCommunityEventsPage({ currentUser }) {
               </button>
 
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-4xl shadow-inner shrink-0">
-                  {selectedEventDetails.image}
+                <div className="w-16 h-16 rounded-2xl bg-white/20  flex items-center justify-center text-4xl shadow-inner shrink-0">
+                  <PartyPopper className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <span className="px-3 py-0.5 rounded-full text-[11px] font-bold bg-white/20 backdrop-blur-md text-white inline-block mb-1">
+                  <span className="px-3 py-0.5 rounded-full text-[11px] font-bold bg-white/20  text-white inline-block mb-1">
                     {selectedEventDetails.category}
                   </span>
                   <h3 className="font-fraunces font-bold text-2xl leading-tight">
@@ -735,26 +735,26 @@ export default function ElderCommunityEventsPage({ currentUser }) {
             <div className="p-6 overflow-y-auto flex-1 space-y-5">
               
               {/* Event Metadata Grid */}
-              <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5]">
+              <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-eg-paper border border-eg-line">
                 <div className="space-y-1">
-                  <span className="text-[11px] text-[#9CA3AF] font-bold uppercase">Date & Time</span>
-                  <p className="text-xs font-bold text-[#2E2E2E] flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#1B6B93]" />
+                  <span className="text-[11px] text-eg-muted font-bold uppercase">Date & Time</span>
+                  <p className="text-xs font-bold text-eg-ink flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5 text-eg-teal" />
                     {selectedEventDetails.date}
                   </p>
-                  <p className="text-[11px] text-[#6B7280] flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[#1B6B93]" />
+                  <p className="text-[11px] text-eg-muted flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-eg-teal" />
                     {selectedEventDetails.time}
                   </p>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[11px] text-[#9CA3AF] font-bold uppercase">Location</span>
-                  <p className="text-xs font-bold text-[#2E2E2E] flex items-center gap-1.5 truncate">
+                  <span className="text-[11px] text-eg-muted font-bold uppercase">Location</span>
+                  <p className="text-xs font-bold text-eg-ink flex items-center gap-1.5 truncate">
                     <MapPin className="w-3.5 h-3.5 text-[#E2694B]" />
                     {selectedEventDetails.location}
                   </p>
-                  <span className="text-[11px] text-[#1B6B93] font-semibold">
+                  <span className="text-[11px] text-eg-teal font-semibold">
                     Hosted by {selectedEventDetails.organizer}
                   </span>
                 </div>
@@ -762,21 +762,21 @@ export default function ElderCommunityEventsPage({ currentUser }) {
 
               {/* Description */}
               <div className="space-y-2">
-                <h4 className="font-fraunces font-bold text-base text-[#2E2E2E]">About This Event</h4>
-                <p className="text-xs text-[#525252] font-medium leading-relaxed">
+                <h4 className="font-fraunces font-bold text-base text-eg-ink">About This Event</h4>
+                <p className="text-xs text-eg-muted font-medium leading-relaxed">
                   {selectedEventDetails.description}
                 </p>
               </div>
 
               {/* Capacity & Spots Left */}
-              <div className="space-y-1 pt-2 border-t border-[#F0EBE1]">
-                <div className="flex justify-between items-center text-xs font-bold text-[#525252]">
+              <div className="space-y-1 pt-2 border-t border-eg-line">
+                <div className="flex justify-between items-center text-xs font-bold text-eg-muted">
                   <span>Available Seats</span>
-                  <span className="text-[#1B6B93]">
+                  <span className="text-eg-teal">
                     {selectedEventDetails.spots} spots remaining of {selectedEventDetails.totalSpots}
                   </span>
                 </div>
-                <div className="h-2 rounded-full bg-[#EBE3D5] overflow-hidden">
+                <div className="h-2 rounded-full bg-eg-line overflow-hidden">
                   <div
                     className="h-full bg-[#4CAA6D] rounded-full"
                     style={{
@@ -789,14 +789,14 @@ export default function ElderCommunityEventsPage({ currentUser }) {
             </div>
 
             {/* Footer with Register Now Button */}
-            <div className="p-5 border-t border-[#F0EBE1] bg-[#FAF7F2] flex flex-col sm:flex-row gap-3 items-center justify-between">
+            <div className="p-5 border-t border-eg-line bg-eg-paper flex flex-col sm:flex-row gap-3 items-center justify-between">
               
               {/* Event Page External Link */}
               <a
                 href={selectedEventDetails.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-bold text-[#1B6B93] hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-eg-teal hover:underline flex items-center gap-1"
               >
                 <span>Visit Official Event Page</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -805,7 +805,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
               <div className="flex gap-2 w-full sm:w-auto">
                 <button
                   onClick={() => setSelectedEventDetails(null)}
-                  className="flex-1 sm:flex-initial px-5 py-3 rounded-2xl border border-[#EBE3D5] text-[#525252] font-bold text-xs hover:bg-gray-100 transition cursor-pointer min-h-[46px]"
+                  className="flex-1 sm:flex-initial px-5 py-3 rounded-2xl border border-eg-line text-eg-muted font-bold text-xs hover:bg-gray-100 transition cursor-pointer min-h-[46px]"
                 >
                   Close
                 </button>
@@ -826,7 +826,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                       handleRegisterAndRedirect(selectedEventDetails);
                       setSelectedEventDetails(null);
                     }}
-                    className="flex-1 sm:flex-initial px-6 py-3 rounded-2xl bg-gradient-to-r from-[#1B6B93] to-[#2E7D8C] hover:from-[#155373] hover:to-[#235F6B] text-white font-bold text-xs transition shadow-md hover:scale-105 cursor-pointer flex items-center justify-center gap-2 min-h-[46px]"
+                    className="bg-eg-teal hover:bg-eg-teal-dark flex-1 sm:flex-initial px-6 py-3 rounded-2xl text-white font-bold text-xs transition shadow-md hover:scale-105 cursor-pointer flex items-center justify-center gap-2 min-h-[46px]"
                   >
                     <PartyPopper className="w-4 h-4" />
                     <span>Register Now</span>
@@ -845,8 +845,8 @@ export default function ElderCommunityEventsPage({ currentUser }) {
 
       {/* SOS Modal */}
       {sosActive && (
-        <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in">
-          <div className="bg-white border-4 border-[#D32F2F] rounded-3xl p-8 max-w-md w-full text-center space-y-6 shadow-2xl">
+        <div className="fixed inset-0 z-[100] bg-black/70  flex items-center justify-center p-4 animate-in fade-in">
+          <div className="bg-white border-4 border-[#D32F2F] rounded-2xl p-8 max-w-md w-full text-center space-y-6 shadow-sm">
             {!sosSentConfirmed ? (
               <div className="space-y-6">
                 <div className="w-20 h-20 rounded-full bg-[#D32F2F]/10 mx-auto flex items-center justify-center animate-pulse">
@@ -854,7 +854,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                 </div>
                 <div>
                   <h2 className="font-fraunces font-bold text-3xl text-[#D32F2F]">DISPATCHING SOS ALERT</h2>
-                  <p className="text-sm text-[#525252] font-medium mt-2">
+                  <p className="text-sm text-eg-muted font-medium mt-2">
                     Alerting your Caretaker & Hospital Emergency Dispatch Team in
                   </p>
                 </div>
@@ -867,7 +867,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                     setSosSentConfirmed(false);
                     setSosCountdown(10);
                   }}
-                  className="w-full py-4 rounded-2xl bg-[#FAF7F2] border border-[#EBE3D5] text-[#2E2E2E] font-bold text-lg hover:bg-gray-100 transition cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-eg-paper border border-eg-line text-eg-ink font-bold text-lg hover:bg-gray-100 transition cursor-pointer"
                 >
                   CANCEL EMERGENCY SOS
                 </button>
@@ -878,7 +878,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <h2 className="font-fraunces font-bold text-2xl text-[#1F8A5F]">SOS SENT SUCCESSFULLY!</h2>
-                <p className="text-sm text-[#525252] font-semibold leading-relaxed">
+                <p className="text-sm text-eg-muted font-semibold leading-relaxed">
                   Emergency alert & live GPS coordinates have been sent to your <strong>Caretaker</strong> and <strong>Hospital Emergency Dispatch Desk</strong>.
                 </p>
                 <button
@@ -887,7 +887,7 @@ export default function ElderCommunityEventsPage({ currentUser }) {
                     setSosSentConfirmed(false);
                     setSosCountdown(10);
                   }}
-                  className="w-full py-4 rounded-2xl bg-[#1F8A5F] hover:bg-[#1F8A5F]/90 text-white font-bold text-lg shadow-lg transition cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-[#1F8A5F] hover:bg-[#1F8A5F]/90 text-white font-bold text-lg shadow-sm transition cursor-pointer"
                 >
                   Close Confirmation
                 </button>

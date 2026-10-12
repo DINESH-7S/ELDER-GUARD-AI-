@@ -97,20 +97,20 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
   };
 
   return (
-    <div className="space-y-6 bg-[#F8F7FA] text-[#1A1520] min-h-screen font-sans pb-12">
+    <div className="space-y-6 bg-eg-paper text-eg-ink min-h-screen font-sans pb-12">
       
       {/* Top Bar (Global Header Bar matching Royal Plum System) */}
-      <div className="bg-white border border-[#E8E3ED] rounded-2xl p-4 md:p-5 shadow-sm flex flex-col lg:flex-row justify-between items-center gap-4 sticky top-0 z-20">
+      <div className="bg-white border border-eg-line rounded-2xl p-4 md:p-5 shadow-sm flex flex-col lg:flex-row justify-between items-center gap-4 sticky top-0 z-20">
         
         {/* Left: Global Search Input */}
         <div className="relative w-full lg:w-96">
-          <Search className="w-4 h-4 text-[#6B6272] absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-eg-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input 
             type="text" 
             placeholder="Global Search (Patients, Doctors, Wards, Invoices)..."
             value={globalSearch}
             onChange={(e) => setGlobalSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#F8F7FA] border border-[#E8E3ED] text-sm focus:outline-none focus:border-[#5B2A86] placeholder-[#6B6272]"
+            className="w-full pl-10 pr-4 py-2 rounded-xl bg-eg-paper border border-eg-line text-sm focus:outline-none focus:border-eg-teal placeholder-eg-muted"
           />
         </div>
 
@@ -120,7 +120,7 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
           {/* Emergency Dispatch Shortcut Button */}
           <button
             onClick={() => handleTabChange('emergency')}
-            className="px-3.5 py-1.5 rounded-xl bg-[#FDF2F2] border border-[#D6373F]/30 text-[#D6373F] font-bold text-xs flex items-center gap-2 hover:bg-[#FDF2F2]/80 transition cursor-pointer"
+            className="px-3.5 py-1.5 rounded-xl bg-[#FDF2F2] border border-[#D6373F]/30 text-[#B42830] font-bold text-xs flex items-center gap-2 hover:bg-[#FDF2F2]/80 transition cursor-pointer"
           >
             <span className="w-2 h-2 rounded-full bg-[#D6373F] animate-pulse"></span>
             <span>ACTIVE SOS</span>
@@ -130,9 +130,9 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="p-2.5 rounded-xl bg-[#F8F7FA] border border-[#E8E3ED] hover:bg-[#F1ECF6] text-[#1A1520] transition relative cursor-pointer"
+              className="p-2.5 rounded-xl bg-eg-paper border border-eg-line hover:bg-eg-tint text-eg-ink transition relative cursor-pointer"
             >
-              <Bell className="w-5 h-5 text-[#5B2A86]" />
+              <Bell className="w-5 h-5 text-eg-teal" />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#D6373F] text-white rounded-full text-[10px] font-bold flex items-center justify-center">
                 0
               </span>
@@ -140,18 +140,18 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
 
             {/* Notifications Dropdown */}
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 md:w-96 bg-white rounded-2xl border border-[#E8E3ED] shadow-2xl p-4 space-y-3 z-50">
-                <div className="flex items-center justify-between border-b border-[#E8E3ED] pb-2">
-                  <h4 className="font-bold text-sm text-[#1A1520]">Hospital Notifications</h4>
-                  <button onClick={() => setShowNotifications(false)} className="text-[#6B6272] hover:text-[#1A1520]">
+              <div className="absolute right-0 mt-2 w-80 md:w-96 bg-white rounded-2xl border border-eg-line shadow-sm p-4 space-y-3 z-50">
+                <div className="flex items-center justify-between border-b border-eg-line pb-2">
+                  <h4 className="font-bold text-sm text-eg-ink">Hospital Notifications</h4>
+                  <button onClick={() => setShowNotifications(false)} className="text-eg-muted hover:text-eg-ink">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
                 <div className="space-y-2 max-h-72 overflow-y-auto">
                   {notificationsList.map((n) => (
-                    <div key={n.id} className="p-2.5 rounded-xl bg-[#F8F7FA] border border-[#E8E3ED] text-xs">
-                      <p className="font-semibold text-[#1A1520]">{n.text}</p>
-                      <span className="text-[10px] text-[#6B6272]">{n.time}</span>
+                    <div key={n.id} className="p-2.5 rounded-xl bg-eg-paper border border-eg-line text-xs">
+                      <p className="font-semibold text-eg-ink">{n.text}</p>
+                      <span className="text-[10px] text-eg-muted">{n.time}</span>
                     </div>
                   ))}
                 </div>
@@ -160,15 +160,15 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
           </div>
 
           {/* Admin Profile Info */}
-          <div className="flex items-center gap-3 pl-3 border-l border-[#E8E3ED]">
-            <div className="w-9 h-9 rounded-xl bg-[#5B2A86] text-white flex items-center justify-center font-bold text-sm shadow-sm">
+          <div className="flex items-center gap-3 pl-3 border-l border-eg-line">
+            <div className="w-9 h-9 rounded-xl bg-eg-teal text-white flex items-center justify-center font-bold text-sm shadow-sm">
               {initials(displayHospitalName(currentUser))}
             </div>
             <div className="hidden sm:block">
-              <span className="font-bold text-sm text-[#1A1520] block leading-tight">
+              <span className="font-bold text-sm text-eg-ink block leading-tight">
                 {displayHospitalName(currentUser)}
               </span>
-              <span className="text-[11px] text-[#5B2A86] font-semibold block">
+              <span className="text-[11px] text-eg-teal font-semibold block">
                 Central Operations Hub • Admin Console
               </span>
             </div>
@@ -179,7 +179,7 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
       </div>
 
       {/* Institutional Top Tab Bar for quick navigation across 8 pages */}
-      <div className="bg-white border border-[#E8E3ED] rounded-2xl p-2 shadow-sm flex items-center gap-1.5 overflow-x-auto">
+      <div className="lg:hidden bg-white border border-eg-line rounded-2xl p-2 shadow-sm flex items-center gap-1.5 overflow-x-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = currentTab === tab.id || (currentTab === 'home' && tab.id === 'overview');
@@ -190,11 +190,11 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
               onClick={() => handleTabChange(tab.id)}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
                 isActive 
-                  ? 'bg-[#5B2A86] text-white shadow-sm font-bold' 
-                  : 'text-[#6B6272] hover:bg-[#F8F7FA] hover:text-[#1A1520]'
+                  ? 'bg-eg-teal text-white shadow-sm font-bold' 
+                  : 'text-eg-muted hover:bg-eg-paper hover:text-eg-ink'
               }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? 'text-[#B57EDC]' : 'text-[#6B6272]'}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-[#B57EDC]' : 'text-eg-muted'}`} />
               <span>{tab.label}</span>
               {tab.badge && (
                 <span className={`px-1.5 py-0.2 rounded text-[10px] font-extrabold ${isActive ? 'bg-[#D6373F] text-white' : 'bg-[#FDF2F2] text-[#D6373F]'}`}>
@@ -213,11 +213,11 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
 
       {/* 🚨 HOSPITAL INCOMING EMERGENCY SOS POPUP BOX MODAL */}
       {hospitalSosModalData && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-300">
-          <div className="relative bg-white border-4 border-[#D6373F] rounded-3xl shadow-2xl overflow-hidden max-w-lg w-full transform transition-all scale-100 animate-in zoom-in-95">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80  p-4 animate-in fade-in duration-300">
+          <div className="relative bg-white border-4 border-[#D6373F] rounded-2xl shadow-sm overflow-hidden max-w-lg w-full transform transition-all scale-100 animate-in zoom-in-95">
             
             {/* Flashing Hospital Red Siren Header */}
-            <div className="bg-gradient-to-r from-[#D6373F] via-[#E53935] to-[#5B2A86] p-4 text-white flex items-center justify-between shadow-md">
+            <div className="bg-eg-teal-dark p-4 text-white flex items-center justify-between shadow-md">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-xl bg-white/20 text-white animate-ping shrink-0">
                   <ShieldAlert className="w-7 h-7" />
@@ -239,10 +239,10 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 space-y-4 text-[#1A1520]">
+            <div className="p-6 space-y-4 text-eg-ink">
               <div className="p-4 rounded-2xl bg-[#FFFDFD] border border-[#D6373F]/30 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-[#6B6272] font-bold block uppercase tracking-wider">Patient Name</span>
+                  <span className="text-xs text-eg-muted font-bold block uppercase tracking-wider">Patient Name</span>
                   <span className="text-xl font-black text-[#D6373F]">
                     {hospitalSosModalData.elder_name}
                   </span>
@@ -253,15 +253,15 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-xs">
-                <div className="p-3 rounded-xl bg-[#F8F7FA] border border-[#E8E3ED]">
-                  <span className="text-[#6B6272] font-bold block mb-0.5">Time Triggered</span>
-                  <span className="font-bold text-[#1A1520]">
+                <div className="p-3 rounded-xl bg-eg-paper border border-eg-line">
+                  <span className="text-eg-muted font-bold block mb-0.5">Time Triggered</span>
+                  <span className="font-bold text-eg-ink">
                     {hospitalSosModalData.triggered_at ? new Date(hospitalSosModalData.triggered_at).toLocaleTimeString() : 'Just now'}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl bg-[#F8F7FA] border border-[#E8E8ED]">
-                  <span className="text-[#6B6272] font-bold block mb-0.5">GPS Location</span>
-                  <span className="font-mono font-bold text-[#5B2A86]">
+                <div className="p-3 rounded-xl bg-eg-paper border border-[#E8E8ED]">
+                  <span className="text-eg-muted font-bold block mb-0.5">GPS Location</span>
+                  <span className="font-mono font-bold text-eg-teal">
                     {hospitalSosModalData.location_lat}, {hospitalSosModalData.location_lng}
                   </span>
                 </div>
@@ -280,7 +280,7 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
                     setHospitalSosModalData(null);
                     handleTabChange('emergency');
                   }}
-                  className="flex-1 py-3 px-4 rounded-xl bg-[#5B2A86] hover:bg-[#4A2270] text-white font-black text-xs uppercase tracking-wider transition shadow-md cursor-pointer text-center"
+                  className="flex-1 py-3 px-4 rounded-xl bg-eg-teal hover:bg-[#4A2270] text-white font-black text-xs uppercase tracking-wider transition shadow-md cursor-pointer text-center"
                 >
                   Dispatch Ambulance / ER
                 </button>
@@ -295,7 +295,7 @@ export default function HospitalDashboard({ currentUser, activeTab = 'overview',
                 </button>
                 <button
                   onClick={() => setHospitalSosModalData(null)}
-                  className="py-3 px-4 rounded-xl border border-[#E8E3ED] text-[#6B6272] hover:bg-gray-100 font-bold text-xs transition cursor-pointer text-center"
+                  className="py-3 px-4 rounded-xl border border-eg-line text-eg-muted hover:bg-gray-100 font-bold text-xs transition cursor-pointer text-center"
                 >
                   Minimize
                 </button>

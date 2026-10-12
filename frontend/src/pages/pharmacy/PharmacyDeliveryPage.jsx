@@ -28,17 +28,17 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
   };
 
   return (
-    <div className="space-y-6 font-sans text-[#10221B]">
+    <div className="space-y-6 font-sans text-eg-ink">
       
       {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-xl border border-[#E1EDE6] shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-xl border border-eg-line shadow-sm">
         <div>
-          <h1 className="text-2xl font-bold text-[#10221B] tracking-tight">Delivery & Dispatch Command</h1>
-          <p className="text-sm text-[#5C6E64] mt-1">
+          <h1 className="text-2xl font-bold text-eg-ink tracking-tight">Delivery & Dispatch Command</h1>
+          <p className="text-sm text-eg-muted mt-1">
             Track active rider dispatches, live delivery ETAs, and in-store patient pickup queues.
           </p>
         </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#EAF5EF] text-[#1E9E6B] font-bold text-xs">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-eg-tint text-eg-teal font-bold text-xs">
           <Truck className="w-4 h-4 text-[#4FD1A5] animate-pulse" />
           <span>Active Delivery Radius: 10km</span>
         </div>
@@ -46,25 +46,25 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
 
       {/* Delivery Performance Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="bg-white p-4 rounded-xl border border-[#E1EDE6] shadow-sm">
-          <span className="text-xs text-[#5C6E64] font-semibold uppercase tracking-wider block">Avg Delivery Time</span>
-          <div className="text-2xl font-bold text-[#1E9E6B] mt-1">22 Mins</div>
-          <span className="text-[11px] text-[#1E9E6B]">⚡ 5 mins under SLA</span>
+        <div className="bg-white p-4 rounded-xl border border-eg-line shadow-sm">
+          <span className="text-xs text-eg-muted font-semibold uppercase tracking-wider block">Avg Delivery Time</span>
+          <div className="text-2xl font-bold text-eg-ink mt-1">None yet</div>
+          <span className="text-[11px] text-eg-muted">No completed deliveries</span>
         </div>
-        <div className="bg-white p-4 rounded-xl border border-[#E1EDE6] shadow-sm">
-          <span className="text-xs text-[#5C6E64] font-semibold uppercase tracking-wider block">On-Time Delivery Rate</span>
-          <div className="text-2xl font-bold text-[#10221B] mt-1">98.2%</div>
-          <span className="text-[11px] text-[#1E9E6B]">33 / 34 orders on time</span>
+        <div className="bg-white p-4 rounded-xl border border-eg-line shadow-sm">
+          <span className="text-xs text-eg-muted font-semibold uppercase tracking-wider block">On-Time Delivery Rate</span>
+          <div className="text-2xl font-bold text-eg-ink mt-1">None yet</div>
+          <span className="text-[11px] text-eg-muted">Appears after the first delivery</span>
         </div>
-        <div className="bg-white p-4 rounded-xl border border-[#E1EDE6] shadow-sm">
-          <span className="text-xs text-[#5C6E64] font-semibold uppercase tracking-wider block">Riders Active</span>
-          <div className="text-2xl font-bold text-[#10221B] mt-1">3 Couriers</div>
-          <span className="text-[11px] text-[#5C6E64]">1 on standby</span>
+        <div className="bg-white p-4 rounded-xl border border-eg-line shadow-sm">
+          <span className="text-xs text-eg-muted font-semibold uppercase tracking-wider block">Riders Active</span>
+          <div className="text-2xl font-bold text-eg-ink mt-1">{riders.length} Couriers</div>
+          <span className="text-[11px] text-eg-muted">{riders.length ? 'On the roster' : 'No riders added yet'}</span>
         </div>
-        <div className="bg-white p-4 rounded-xl border border-[#E1EDE6] shadow-sm">
-          <span className="text-xs text-[#5C6E64] font-semibold uppercase tracking-wider block">Delayed Orders</span>
-          <div className="text-2xl font-bold text-[#E8A03C] mt-1">0 Orders</div>
-          <span className="text-[11px] text-[#1E9E6B]">All active routes clear</span>
+        <div className="bg-white p-4 rounded-xl border border-eg-line shadow-sm">
+          <span className="text-xs text-eg-muted font-semibold uppercase tracking-wider block">Delayed Orders</span>
+          <div className="text-2xl font-bold text-[#9A5B00] mt-1">0 Orders</div>
+          <span className="text-[11px] text-eg-muted">{deliveries.length ? 'Active routes' : 'No active routes'}</span>
         </div>
       </div>
 
@@ -72,32 +72,32 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Active Deliveries List */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-[#E1EDE6] shadow-sm p-6 space-y-4">
-          <div className="flex justify-between items-center border-b border-[#E1EDE6] pb-3">
-            <h2 className="text-lg font-bold text-[#10221B]">Active Home Deliveries ({deliveries.length})</h2>
-            <span className="text-xs text-[#5C6E64]">Live GPS Telemetry</span>
+        <div className="lg:col-span-2 bg-white rounded-xl border border-eg-line shadow-sm p-6 space-y-4">
+          <div className="flex justify-between items-center border-b border-eg-line pb-3">
+            <h2 className="text-lg font-bold text-eg-ink">Active Home Deliveries ({deliveries.length})</h2>
+            <span className="text-xs text-eg-muted">Live GPS Telemetry</span>
           </div>
 
           <div className="space-y-3">
             {deliveries.map((del) => (
-              <div key={del.id} className="p-4 rounded-xl bg-[#F6FAF8] border border-[#E1EDE6] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div key={del.id} className="p-4 rounded-xl bg-eg-paper border border-eg-line flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-[#1E9E6B] text-sm">{del.id}</span>
-                    <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#EAF5EF] text-[#1E9E6B]">
+                    <span className="font-mono font-bold text-eg-teal text-sm">{del.id}</span>
+                    <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-eg-tint text-eg-teal">
                       {del.status}
                     </span>
                   </div>
-                  <h3 className="font-bold text-sm text-[#10221B] mt-1">{del.patient}</h3>
-                  <p className="text-xs text-[#5C6E64] flex items-center gap-1 mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#1E9E6B]" />
+                  <h3 className="font-bold text-sm text-eg-ink mt-1">{del.patient}</h3>
+                  <p className="text-xs text-eg-muted flex items-center gap-1 mt-0.5">
+                    <MapPin className="w-3.5 h-3.5 text-eg-teal" />
                     <span>{del.address}</span>
                   </p>
-                  <p className="text-[11px] text-[#5C6E64] mt-0.5">Assigned: {del.rider} • Contact: {del.phone}</p>
+                  <p className="text-[11px] text-eg-muted mt-0.5">Assigned: {del.rider} • Contact: {del.phone}</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-bold text-[#1E9E6B] block">ETA: {del.eta}</span>
-                  <button onClick={() => alert(`Pinged rider for ${del.id}`)} className="mt-2 px-3 py-1 bg-[#10221B] text-white font-bold text-[10px] rounded-lg cursor-pointer">
+                  <span className="text-xs font-bold text-eg-teal block">ETA: {del.eta}</span>
+                  <button onClick={() => alert(`Pinged rider for ${del.id}`)} className="mt-2 px-3 py-1 bg-eg-ink text-white font-bold text-[10px] rounded-lg cursor-pointer">
                     Contact Rider
                   </button>
                 </div>
@@ -107,7 +107,7 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
         </div>
 
         {/* Live GPS Radar Visualizer Box */}
-        <div className="bg-[#10221B] text-white rounded-xl p-5 shadow-lg border border-[#E1EDE6]/20 space-y-4">
+        <div className="bg-eg-ink text-white rounded-xl p-5 shadow-sm border border-eg-line/20 space-y-4">
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <div className="flex items-center gap-2">
               <Navigation className="w-5 h-5 text-[#4FD1A5] animate-pulse" />
@@ -122,16 +122,16 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
               <div className="w-28 h-28 rounded-full border border-[#4FD1A5] absolute"></div>
             </div>
             <div className="relative z-10 text-center space-y-2">
-              <div className="w-10 h-10 mx-auto rounded-full bg-[#1E9E6B]/30 border border-[#4FD1A5] flex items-center justify-center text-[#4FD1A5] animate-bounce">
+              <div className="w-10 h-10 mx-auto rounded-full bg-eg-teal/30 border border-[#4FD1A5] flex items-center justify-center text-[#4FD1A5] animate-bounce">
                 <Truck className="w-5 h-5" />
               </div>
-              <span className="block font-mono text-xs text-[#4FD1A5] font-bold">Rider Unit 1: 1.4 km to destination</span>
-              <span className="block text-[11px] text-gray-300">No active database delivery assigned</span>
+              <span className="block text-sm text-gray-200 font-semibold">No active delivery</span>
+              <span className="block text-[11px] text-gray-300">A rider appears here once an order is dispatched</span>
             </div>
           </div>
 
           <div className="text-[11px] text-gray-300 text-center">
-            Automatic customer SMS updates dispatched at every checkpoint
+            Delivery updates will appear here as they happen
           </div>
         </div>
 
@@ -141,28 +141,28 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* In-Store Pickup Queue */}
-        <div className="bg-white rounded-xl border border-[#E1EDE6] shadow-sm p-6 space-y-4">
-          <div className="flex justify-between items-center border-b border-[#E1EDE6] pb-3">
-            <h3 className="font-bold text-[#10221B] text-sm flex items-center gap-2">
-              <Store className="w-4 h-4 text-[#1E9E6B]" />
+        <div className="bg-white rounded-xl border border-eg-line shadow-sm p-6 space-y-4">
+          <div className="flex justify-between items-center border-b border-eg-line pb-3">
+            <h3 className="font-bold text-eg-ink text-sm flex items-center gap-2">
+              <Store className="w-4 h-4 text-eg-teal" />
               <span>In-Store Patient Pickup Queue</span>
             </h3>
-            <span className="text-xs text-[#5C6E64]">Front-desk handoff</span>
+            <span className="text-xs text-eg-muted">Front-desk handoff</span>
           </div>
 
           <div className="space-y-3">
             {pickups.map((pk) => (
-              <div key={pk.token} className="p-3.5 rounded-xl bg-[#F6FAF8] border border-[#E1EDE6] flex items-center justify-between text-xs">
+              <div key={pk.token} className="p-3.5 rounded-xl bg-eg-paper border border-eg-line flex items-center justify-between text-xs">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-[#1E9E6B] text-sm">{pk.token}</span>
-                    <span className="font-bold text-[#10221B]">{pk.patient}</span>
+                    <span className="font-mono font-bold text-eg-teal text-sm">{pk.token}</span>
+                    <span className="font-bold text-eg-ink">{pk.patient}</span>
                   </div>
-                  <span className="text-[#5C6E64] block">{pk.items} • {pk.time}</span>
+                  <span className="text-eg-muted block">{pk.items} • {pk.time}</span>
                 </div>
                 <button
                   onClick={() => handleMarkPickedUp(pk.token)}
-                  className="px-3.5 py-1.5 bg-[#1E9E6B] hover:bg-[#187E56] text-white font-bold text-xs rounded-lg transition cursor-pointer"
+                  className="px-3.5 py-1.5 bg-eg-teal hover:bg-[#187E56] text-white font-bold text-xs rounded-lg transition cursor-pointer"
                 >
                   Mark Picked Up
                 </button>
@@ -172,20 +172,20 @@ export default function PharmacyDeliveryPage({ onNavigateTab }) {
         </div>
 
         {/* Delivery Partner Fleet Status */}
-        <div className="bg-white rounded-xl border border-[#E1EDE6] shadow-sm p-6 space-y-4">
-          <h3 className="font-bold text-[#10221B] text-sm">Delivery Rider Roster</h3>
+        <div className="bg-white rounded-xl border border-eg-line shadow-sm p-6 space-y-4">
+          <h3 className="font-bold text-eg-ink text-sm">Delivery Rider Roster</h3>
           <div className="space-y-3">
             {riders.map((r, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-[#F6FAF8] border border-[#E1EDE6] flex items-center justify-between text-xs">
+              <div key={idx} className="p-3.5 rounded-xl bg-eg-paper border border-eg-line flex items-center justify-between text-xs">
                 <div>
-                  <div className="font-bold text-[#10221B]">{r.name}</div>
-                  <span className="text-[#5C6E64]">{r.vehicle} • Completed today: {r.completedToday} orders</span>
+                  <div className="font-bold text-eg-ink">{r.name}</div>
+                  <span className="text-eg-muted">{r.vehicle} • Completed today: {r.completedToday} orders</span>
                 </div>
                 <div className="text-right">
-                  <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#EAF5EF] text-[#1E9E6B] block">
+                  <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-eg-tint text-eg-teal block">
                     {r.status}
                   </span>
-                  <span className="text-[11px] text-[#5C6E64]">{r.rating}</span>
+                  <span className="text-[11px] text-eg-muted">{r.rating}</span>
                 </div>
               </div>
             ))}

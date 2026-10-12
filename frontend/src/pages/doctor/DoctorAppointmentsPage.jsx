@@ -70,54 +70,54 @@ export default function DoctorAppointmentsPage({ currentUser, onNavigateTab }) {
   };
 
   return (
-    <div className="bg-[#F8FAF9] text-[#131917] font-inter space-y-5">
+    <div className="bg-eg-paper text-eg-ink font-inter space-y-5">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="font-bold text-xl text-[#131917]">Appointments & Telehealth Desk</h2>
-          <p className="text-xs text-[#5C6B64]">Appointments booked with this logged-in doctor account appear here.</p>
+          <h2 className="font-bold text-xl text-eg-ink">Appointments & Telehealth Desk</h2>
+          <p className="text-xs text-eg-muted">Appointments booked with this logged-in doctor account appear here.</p>
         </div>
         <button
           onClick={() => appointmentsList[0] && handleStartSession(appointmentsList[0])}
           disabled={!appointmentsList[0]}
-          className="px-4 py-2 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold text-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold text-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Video className="w-3.5 h-3.5 text-[#C79A4B]" /> Launch Telehealth Room
         </button>
       </div>
 
-      <div className="bg-white border border-[#E2E9E4] rounded-lg p-5 space-y-4">
-        <h4 className="font-bold text-sm text-[#131917]">Consultation Token Queue</h4>
-        <div className="divide-y divide-[#E2E9E4]">
+      <div className="bg-white border border-eg-line rounded-lg p-5 space-y-4">
+        <h4 className="font-bold text-sm text-eg-ink">Consultation Token Queue</h4>
+        <div className="divide-y divide-eg-line">
           {appointmentsList.length === 0 ? (
-            <div className="py-10 text-center text-xs text-[#5C6B64]">
+            <div className="py-10 text-center text-xs text-eg-muted">
               No elders have booked appointments with this doctor account yet.
             </div>
           ) : appointmentsList.map(appointment => (
             <div key={appointment.id} className="py-3 flex items-center justify-between text-xs">
               <div className="flex items-center gap-4">
-                <span className="font-mono font-bold text-[#0F6B5C] bg-[#0F6B5C]/10 px-2 py-1 rounded text-xs">{appointment.token}</span>
-                <span className="font-mono font-bold text-[#5C6B64] text-xs w-16">{appointment.time}</span>
+                <span className="font-mono font-bold text-eg-teal bg-eg-teal/10 px-2 py-1 rounded text-xs">{appointment.token}</span>
+                <span className="font-mono font-bold text-eg-muted text-xs w-16">{appointment.time}</span>
                 {appointment.avatar ? (
                   <img src={appointment.avatar} alt={appointment.name} className="w-9 h-9 rounded object-cover border" />
                 ) : (
-                  <div className="w-9 h-9 rounded bg-[#EEF3F0] text-[#0F6B5C] font-bold flex items-center justify-center border">
+                  <div className="w-9 h-9 rounded bg-eg-tint text-eg-teal font-bold flex items-center justify-center border">
                     {patientInitials(appointment.name)}
                   </div>
                 )}
                 <div>
-                  <span className="font-bold text-[#131917] block text-sm">
-                    {appointment.name} <span className="font-mono text-xs text-[#5C6B64]">({appointment.mrn})</span>
+                  <span className="font-bold text-eg-ink block text-sm">
+                    {appointment.name} <span className="font-mono text-xs text-eg-muted">({appointment.mrn})</span>
                   </span>
-                  <span className="text-[#5C6B64]">{appointment.date} - {appointment.type} - {appointment.status}</span>
+                  <span className="text-eg-muted">{appointment.date} - {appointment.type} - {appointment.status}</span>
                 </div>
               </div>
 
               {appointment.status === 'Completed' ? (
-                <span className="px-3 py-1 rounded bg-[#2E9E6B]/15 text-[#2E9E6B] font-bold text-[11px] flex items-center gap-1">
+                <span className="px-3 py-1 rounded bg-[#2E9E6B]/15 text-[#1F7A50] font-bold text-[11px] flex items-center gap-1">
                   <Check className="w-3 h-3" /> Session Completed
                 </span>
               ) : (
-                <button onClick={() => handleStartSession(appointment)} className="px-3.5 py-1.5 rounded bg-[#0F6B5C] hover:bg-[#0C5548] text-white font-bold cursor-pointer">
+                <button onClick={() => handleStartSession(appointment)} className="px-3.5 py-1.5 rounded bg-eg-teal hover:bg-eg-teal-dark text-white font-bold cursor-pointer">
                   Start Session
                 </button>
               )}
@@ -128,7 +128,7 @@ export default function DoctorAppointmentsPage({ currentUser, onNavigateTab }) {
 
       {videoCallModalOpen && activePatient && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xs p-4">
-          <div className="bg-[#102621] text-white border border-white/20 rounded-lg p-6 max-w-5xl w-full shadow-2xl space-y-4 text-xs">
+          <div className="bg-[#102621] text-white border border-white/20 rounded-lg p-6 max-w-5xl w-full shadow-sm space-y-4 text-xs">
             <div className="flex justify-between items-center border-b border-white/10 pb-3">
               <div className="flex items-center gap-3">
                 <Video className="w-5 h-5 text-[#C79A4B]" />
@@ -172,7 +172,7 @@ export default function DoctorAppointmentsPage({ currentUser, onNavigateTab }) {
                   <div className="grid grid-cols-3 gap-2 py-2 text-[11px] font-mono">
                     <div className="bg-black/30 p-1.5 rounded">Patient: <strong className="text-white">{activePatient.name}</strong></div>
                     <div className="bg-black/30 p-1.5 rounded">Mode: <strong className="text-white">{activePatient.type}</strong></div>
-                    <div className="bg-black/30 p-1.5 rounded">Status: <strong className="text-[#2E9E6B]">{activePatient.status}</strong></div>
+                    <div className="bg-black/30 p-1.5 rounded">Status: <strong className="text-[#1F7A50]">{activePatient.status}</strong></div>
                   </div>
 
                   <div className="flex justify-between items-center pt-2">
@@ -197,7 +197,7 @@ export default function DoctorAppointmentsPage({ currentUser, onNavigateTab }) {
                       setVideoCallModalOpen(false);
                       onNavigateTab('mypatients');
                     }}
-                    className="flex-1 py-2 rounded bg-[#0F6B5C] text-white font-bold text-xs cursor-pointer hover:bg-[#0C5548]"
+                    className="flex-1 py-2 rounded bg-eg-teal text-white font-bold text-xs cursor-pointer hover:bg-eg-teal-dark"
                   >
                     + e-Prescribe
                   </button>

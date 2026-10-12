@@ -44,35 +44,35 @@ export default function HospitalOverviewPage({ currentUser, onNavigateTab }) {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-bold text-[#1A1520] tracking-tight">Hospital Operational Command</h1>
-        <p className="text-xs text-[#6B6272]">Only connected ElderGuard records are shown here.</p>
+        <h1 className="text-2xl font-bold text-eg-ink tracking-tight">Hospital Operational Command</h1>
+        <p className="text-xs text-eg-muted">Only connected ElderGuard records are shown here.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {cards.map(({ label, value, Icon, tab }) => (
-          <button key={label} onClick={() => onNavigateTab(tab)} className="bg-white border border-[#E8E3ED] rounded-xl p-4 text-left flex items-center justify-between hover:bg-[#F8F7FA]">
+          <button key={label} onClick={() => onNavigateTab(tab)} className="bg-white border border-eg-line rounded-xl p-4 text-left flex items-center justify-between hover:bg-eg-paper">
             <div>
-              <span className="text-[11px] font-bold text-[#6B6272] uppercase tracking-wider block">{label}</span>
-              <span className="text-2xl font-bold text-[#1A1520] font-mono">{value}</span>
+              <span className="text-[11px] font-bold text-eg-muted uppercase tracking-wider block">{label}</span>
+              <span className="text-2xl font-bold text-eg-ink font-mono">{value}</span>
             </div>
-            <div className="p-3 rounded-lg bg-[#5B2A86]/10 text-[#5B2A86]"><Icon className="w-5 h-5" /></div>
+            <div className="p-3 rounded-lg bg-eg-teal/10 text-eg-teal"><Icon className="w-5 h-5" /></div>
           </button>
         ))}
       </div>
 
-      <div className="bg-white border border-[#E8E3ED] rounded-xl p-5">
-        <div className="flex items-center gap-2 border-b border-[#E8E3ED] pb-3">
-          <Building2 className="w-4 h-4 text-[#5B2A86]" />
-          <h2 className="font-bold text-sm text-[#1A1520]">Recent Hospital Activity</h2>
+      <div className="bg-white border border-eg-line rounded-xl p-5">
+        <div className="flex items-center gap-2 border-b border-eg-line pb-3">
+          <Building2 className="w-4 h-4 text-eg-teal" />
+          <h2 className="font-bold text-sm text-eg-ink">Recent Hospital Activity</h2>
         </div>
         {sosAlerts.length === 0 ? (
-          <div className="py-10 text-center text-xs text-[#6B6272]">No live hospital activity has been received yet.</div>
+          <div className="py-10 text-center text-xs text-eg-muted">No live hospital activity has been received yet.</div>
         ) : (
-          <div className="divide-y divide-[#E8E3ED]">
+          <div className="divide-y divide-eg-line">
             {sosAlerts.map(alert => (
               <div key={alert.id} className="py-3 text-xs">
-                <span className="font-bold text-[#1A1520] block">{alert.elderName}</span>
-                <span className="text-[#6B6272]">{new Date(alert.triggeredAt).toLocaleString()} {alert.location ? `- ${alert.location}` : ''}</span>
+                <span className="font-bold text-eg-ink block">{alert.elderName}</span>
+                <span className="text-eg-muted">{new Date(alert.triggeredAt).toLocaleString()} {alert.location ? `- ${alert.location}` : ''}</span>
               </div>
             ))}
           </div>
